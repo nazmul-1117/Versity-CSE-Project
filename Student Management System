@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+void display();
 void addStudent();
 void showStudent();
 void searchStudent();
@@ -24,24 +25,26 @@ long  std_size = sizeof (student);
 
 int main()
 {
-    int n;
+    int choice;
+
+    display();
 
     while(1)
     {
         printf("\n\t\t\t    Main Menu\n");
         printf("\t\t=================================\n\n");
-        printf("\t\t[1] Add a New Student.\n");
-        printf("\t\t[2] Show All Student.\n");
-        printf("\t\t[3] Search by ID.\n");
-        printf("\t\t[4] Update Students Details.\n");
-        printf("\t\t[5] Delete a Student.\n");
-        printf("\t\t[6] About Us.\n");
+        printf("\t\t[1] Add a New Student\n");
+        printf("\t\t[2] Show All Student\n");
+        printf("\t\t[3] Search by ID\n");
+        printf("\t\t[4] Update Students Details\n");
+        printf("\t\t[5] Delete a Student\n");
+        printf("\t\t[6] About Us\n");
         printf("\t\t[7] Exit\n\n");
         printf("\t\t=================================\n\n");
-        printf("\t\tEnter a choose ");
-        scanf("%d", &n);
+        printf("\t\tEnter Your Choice ");
+        scanf("%d", &choice);
 
-        switch(n)
+        switch(choice)
         {
         case 1:
             addStudent();
@@ -65,23 +68,35 @@ int main()
            exit(1);
             break;
         default:
-            {
                 printf("Please input valid option.");
-            }
         }
     }
     return 0;
+}
+
+void display()
+{
+    printf("\t\t\t\t\t\t\t");
+    printf("Student Record Management System\n");
+    printf("\t\t\t\t\t\t\t");
+    printf("Green University Of Bangladesh\n");
+    printf("\t=================================");
+
+    printf("\n\n\n\n\n\tPress any Key to Continue.");
+    getch();
+    system("cls");
 }
 
 void addStudent()
 {
     system("cls");
     char option = 'y';
-    file = fopen("record2.txt", "ab+");
+    file = fopen("record.txt", "ab+");
 
     while(option == 'y')
     {
-                    printf("\t\t\tInput student.\n\n");
+                    printf("\n\t\t\t<=====Input a New Student=====>");
+                    printf("\n\t\t------------------------------------------------\n\n");
                     printf("Input Student Name: ");
                     fflush(stdin);
                     gets(student.name);
@@ -100,15 +115,14 @@ void addStudent()
                     fwrite(&student, std_size, 1, file);
                     fflush(stdin);
 
-                    printf("\n\nWant to add more student? 'y' or 'n' ");
+                    printf("\n\nA new Student has been successfully added. Thank You\n\n");
+                    printf("Want to add more Students? 'y' or 'n' ");
                     option = getch();
                     fflush(stdin);
                     system("cls");
     }
      fclose(file);
     fflush(stdin);
-   // printf("\n\nPress any Key to Continue.");
-    //getch();
     system("cls");
 }
 
@@ -116,20 +130,16 @@ void showStudent()
 {
     int sl = 1;
     system("cls");
-    printf("\n\t\t\t\t<===VIEW RECORD==>\n\n");
-    //printf("SL. no\t\tName\t\t\tID\t\t\tDepartment\tCGPA.");
+    printf("\n\t\t\t\t<===VIEW RECORDS==>");
+    printf("\n\t\t\t----------------------------------\n\n");
     printf(" %-15s %-28s %-15s %-22s %-20s",  "Sl No", "Name", "ID", "Department", "CGPA");
     printf("\n--------------------------------------------------------------------------------------------\n\n");
 
-    file = fopen("record2.txt", "rb");
+    file = fopen("record.txt", "rb");
 
     while(fread(&student, std_size, 1, file) == 1)
     {
         printf(" %-13d %-28s %-20s %-20s %-20.2f\n", sl, student.name, student.id, student.department, student.cgpa);
-        /*printf("%d\t", sl);
-        printf("%s\t\t%-7s", student.name, student.id);
-
-        printf("\t%15s\t\t%.2f\n", student.department, student.cgpa);*/
         sl++;
     }
     fclose(file);
@@ -147,14 +157,14 @@ void searchStudent()
         fflush(stdin);
         scanf("%s", _id);
 
-        file = fopen("record2.txt", "rb");
+        file = fopen("record.txt", "rb");
         int result = 0;
 
        while(fread(&student, std_size, 1, file) == 1)
        {
            if(strcmpi(student.id, _id) == 0)
            {
-               printf("\nCongratulation. Student have been found.\n\n");
+               printf("\nCongratulation. The Student found.\n\n");
                printf("Student Details.\n");
                printf("----------------\n\n");
                printf("Name: %s\n", student.name);
@@ -170,7 +180,7 @@ void searchStudent()
 
        if(result==0)
        {
-            printf("Student Data Did Not find.\n");
+            printf("\nSorry!, Student data not available.\n");
         }
         fflush(stdin);
         printf("\n\n\nPress any key to continue.");
@@ -187,7 +197,7 @@ void updateStudent()
         fflush(stdin);
         scanf("%s", _id);
 
-        file = fopen("record2.txt", "rb+");
+        file = fopen("record.txt", "rb+");
         int r = 0;
 
        while(fread(&student, std_size, 1, file) == 1)
@@ -204,7 +214,7 @@ void updateStudent()
                     scanf("%s", student.id);
                     fflush(stdin);
 
-                    printf("Input New Department: ");      //dep
+                    printf("Input New Department: ");      //dept
                     scanf("%s", student.department);
                     fflush(stdin);
 
@@ -216,7 +226,7 @@ void updateStudent()
 
                     fflush(stdin);
                     fclose(file);
-                    printf("\n\nStudent Update succecfully...\n\n");
+                    printf("\n\nStudent Update completed successfully...\n\n");
                     fclose(file);
                     r++;
                break;
@@ -224,7 +234,7 @@ void updateStudent()
        }
        if(r==0)
            {
-               printf("Sorry!, Student Did not found.\n");
+                printf("\nSorry!, Student data not available.\n");
            }
       printf("\n\nPress any key to continue.");
      getch();
@@ -241,7 +251,7 @@ void deleteStudent()
         scanf("%s", _id);
 
         FILE *ft;
-        file = fopen("record2.txt", "rb+");
+        file = fopen("record.txt", "rb+");
         ft = fopen("Temp.txt", "wb+");
         int r=0;
 
@@ -255,8 +265,8 @@ void deleteStudent()
 
        fclose(file);
        fclose(ft);
-       remove("record2.txt");
-       rename("Temp.txt", "record2.txt");
+       remove("record.txt");
+       rename("Temp.txt", "record.txt");
 
        printf("\n\nPress any key to continue.");
        getch();
@@ -276,7 +286,9 @@ void aboutUs()
      strcpy(fuad.id,  "223002080");
      strcpy(fuad.department, "CSE");
 
-     printf("\n\tName\t\t\t  ID\t\t\tDepartmen\t\n");
+     printf("\n\t\t\t%-50s", "<=====Developer Details=====>\n");
+     printf("\t-----------------------------\n");
+     printf("\n\tName\t\t\t  ID\t\t\tDepartment\t\n");
      printf("==================================================================\n");
      printf("\n%s\t\t%s\t\t%s\n\n", nazmul.name, nazmul.id, nazmul.department);
      printf("%s\t\t%s\t\t%s\n\n", fuad.name, fuad.id, fuad.department);
