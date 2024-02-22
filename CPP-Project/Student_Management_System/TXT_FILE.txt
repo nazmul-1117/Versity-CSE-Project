@@ -1,0 +1,9 @@
+Version -> 1.1
+--> Add Colour
+
+--> Add Loading Bar
+
+--> Add heading Bar
+
+--> Implement Guest Log In
+
