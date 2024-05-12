@@ -1,0 +1,87 @@
+.backgroundImage{
+    -fx-background-image: url("file:src/main/picture/bg.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.iconAdd{
+    -fx-background-image: url("file:src/main/picture/icon.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 125px;
+}
+
+.topMenuBar{
+    -fx-background-color: #00a86b2c;
+    -fx-text-family: "Arial";
+    -fx-background-radius: 10px;
+}
+
+.backGroundOpacity{
+    -fx-background-color: #000000;
+    -fx-opacity: 0.5;
+}
+
+.leftMenuBar{
+    -fx-background-color: #01322096;
+/*    -fx-background-color: transparent;*/
+    -fx-text-family: "Arial";
+
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-color: #7cff00;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
+}
+
+.leftMenuBarButton{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+
+    -fx-text-family: "Arial";
+/*    -fx-text-fill: #000000;*/
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+/*    -fx-alignment: LEFT;*/
+}
+
+
+.leftMenuBarButtonHover:hover {
+                -fx-background-color: #1df100;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-border-color: #00b7eb;
+                -fx-border-style: solid;
+                -fx-text-fill: #50004c;
+                -fx-alignment: CENTER;
+
+}
+
+.leftMenuBarLogo{
+    -fx-background-color: #0a7e8c;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-color: #507d2a;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
+}
+
+.mainDashBoard{
+    -fx-background-color: #000000;
+    -fx-background-radius: 30px;
+    -fx-border-color: #103220;
+    -fx-border-radius: 30px;
+
+}
+
+.rightMenuBarButtonHoverTemp:hover{
+    -fx-background-color: #00cccc;
+    -fx-background-color: #103220;
+
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 5px, 5px, 5px, 5px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}

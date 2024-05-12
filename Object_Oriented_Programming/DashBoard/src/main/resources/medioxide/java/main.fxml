@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
+   <children>
+      <Label layoutX="116.0" layoutY="42.0" prefHeight="119.0" prefWidth="558.0" text="Switch to Home Dashboard">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="switchToHome" layoutX="115.0" layoutY="214.0" onAction="#switchToHome" prefHeight="121.0" prefWidth="279.0" text="Home">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

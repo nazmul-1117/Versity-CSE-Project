@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.HomeController">
+    <children>
+        <HBox fx:id="topMenuBar" alignment="CENTER_RIGHT" layoutX="332.0" prefHeight="50.0" prefWidth="1034.0" spacing="30.0" styleClass="topMenuBar" stylesheets="@style.css">
+         <children>
+            <JFXButton style="-fx-background-radius: 50; -fx-background-color: #281;" styleClass="leftMenuBarButtonHover" stylesheets="@style.css" text="User">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton style="-fx-background-radius: 50; -fx-background-color: #285;" styleClass="leftMenuBarButtonHover" text="Logout">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton style="-fx-background-radius: 50; -fx-background-color: #299;" styleClass="leftMenuBarButtonHover" text="Settings">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children></HBox>
+        <VBox fx:id="leftMenuBar" alignment="TOP_CENTER" layoutY="10.0" prefHeight="700.0" prefWidth="300.0" spacing="20.0" styleClass="leftMenuBar" stylesheets="@style.css">
+            <children>
+            <Pane prefHeight="134.0" prefWidth="211.0" styleClass="iconAdd">
+               <VBox.margin>
+                  <Insets left="85.0" top="20.0" />
+               </VBox.margin>
+            </Pane>
+                <JFXButton fx:id="homeJFXButton" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </JFXButton>
+                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="leftMenuBar">
+                     <image>
+                        <Image url="@image/prescription.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="leftMenuBarButton" />
+                  <String fx:value="leftMenuBarButtonHover" />
+               </styleClass>
+                </JFXButton>
+
+                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="223.0" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+               <styleClass>
+                  <String fx:value="leftMenuBarButton" />
+                  <String fx:value="leftMenuBarButtonHover" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/doctor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </JFXButton>
+                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="274.0" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/patients.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <styleClass>
+                  <String fx:value="leftMenuBarButtonHover" />
+                  <String fx:value="leftMenuBarButton" />
+               </styleClass>
+                </JFXButton>
+                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+               <styleClass>
+                  <String fx:value="leftMenuBarButton" />
+                  <String fx:value="leftMenuBarButtonHover" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/test.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </JFXButton>
+                <JFXButton fx:id="dragJFXButton" layoutX="112.0" layoutY="376.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+               <styleClass>
+                  <String fx:value="leftMenuBarButton" />
+                  <String fx:value="leftMenuBarButtonHover" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/medicine.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </JFXButton>
+                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+               <styleClass>
+                  <String fx:value="leftMenuBarButton" />
+                  <String fx:value="leftMenuBarButtonHover" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/stress.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+                </JFXButton>
+            </children>
+        </VBox>
+        <AnchorPane fx:id="blankSpace" layoutX="325.0" layoutY="67.0" prefHeight="640.0" prefWidth="1020.0" stylesheets="@style.css">
+         <children>
+            <Label fx:id="homeLabel" layoutX="225.0" layoutY="189.0" onDragDetected="#prescriptionButtonClicked" prefHeight="207.0" prefWidth="534.0" stylesheets="@style.css" text="Label" />
+         </children>
+         <styleClass>
+            <String fx:value="mainDashBoard" />
+            <String fx:value="backGroundOpacity" />
+         </styleClass>
+        </AnchorPane>
+    </children>
+</AnchorPane>
