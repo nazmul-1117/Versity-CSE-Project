@@ -4,6 +4,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,6 +17,26 @@
     <children>
         <HBox fx:id="topMenuBar" alignment="CENTER_RIGHT" layoutX="332.0" prefHeight="50.0" prefWidth="1034.0" spacing="30.0" styleClass="topMenuBar" stylesheets="@style.css">
          <children>
+            <TextField alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="175.0" promptText="Search" styleClass="searchBar">
+               <HBox.margin>
+                  <Insets right="-10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
+            <JFXButton layoutX="744.0" layoutY="21.0" prefHeight="28.0" prefWidth="83.0" style="-fx-background-radius: 50; -fx-background-color: #281;" styleClass="leftMenuBarButtonHover" stylesheets="@style.css" text="Search">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="-10.0" />
+               </HBox.margin>
+            </JFXButton>
             <JFXButton style="-fx-background-radius: 50; -fx-background-color: #281;" styleClass="leftMenuBarButtonHover" stylesheets="@style.css" text="User">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">

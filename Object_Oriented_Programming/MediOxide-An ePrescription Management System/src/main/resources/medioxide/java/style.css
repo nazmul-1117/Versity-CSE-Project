@@ -16,6 +16,12 @@
     -fx-background-radius: 10px;
 }
 
+.searchBar{
+    -fx-background-color: #022141;
+    -fx-background-radius: 15;
+    -fx-text-fill: #00ffff;
+}
+
 .backGroundOpacity{
     -fx-background-color: #000000;
     -fx-opacity: 0.5;
