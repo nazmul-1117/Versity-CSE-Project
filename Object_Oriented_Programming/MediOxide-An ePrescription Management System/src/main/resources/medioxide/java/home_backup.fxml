@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.PrescriptionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.HomeController">
     <children>
         <HBox fx:id="topMenuBar" alignment="CENTER_RIGHT" layoutX="332.0" prefHeight="50.0" prefWidth="1034.0" spacing="30.0" styleClass="topMenuBar" stylesheets="@style.css">
             <children>
@@ -75,7 +75,7 @@
                         <Insets left="85.0" top="20.0" />
                     </VBox.margin>
                 </Pane>
-                <JFXButton fx:id="homeJFXButton" onAction="#homeButtonClicked" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text=" Home" textFill="WHITE">
+                <JFXButton fx:id="homeJFXButton" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
@@ -86,12 +86,8 @@
                             </image>
                         </ImageView>
                     </graphic>
-               <styleClass>
-                  <String fx:value="leftMenuBarButton" />
-                  <String fx:value="leftMenuBarButtonHover" />
-               </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" styleClass="leftMenuBarButton" stylesheets="@style.css" text="Prescription">
+                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -102,9 +98,13 @@
                             </image>
                         </ImageView>
                     </graphic>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButton" />
+                        <String fx:value="leftMenuBarButtonHover" />
+                    </styleClass>
                 </JFXButton>
 
-                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="223.0" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
+                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="223.0" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -120,7 +120,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="274.0" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
+                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="274.0" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -136,7 +136,7 @@
                         <String fx:value="leftMenuBarButton" />
                     </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
+                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -152,7 +152,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="dragJFXButton" layoutX="112.0" layoutY="376.0" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
+                <JFXButton fx:id="dragJFXButton" layoutX="112.0" layoutY="376.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -168,7 +168,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
+                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -187,17 +187,13 @@
             </children>
         </VBox>
         <AnchorPane fx:id="blankSpace" layoutX="325.0" layoutY="67.0" prefHeight="640.0" prefWidth="1020.0" stylesheets="@style.css">
+            <children>
+                <Label fx:id="homeLabel" layoutX="225.0" layoutY="189.0" onDragDetected="#prescriptionButtonClicked" prefHeight="207.0" prefWidth="534.0" stylesheets="@style.css" text="Label" />
+            </children>
             <styleClass>
                 <String fx:value="mainDashBoard" />
                 <String fx:value="backGroundOpacity" />
             </styleClass>
-         <children>
-            <Label layoutX="139.0" layoutY="31.0" prefHeight="42.0" prefWidth="761.0" text="Welcome to MediOxide Prescription Dashboard" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="36.0" />
-               </font>
-            </Label>
-         </children>
         </AnchorPane>
     </children>
 </AnchorPane>
