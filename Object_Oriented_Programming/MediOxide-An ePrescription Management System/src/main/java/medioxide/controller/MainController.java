@@ -8,6 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import medioxide.java.Main;
@@ -15,7 +18,19 @@ import medioxide.java.Main;
 import java.io.IOException;
 
 public class MainController {
+    public HBox topMenuBar;
+    public VBox leftMenuBar;
+    public JFXButton homeJFXButton;
+    public JFXButton prescriptionJFXButton;
+    public JFXButton doctorJFXButton;
+    public JFXButton patientsJFXButton;
+    public JFXButton testJFXButton;
+    public JFXButton dragJFXButton;
+    public JFXButton problemJFXButton;
+    public JFXButton medicineJFXButton;
 
+    @FXML
+    BorderPane mainDashboardBorderPane;
     @FXML
     private JFXButton switchToHome;
     private Stage stage;
@@ -23,22 +38,38 @@ public class MainController {
     private FXMLLoader fxmlLoader;
     private String fxmlUrl;
 
-    public void switchToHome(ActionEvent event) {
+    public void setSceneToNewWindow(ActionEvent event, String fxmlFileName){
+        System.out.println("you clicked "+ fxmlFileName);
+        FXMLLoadToPane fxmlLoader1 = new FXMLLoadToPane();
+        Pane pane = fxmlLoader1.getPane(fxmlFileName);
+        mainDashboardBorderPane.setCenter(pane);
+    }
+    public void leftMenubarButtonHandler(ActionEvent event) {
 
+        if (event.getSource().equals(homeJFXButton)){
+            setSceneToNewWindow(event, "home.fxml");
 
-        try {
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        }else if (event.getSource().equals(prescriptionJFXButton)){
+            setSceneToNewWindow(event, "blankScene.fxml");
 
-            fxmlUrl = "home.fxml";
-            fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlUrl));
-            scene = new Scene(fxmlLoader.load(), 600, 400);
-            stage.setScene(scene);
+        }else if (event.getSource().equals(doctorJFXButton)){
+            setSceneToNewWindow(event, "home.fxml");
 
-            stage.show();
-        }catch (IOException e){
-            e.fillInStackTrace();
+        }else if (event.getSource().equals(patientsJFXButton)){
+            setSceneToNewWindow(event, "home.fxml");
+
+        }else if (event.getSource().equals(testJFXButton)){
+            setSceneToNewWindow(event, "home.fxml");
+
+        }else if (event.getSource().equals(dragJFXButton)){
+            setSceneToNewWindow(event, "home.fxml");
+
+        }else if (event.getSource().equals(problemJFXButton)){
+            setSceneToNewWindow(event, "home.fxml");
+
         }
+    }
 
-
+    public void buttonSwitch(ActionEvent event) {
     }
 }

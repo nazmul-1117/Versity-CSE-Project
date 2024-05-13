@@ -3,17 +3,20 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="medioxide.controller.MainController">
     <children>
         <HBox fx:id="topMenuBar" alignment="CENTER_RIGHT" layoutX="332.0" prefHeight="50.0" prefWidth="1034.0" spacing="30.0" styleClass="topMenuBar" stylesheets="@style.css">
          <children>
@@ -75,7 +78,7 @@
                   <Insets left="85.0" top="20.0" />
                </VBox.margin>
             </Pane>
-                <JFXButton fx:id="homeJFXButton" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
+                <JFXButton fx:id="homeJFXButton" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
@@ -87,7 +90,7 @@
                   </ImageView>
                </graphic>
                 </JFXButton>
-                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" onAction="#prescriptionButtonClicked" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
+                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -104,7 +107,8 @@
                </styleClass>
                 </JFXButton>
 
-                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="223.0" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
+                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="223.0" prefHeight="50.0"
+                           prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -113,14 +117,14 @@
                   <String fx:value="leftMenuBarButtonHover" />
                </styleClass>
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onDragDetected="#leftMenubarButtonHandler" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image/doctor.png" />
                      </image>
                   </ImageView>
                </graphic>
                 </JFXButton>
-                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="274.0" onAction="#buttonSwitch" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
+                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="274.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -136,7 +140,7 @@
                   <String fx:value="leftMenuBarButton" />
                </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
+                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -152,7 +156,7 @@
                   </ImageView>
                </graphic>
                 </JFXButton>
-                <JFXButton fx:id="dragJFXButton" layoutX="112.0" layoutY="376.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
+                <JFXButton fx:id="medicineJFXButton" layoutX="112.0" layoutY="376.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -168,7 +172,7 @@
                   </ImageView>
                </graphic>
                 </JFXButton>
-                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#buttonSwitch" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
+                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -186,18 +190,6 @@
                 </JFXButton>
             </children>
         </VBox>
-        <AnchorPane fx:id="blankSpace" layoutX="325.0" layoutY="67.0" prefHeight="640.0" prefWidth="1020.0" stylesheets="@style.css">
-         <children>
-            <Label layoutX="182.0" layoutY="31.0" prefHeight="42.0" prefWidth="761.0" text="Welcome to MediOxide Main Dashboard" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="36.0" />
-               </font>
-            </Label>
-         </children>
-         <styleClass>
-            <String fx:value="mainDashBoard" />
-            <String fx:value="backGroundOpacity" />
-         </styleClass>
-        </AnchorPane>
+      <BorderPane layoutX="320.0" layoutY="70.0" prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" />
     </children>
 </AnchorPane>

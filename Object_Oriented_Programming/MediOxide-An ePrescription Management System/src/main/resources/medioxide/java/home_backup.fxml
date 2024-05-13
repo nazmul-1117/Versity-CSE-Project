@@ -87,7 +87,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
+                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" onAction="#prescriptionButtonClicked" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -188,7 +188,11 @@
         </VBox>
         <AnchorPane fx:id="blankSpace" layoutX="325.0" layoutY="67.0" prefHeight="640.0" prefWidth="1020.0" stylesheets="@style.css">
             <children>
-                <Label fx:id="homeLabel" layoutX="225.0" layoutY="189.0" onDragDetected="#prescriptionButtonClicked" prefHeight="207.0" prefWidth="534.0" stylesheets="@style.css" text="Label" />
+                <Label layoutX="182.0" layoutY="31.0" prefHeight="42.0" prefWidth="761.0" text="Welcome to MediOxide Main Dashboard" textFill="WHITE">
+                    <font>
+                        <Font name="Arial" size="36.0" />
+                    </font>
+                </Label>
             </children>
             <styleClass>
                 <String fx:value="mainDashBoard" />

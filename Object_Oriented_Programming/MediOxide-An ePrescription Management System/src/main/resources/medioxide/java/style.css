@@ -27,6 +27,11 @@
     -fx-opacity: 0.5;
 }
 
+.mainFXMLLoaderBorderPane{
+    -fx-background-color: #1b1785;
+    -fx-background-radius: 30px;
+}
+
 .leftMenuBar{
     -fx-background-color: #01322096;
 /*    -fx-background-color: transparent;*/
