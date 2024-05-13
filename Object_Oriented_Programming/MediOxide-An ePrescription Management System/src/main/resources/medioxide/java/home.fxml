@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,10 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="medioxide.controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
     <children>
         <HBox fx:id="topMenuBar" alignment="CENTER_RIGHT" layoutX="332.0" prefHeight="50.0" prefWidth="1034.0" spacing="30.0" styleClass="topMenuBar" stylesheets="@style.css">
          <children>
@@ -107,8 +105,7 @@
                </styleClass>
                 </JFXButton>
 
-                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="223.0" prefHeight="50.0"
-                           prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
+                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="223.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -190,6 +187,17 @@
                 </JFXButton>
             </children>
         </VBox>
-      <BorderPane layoutX="320.0" layoutY="70.0" prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" />
+      <BorderPane fx:id="mainDashboardBorderPane" layoutX="320.0" layoutY="70.0" prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane">
+         <center>
+            <AnchorPane prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Home Window" textFill="#00d6ff" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center></BorderPane>
     </children>
 </AnchorPane>

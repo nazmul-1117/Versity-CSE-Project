@@ -25,7 +25,6 @@ public class MainController {
     public JFXButton doctorJFXButton;
     public JFXButton patientsJFXButton;
     public JFXButton testJFXButton;
-    public JFXButton dragJFXButton;
     public JFXButton problemJFXButton;
     public JFXButton medicineJFXButton;
 
@@ -39,7 +38,7 @@ public class MainController {
     private String fxmlUrl;
 
     public void setSceneToNewWindow(ActionEvent event, String fxmlFileName){
-        System.out.println("you clicked "+ fxmlFileName);
+        System.out.println("You Clicked "+ fxmlFileName);
         FXMLLoadToPane fxmlLoader1 = new FXMLLoadToPane();
         Pane pane = fxmlLoader1.getPane(fxmlFileName);
         mainDashboardBorderPane.setCenter(pane);
@@ -50,22 +49,22 @@ public class MainController {
             setSceneToNewWindow(event, "home.fxml");
 
         }else if (event.getSource().equals(prescriptionJFXButton)){
-            setSceneToNewWindow(event, "blankScene.fxml");
+            setSceneToNewWindow(event, "prescription.fxml");
 
         }else if (event.getSource().equals(doctorJFXButton)){
-            setSceneToNewWindow(event, "home.fxml");
+            setSceneToNewWindow(event, "doctor.fxml");
 
         }else if (event.getSource().equals(patientsJFXButton)){
-            setSceneToNewWindow(event, "home.fxml");
+            setSceneToNewWindow(event, "patients.fxml");
 
         }else if (event.getSource().equals(testJFXButton)){
-            setSceneToNewWindow(event, "home.fxml");
+            setSceneToNewWindow(event, "test.fxml");
 
-        }else if (event.getSource().equals(dragJFXButton)){
-            setSceneToNewWindow(event, "home.fxml");
+        }else if (event.getSource().equals(medicineJFXButton)){
+            setSceneToNewWindow(event, "medicine.fxml");
 
         }else if (event.getSource().equals(problemJFXButton)){
-            setSceneToNewWindow(event, "home.fxml");
+            setSceneToNewWindow(event, "problem.fxml");
 
         }
     }

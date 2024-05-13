@@ -17,6 +17,7 @@ public class FXMLLoadToPane {
     public Pane getPane(String fxmlFileName){
        try {
            URL fxmlURL = Main.class.getResource(fxmlFileName);
+           System.out.println("FXML URL: " + fxmlURL);
            FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
            pane = fxmlLoader.load();
        }catch (IOException ioException) {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
+    <children>
+        <Label layoutX="260.0" layoutY="217.0" prefHeight="197.0"
+               prefWidth="602.0" text="Test Window" textFill="#00ff77">
+            <font>
+                <Font name="Arial Bold" size="64.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
