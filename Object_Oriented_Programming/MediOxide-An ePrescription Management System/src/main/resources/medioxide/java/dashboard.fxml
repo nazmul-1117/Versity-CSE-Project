@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
+    <children>
+        <BorderPane fx:id="topMenuBarBoderPane" layoutY="5.0" prefHeight="35.0" prefWidth="1366.0">
+            <right>
+                <HBox fx:id="topMenuBarHBox" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="1024.0" spacing="30.0" styleClass="topMenuBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <TextField alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="175.0" promptText="Search" styleClass="searchBar">
+                            <HBox.margin>
+                                <Insets right="-10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="Arial" size="14.0" />
+                            </font>
+                        </TextField>
+                        <JFXButton layoutX="744.0" layoutY="21.0" prefHeight="28.0" prefWidth="83.0" style="-fx-background-radius: 50; -fx-background-color: #ddff00;" styleClass="leftMenuBarButtonHover" stylesheets="@style.css" text="Search">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/search.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets left="-10.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                        <JFXButton style="-fx-background-radius: 50; -fx-background-color: #1ee800;" styleClass="leftMenuBarButtonHover" stylesheets="@style.css" text="User">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/user.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton style="-fx-background-radius: 50; -fx-background-color: #ffe000;" styleClass="leftMenuBarButtonHover" text="Logout">
+                            <graphic>
+                                <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/logout.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton style="-fx-background-radius: 50; -fx-background-color: #06fcfc;" styleClass="leftMenuBarButtonHover" text="Settings">
+                            <graphic>
+                                <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/settings.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                    </children>
+                </HBox>
+            </right>
+            <center>
+                <HBox fx:id="titleBarHBox" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="414.0" spacing="20.0" styleClass="topMenuBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                    <children>
+                        <JFXButton fx:id="closeButton" layoutY="20.0" onAction="#titleBarButtonAction" prefHeight="15.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50;" styleClass="titleBarButton">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="maximizeButton" onAction="#titleBarButtonAction" prefHeight="15.0" prefWidth="25.0" style="-fx-background-color: yellow; -fx-background-radius: 50;" styleClass="titleBarButton">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="minimizeButton" layoutX="999.0" layoutY="16.0" onAction="#titleBarButtonAction" prefHeight="15.0" prefWidth="25.0" style="-fx-background-color: green; -fx-background-radius: 50;" styleClass="titleBarButton">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                    </children>
+                </HBox>
+            </center>
+        </BorderPane>
+        <VBox fx:id="leftMenuBar" alignment="TOP_CENTER" layoutY="55.0" prefHeight="700.0" prefWidth="300.0" spacing="20.0" styleClass="leftMenuBar" stylesheets="@style.css">
+            <children>
+                <Pane prefHeight="134.0" prefWidth="211.0" styleClass="iconAdd">
+                    <VBox.margin>
+                        <Insets left="85.0" top="20.0" />
+                    </VBox.margin>
+                </Pane>
+                <JFXButton fx:id="homeJFXButton" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@image/home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="leftMenuBar">
+                            <image>
+                                <Image url="@image/prescription.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButton" />
+                        <String fx:value="leftMenuBarButtonHover" />
+                        <String fx:value="activeButton" />
+                    </styleClass>
+                </JFXButton>
+
+                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="223.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButton" />
+                        <String fx:value="leftMenuBarButtonHover" />
+                        <String fx:value="activeButton" />
+                    </styleClass>
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" onDragDetected="#leftMenubarButtonHandler" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@image/doctor.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="274.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@image/patients.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButtonHover" />
+                        <String fx:value="leftMenuBarButton" />
+                    </styleClass>
+                </JFXButton>
+                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButton" />
+                        <String fx:value="leftMenuBarButtonHover" />
+                    </styleClass>
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@image/test.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="medicineJFXButton" layoutX="112.0" layoutY="376.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButton" />
+                        <String fx:value="leftMenuBarButtonHover" />
+                    </styleClass>
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@image/medicine.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="leftMenuBarButton" />
+                        <String fx:value="leftMenuBarButtonHover" />
+                    </styleClass>
+                    <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@image/stress.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+            </children>
+        </VBox>
+        <BorderPane fx:id="mainDashboardBorderPane" layoutX="320.0" layoutY="55.0" prefHeight="700.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="60.0">
+            <center>
+                <AnchorPane prefWidth="1024.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label text="Home Window" textFill="#00d6ff" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <font>
+                                <Font name="Arial Bold" size="48.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                </AnchorPane>
+            </center></BorderPane>
+    </children>
+</AnchorPane>

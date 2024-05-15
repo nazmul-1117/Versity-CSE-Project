@@ -1,0 +1,28 @@
+.mainDashBoard{
+    -fx-background-color: white;
+    -fx-background-radius: 30px;
+
+    -fx-border-radius: 30px;
+    -fx-border-color: #7cff00;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
+}
+
+.topMenuBarHBox{
+    -fx-background-color: orange;
+    -fx-background-radius: 20px;
+}
+
+.topMenuBarHBoxHover:hover{
+
+        -fx-background-color: #008CBA; /* change to your desired color */
+        -fx-color: white; /* change to your desired color */
+    -fx-background-color: #22ff00;
+    -fx-background-radius: 0px, 10px, 0px, 0px;
+    -fx-border-color: #00c3ff;
+    -fx-border-style: solid;
+    -fx-text-fill: #50004c;
+    box-shadow: inset 300px 0 0 0 #ffd900;
+    -fx-transition-duration: 0.4s;
+}
+

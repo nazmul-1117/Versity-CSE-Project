@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
+<AnchorPane prefHeight="700.0" prefWidth="1024.0" styleClass="mainDashBoard" stylesheets="@style/patients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
    <children>
-      <Label layoutX="160.0" layoutY="210.0" prefHeight="197.0" prefWidth="710.0" text="Patients Window" textFill="#00ff77">
-         <font>
-            <Font name="Arial Bold" size="64.0" />
-         </font>
-      </Label>
+      <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="1024.0" spacing="20.0" styleClass="topMenuBarHBox" stylesheets="@style/patients.css">
+         <children>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" stylesheets="@style/patients.css" text="Add New Patients">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="topMenuBarHBox" />
+                  <String fx:value="topMenuBarHBoxHover" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="35.0" text="Search Patients">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="topMenuBarHBox" />
+                  <String fx:value="topMenuBarHBoxHover" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="35.0" text="Update Patients">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="topMenuBarHBox" />
+                  <String fx:value="topMenuBarHBoxHover" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="284.0" layoutY="35.0" text="Delete Patients">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="topMenuBarHBox" />
+                  <String fx:value="topMenuBarHBoxHover" />
+               </styleClass>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>

@@ -4,20 +4,18 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import medioxide.java.Main;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import java.io.IOException;
-
-public class MainController {
+public class MainController implements Initializable {
     public HBox topMenuBar;
     public VBox leftMenuBar;
     public JFXButton homeJFXButton;
@@ -27,6 +25,10 @@ public class MainController {
     public JFXButton testJFXButton;
     public JFXButton problemJFXButton;
     public JFXButton medicineJFXButton;
+
+    public JFXButton minimizeButton;
+    public JFXButton maximizeButton;
+    public JFXButton closeButton;
 
     @FXML
     BorderPane mainDashboardBorderPane;
@@ -69,6 +71,37 @@ public class MainController {
         }
     }
 
-    public void buttonSwitch(ActionEvent event) {
+    public void titleBarButtonAction(ActionEvent event) {
+
+        System.out.println("Button called for: " + event.toString());
+
+        Stage stage1;
+
+        if (event.getSource().equals(closeButton)){
+            javafx.application.Platform.exit();
+            System.out.println("System Closed");
+
+        }else if (event.getSource().equals(minimizeButton)){
+            stage1 = (Stage) ((Button)event.getSource()).getScene().getWindow();
+            stage1.setIconified(true);
+            System.out.println("System Minimize");
+
+        }else if(event.getSource().equals(maximizeButton)){
+            stage1 = (Stage) ((Button)event.getSource()).getScene().getWindow();
+
+            if (stage1.isMaximized()){
+                stage1.setMaximized(false);
+            }else {
+                stage1.setMaximized(true);
+            }
+
+            System.out.println("Maximized button");
+
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

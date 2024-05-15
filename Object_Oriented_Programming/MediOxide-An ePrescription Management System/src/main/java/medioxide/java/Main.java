@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
+import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Image icon = new Image("file:src/main/picture/icon.png");
 
-        String fxmlUrl = "home.fxml";
+        String fxmlUrl = "dashboard.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlUrl));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
@@ -21,6 +21,8 @@ public class Main extends Application {
         stage.setTitle("MediOxide!");
 
         stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

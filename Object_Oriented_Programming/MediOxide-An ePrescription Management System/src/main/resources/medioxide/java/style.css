@@ -28,8 +28,13 @@
 }
 
 .mainFXMLLoaderBorderPane{
-    -fx-background-color: #1b1785;
+    -fx-background-color: #1b17852d;
     -fx-background-radius: 30px;
+
+    -fx-border-radius: 30px;
+    -fx-border-color: #7cff00;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-style: solid;
 }
 
 .leftMenuBar{
@@ -49,22 +54,24 @@
     -fx-background-radius: 10px;
 
     -fx-text-family: "Arial";
-/*    -fx-text-fill: #000000;*/
     -fx-font-weight: bold;
     -fx-font-size: 18;
-/*    -fx-alignment: LEFT;*/
 }
 
+.titleBarButton:hover{
+/*    -fx-background-color:orange;*/
+    -fx-cursor:hand;
+}
 
 .leftMenuBarButtonHover:hover {
                 -fx-background-color: #1df100;
+                /*-fx-background-color:orange;*/
                 -fx-background-radius: 10px;
                 -fx-border-radius: 10px;
                 -fx-border-color: #00b7eb;
                 -fx-border-style: solid;
                 -fx-text-fill: #50004c;
                 -fx-alignment: CENTER;
-
 }
 
 .leftMenuBarLogo{
