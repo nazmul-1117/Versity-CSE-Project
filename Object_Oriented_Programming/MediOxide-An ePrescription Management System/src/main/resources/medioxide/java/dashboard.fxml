@@ -76,33 +76,33 @@
             <center>
                 <HBox fx:id="titleBarHBox" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="414.0" spacing="20.0" styleClass="topMenuBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
-                        <JFXButton fx:id="closeButton" layoutY="20.0" onAction="#titleBarButtonAction" prefHeight="15.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50;" styleClass="titleBarButton">
+                        <JFXButton fx:id="closeButton" layoutY="20.0" onAction="#titleBarButtonAction" prefHeight="10.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50;" styleClass="titleBarButton">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="maximizeButton" onAction="#titleBarButtonAction" prefHeight="15.0" prefWidth="25.0" style="-fx-background-color: yellow; -fx-background-radius: 50;" styleClass="titleBarButton">
+                        <JFXButton fx:id="maximizeButton" onAction="#titleBarButtonAction" prefHeight="10.0" prefWidth="25.0" style="-fx-background-color: #fafa03; -fx-background-radius: 50;" styleClass="titleBarButton">
                             <HBox.margin>
-                                <Insets />
+                                <Insets left="-10.0" />
                             </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="minimizeButton" layoutX="999.0" layoutY="16.0" onAction="#titleBarButtonAction" prefHeight="15.0" prefWidth="25.0" style="-fx-background-color: green; -fx-background-radius: 50;" styleClass="titleBarButton">
+                        <JFXButton fx:id="minimizeButton" layoutX="999.0" layoutY="16.0" onAction="#titleBarButtonAction" prefHeight="10.0" prefWidth="25.0" style="-fx-background-color: #009300; -fx-background-radius: 50;" styleClass="titleBarButton">
                             <HBox.margin>
-                                <Insets right="20.0" />
+                                <Insets left="-10.0" right="20.0" />
                             </HBox.margin>
                         </JFXButton>
                     </children>
                 </HBox>
             </center>
         </BorderPane>
-        <VBox fx:id="leftMenuBar" alignment="TOP_CENTER" layoutY="55.0" prefHeight="700.0" prefWidth="300.0" spacing="20.0" styleClass="leftMenuBar" stylesheets="@style.css">
+        <VBox fx:id="leftMenuBar" alignment="TOP_CENTER" layoutY="55.0" prefHeight="700.0" prefWidth="250.0" spacing="20.0" styleClass="leftMenuBar" stylesheets="@style.css">
             <children>
                 <Pane prefHeight="134.0" prefWidth="211.0" styleClass="iconAdd">
                     <VBox.margin>
                         <Insets left="85.0" top="20.0" />
                     </VBox.margin>
                 </Pane>
-                <JFXButton fx:id="homeJFXButton" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
+                <JFXButton fx:id="homeJFXButton" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #00ff7f; -fx-background-radius: 10;" stylesheets="@style.css" text=" Home">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
@@ -114,7 +114,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
+                <JFXButton fx:id="prescriptionJFXButton" layoutX="112.0" layoutY="172.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="200.0" stylesheets="@style.css" text="Prescription" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -132,7 +132,7 @@
                     </styleClass>
                 </JFXButton>
 
-                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="223.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
+                <JFXButton fx:id="patientsJFXButton" layoutX="112.0" layoutY="223.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="200.0" stylesheets="@style.css" text="Patients" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -149,7 +149,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="274.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="250.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
+                <JFXButton fx:id="doctorJFXButton" layoutX="112.0" layoutY="274.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="200.0" stylesheets="@style.css" text="Doctor" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -165,7 +165,7 @@
                         <String fx:value="leftMenuBarButton" />
                     </styleClass>
                 </JFXButton>
-                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Test" textFill="WHITE">
+                <JFXButton fx:id="testJFXButton" layoutX="112.0" layoutY="325.0" onAction="#leftMenubarButtonHandler" prefHeight="50.0" prefWidth="200.0" stylesheets="@style.css" text="Test" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -181,7 +181,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="medicineJFXButton" layoutX="112.0" layoutY="376.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
+                <JFXButton fx:id="medicineJFXButton" layoutX="112.0" layoutY="376.0" onAction="#leftMenubarButtonHandler" prefWidth="200.0" stylesheets="@style.css" text="Drag" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -197,7 +197,7 @@
                         </ImageView>
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#leftMenubarButtonHandler" prefWidth="250.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
+                <JFXButton fx:id="problemJFXButton" layoutX="112.0" layoutY="427.0" onAction="#leftMenubarButtonHandler" prefWidth="200.0" stylesheets="@style.css" text="Problem" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -215,7 +215,7 @@
                 </JFXButton>
             </children>
         </VBox>
-        <BorderPane fx:id="mainDashboardBorderPane" layoutX="320.0" layoutY="55.0" prefHeight="700.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="60.0">
+        <BorderPane fx:id="mainDashboardBorderPane" layoutX="258.0" layoutY="55.0" prefHeight="700.0" prefWidth="1100.0" styleClass="mainFXMLLoaderBorderPane" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="60.0">
             <center>
                 <AnchorPane prefWidth="1024.0" BorderPane.alignment="CENTER">
                     <children>

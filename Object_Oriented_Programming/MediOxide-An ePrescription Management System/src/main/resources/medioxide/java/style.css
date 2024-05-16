@@ -1,5 +1,5 @@
 .backgroundImage{
-    -fx-background-image: url("file:src/main/picture/bg.png");
+    -fx-background-image: url("file:src/main/resources/medioxide/java/image/background.PNG");
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover;
 }
@@ -11,7 +11,8 @@
 }
 
 .topMenuBar{
-    -fx-background-color: #00a86b2c;
+    -fx-background-color: transparent;
+/*    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);*/
     -fx-text-family: "Arial";
     -fx-background-radius: 10px;
 }
@@ -38,8 +39,11 @@
 }
 
 .leftMenuBar{
-    -fx-background-color: #01322096;
+/*    -fx-background-color: #01322096;*/
 /*    -fx-background-color: transparent;*/
+
+/*    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);*/
+    -fx-background-color: linear-gradient(to bottom right, #0198b7, #018618);
     -fx-text-family: "Arial";
 
     -fx-border-radius: 30px;
