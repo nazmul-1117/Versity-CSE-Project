@@ -27,30 +27,10 @@
     -fx-background-radius: 20px;
     -fx-background-color: linear-gradient(to bottom right, #ff6b00 0%, #7800a9 100%);
 
-/*    -fx-background-color: linear-gradient(to bottom right, #f5e102, #fd5b00);*/
+    /*    -fx-background-color: linear-gradient(to bottom right, #f5e102, #fd5b00);*/
 }
 
 .mainContentPane{
     -fx-background-radius: 20px;
     -fx-background-color: linear-gradient(to bottom left, #01f8d6, #ff0000);
-}
-
-.addPatientsLeftPane{
-    -fx-background-color: green;
-    -fx-border-radius: 20px;
-}
-
-.searchPatientsPane{
-    -fx-background-color: #0243a2;
-    -fx-border-radius: 20px
-}
-
-.modifyPatientsPane{
-    -fx-background-color: #3e0080;
-    -fx-border-radius: 20px
-}
-
-.removePatientsPane{
-    -fx-background-color: #800000;
-    -fx-border-radius: 20px
 }

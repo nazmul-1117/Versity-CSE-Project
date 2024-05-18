@@ -1,17 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" styleClass="mainDashBoard" stylesheets="@style/patients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
     <children>
-        <Label layoutX="260.0" layoutY="217.0" prefHeight="197.0"
-               prefWidth="602.0" text="Doctor Window" textFill="#00ff77">
-            <font>
-                <Font name="Arial Bold" size="64.0" />
-            </font>
-        </Label>
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="220.0" prefWidth="1080.0" styleClass="topAddPane" stylesheets="@style/patients.css">
+         <children>
+            <Label layoutX="403.0" layoutY="75.0" prefHeight="66.0" prefWidth="383.0" text="Doctor Window">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+        <TabPane layoutX="10.0" layoutY="240.0" prefHeight="450.0" prefWidth="1080.0" stylesheets="@style/patients.css" tabClosingPolicy="UNAVAILABLE" tabMinHeight="35.0" tabMinWidth="100.0">
+            <tabs>
+                <Tab styleClass="topMenuBarHBoxHover" text="Add New Doctor">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="405.0" prefWidth="699.0" style="-fx-background-color: #016c01; -fx-background-radius: 20;">
+                                    <children>
+                                        <Label layoutX="20.0" layoutY="30.0" prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="130.0" layoutY="30.0" promptText="Enter First Name" />
+                                        <Label layoutX="20.0" layoutY="77.0" prefHeight="20.0" prefWidth="143.0" text="Surname" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="130.0" layoutY="75.0" promptText="Enter Surname" />
+                                        <Label layoutX="20.0" layoutY="120.0" prefHeight="20.0" prefWidth="120.0" text="Age" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="130.0" layoutY="120.0" promptText="Enter Age" />
+                                        <Label layoutX="20.0" layoutY="200.0" prefHeight="20.0" prefWidth="120.0" text="Phone Number" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="130.0" layoutY="200.0" promptText="+880XXXXXXXXXX" text="+880" />
+                                        <Label layoutX="20.0" layoutY="240.0" prefHeight="20.0" prefWidth="120.0" text="Email" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="130.0" layoutY="240.0" promptText="nazmul@gmail.com" />
+                                        <Label layoutX="20.0" layoutY="163.0" prefHeight="20.0" prefWidth="120.0" text="Gender" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <JFXRadioButton layoutX="130.0" layoutY="165.0" text="Male" textFill="WHITE">
+                                            <unSelectedColor>
+                                                <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
+                                            </unSelectedColor>
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </JFXRadioButton>
+                                        <JFXRadioButton layoutX="200.0" layoutY="165.0" text="Female" textFill="WHITE">
+                                            <unSelectedColor>
+                                                <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
+                                            </unSelectedColor>
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </JFXRadioButton>
+                                        <JFXRadioButton layoutX="290.0" layoutY="165.0" text="Others" textFill="WHITE">
+                                            <unSelectedColor>
+                                                <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
+                                            </unSelectedColor>
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </JFXRadioButton>
+                                        <Label layoutX="20.0" layoutY="288.0" prefHeight="20.0" prefWidth="120.0" text="Address" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="130.0" layoutY="285.0" promptText="Village/Moholla,Post" />
+                                        <Label layoutX="400.0" layoutY="30.0" prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="491.0" layoutY="30.0" promptText="Enter First Name" />
+                                        <Line endX="15.0" endY="370.0" layoutX="365.0" startX="15.0" startY="30.0" stroke="#fdff05" strokeWidth="2.0" />
+                                    </children>
+                                </Pane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab styleClass="topMenuBarHBoxHover" text="Search Doctor">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab styleClass="topMenuBarHBoxHover" text="Modify Doctor">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab styleClass="topMenuBarHBoxHover" text="Remove Doctor">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="topAddPane" />
+                    </content>
+                </Tab>
+            </tabs>
+            <opaqueInsets>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </opaqueInsets>
+            <styleClass>
+                <String fx:value="topMenuBarHBox" />
+                <String fx:value="mainContentPane" />
+            </styleClass>
+        </TabPane>
     </children>
 </AnchorPane>

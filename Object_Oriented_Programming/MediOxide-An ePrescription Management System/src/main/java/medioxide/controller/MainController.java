@@ -29,28 +29,36 @@ public class MainController implements Initializable {
     public JFXButton minimizeButton;
     public JFXButton maximizeButton;
     public JFXButton closeButton;
-
-    @FXML
-    BorderPane mainDashboardBorderPane;
-    @FXML
-    private JFXButton switchToHome;
-    private Stage stage;
-    private Scene scene;
-    private FXMLLoader fxmlLoader;
-    private String fxmlUrl;
-
+    @FXML BorderPane mainDashboardBorderPane;
     public void setSceneToNewWindow(ActionEvent event, String fxmlFileName){
         System.out.println("You Clicked "+ fxmlFileName);
         FXMLLoadToPane fxmlLoader1 = new FXMLLoadToPane();
         Pane pane = fxmlLoader1.getPane(fxmlFileName);
         mainDashboardBorderPane.setCenter(pane);
     }
+
+    private void setButtonColor(JFXButton buttonColor){
+        homeJFXButton.setStyle("-fx-background-color: transparent");
+        patientsJFXButton.setStyle("-fx-background-color: transparent");
+        prescriptionJFXButton.setStyle("-fx-background-color: transparent");
+        doctorJFXButton.setStyle("-fx-background-color: transparent");
+        testJFXButton.setStyle("-fx-background-color: transparent");
+        problemJFXButton.setStyle("-fx-background-color: transparent");
+        medicineJFXButton.setStyle("-fx-background-color: transparent");
+
+        buttonColor.setStyle("-fx-text-fill: black;");
+        buttonColor.setStyle("-fx-background-color: #00ff7f");
+
+    }
+
     public void leftMenubarButtonHandler(ActionEvent event) {
 
+        setButtonColor((JFXButton) event.getSource());
         if (event.getSource().equals(homeJFXButton)){
             setSceneToNewWindow(event, "home.fxml");
 
         }else if (event.getSource().equals(prescriptionJFXButton)){
+            setButtonColor(prescriptionJFXButton);
             setSceneToNewWindow(event, "prescription.fxml");
 
         }else if (event.getSource().equals(doctorJFXButton)){

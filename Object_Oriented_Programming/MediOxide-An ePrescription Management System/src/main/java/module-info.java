@@ -1,11 +1,11 @@
-module medioxide.java {
+module medioxide {
     requires javafx.controls;
-    requires javafx.fxml;
     requires com.jfoenix;
+    requires java.sql;
+    requires javafx.fxml;
 
-
-    opens medioxide.java to javafx.fxml;
-    exports medioxide.java;
-    exports medioxide.controller;
     opens medioxide.controller to javafx.fxml;
+    opens medioxide.model to javafx.base;
+
+    exports medioxide.java;
 }

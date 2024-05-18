@@ -39,11 +39,8 @@
 }
 
 .leftMenuBar{
-/*    -fx-background-color: #01322096;*/
-/*    -fx-background-color: transparent;*/
-
-/*    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);*/
-    -fx-background-color: linear-gradient(to bottom right, #0198b7, #018618);
+    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);
+/*    -fx-background-color: linear-gradient(to bottom right, #0198b7, #018618);*/
     -fx-text-family: "Arial";
 
     -fx-border-radius: 30px;
@@ -63,19 +60,26 @@
 }
 
 .titleBarButton:hover{
-/*    -fx-background-color:orange;*/
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-border-color: transparent transparent blue transparent;
     -fx-cursor:hand;
 }
 
 .leftMenuBarButtonHover:hover {
-                -fx-background-color: #1df100;
-                /*-fx-background-color:orange;*/
+/*                -fx-background-color: #1df100;*/
+                -fx-background-color: transparent;
                 -fx-background-radius: 10px;
+
                 -fx-border-radius: 10px;
-                -fx-border-color: #00b7eb;
-                -fx-border-style: solid;
-                -fx-text-fill: #50004c;
+                -fx-border-color: #dd02ff;
+                -fx-border-width: 3px;
+                -fx-border-color: transparent transparent blue transparent;
+
+                -fx-text-fill: #0016d9;
                 -fx-alignment: CENTER;
+
+                -fx-transition: 10s;
 }
 
 .leftMenuBarLogo{
