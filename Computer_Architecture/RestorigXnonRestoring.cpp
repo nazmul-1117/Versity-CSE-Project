@@ -198,39 +198,43 @@ void menuBar(){
     cout << "\n***MAIN MENU***\n---------------------------------\n";
     cout << "[1] Restoring Division Algorithm\n[2] Non-Restoring Division Algorithm\n[3] About Project\n[4] Exit\n\n";
     cout << "Enter Your Choice: "; cin >> choice;
-    cout << "-------------------------------------\n";
-    system("cls");
+    cout << "-------------------------------------\n"; system("cls");
 
     if(choice == 4) exit(0);
     if(choice == 1 || choice == 2){
             lld dvdnt, dvsr;
-            cout << "Enter Dividend: "; cin >> dvdnt;
-            cout << "Enter Divisor: "; cin >> dvsr;
+            cout << "Enter Dividend (Enter Decimal Value): "; cin >> dvdnt;
+            cout << "Enter Divisor (Enter Decimal Value): "; cin >> dvsr;
 
             dividend = decimalToBinary(dvdnt);
             accumulator = string(dividend.length()+1, '0');
             divisor = decimalToBinary(dvsr, accumulator.length());
 
+            if((dvdnt < dvsr) || (dvsr == 0)){
+                    cout << "\nPlease Enter Valid Input" << endl;
+                    cout << "Note: Dividend must be Greater than or Equal to Zero(dividend >= 0 OR divisor > 0)\n" << endl;
+
+                    cout<<"Reminder (A) = " << dividend << " = " << dvdnt <<endl;
+                    cout<<"Result (Q) = " << accumulator << " = 0"  <<endl<<endl<<endl;
+
+                    system("pause"); system("cls"); return;
+            }
             cout<<"\n-------------------------------------------\n";
             cout << "Dividend: "<<dividend<<endl;
             cout << "Divisor: "<<divisor << endl;
             cout << "Accumulator: "<<accumulator << endl;
             cout<<"\n-------------------------------------------\n";
-
-                system("pause"); system("cls");
+            system("pause"); system("cls");
 
                 if(choice == 1)
                      restoringDivision(divisor, accumulator, dividend);
                 else
                     nonRestoringDivision(divisor, accumulator, dividend);
-
             }else if(choice == 3){
                 aboutProject();
-            }
-            else{
+            }else{
                 cout << "Please Enter Valid Option\n";
-                system("pause");
-                system("cls");
+                system("pause"); system("cls");
             }
 }
 
