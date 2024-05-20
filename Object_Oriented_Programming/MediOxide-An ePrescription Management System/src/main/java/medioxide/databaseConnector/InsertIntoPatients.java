@@ -6,16 +6,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class InsertIntoPatients {
-    private static Statement statement;
-    private static ResultSet resultSet;
 
     public static void insertData(int age, String ... s){
 
         String query = "INSERT INTO patients(name, age, gender, phone, address )" +
                 "VALUES (?, ?, ?, ?, ?)";
         try {
-            statement = DatabaseConnector.getStatement();
-            resultSet = statement.executeQuery(query);
+            var connection = DatabaseConnector.getConnection();
+            var ps = connection.prepareStatement(query);
+             var resultSet = ps.executeQuery();
         }catch (SQLException sqlException){
             System.out.println("SQL connection failed");
         }

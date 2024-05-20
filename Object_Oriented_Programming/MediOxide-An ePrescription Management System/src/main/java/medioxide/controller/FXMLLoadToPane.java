@@ -9,16 +9,20 @@ import java.net.URL;
 
 public class FXMLLoadToPane {
     private Pane pane;
-    public Pane getPane(String fxmlFileName){
-       try {
-           URL fxmlURL = Main.class.getResource(fxmlFileName);
-           System.out.println("FXML URL: " + fxmlURL);
-           FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-           pane = fxmlLoader.load();
-       }catch (IOException ioException) {
-           ioException.printStackTrace();
-       }
 
-       return pane;
+    public Pane getPane(String fxmlFileName) {
+        try {
+            URL fxmlURL = Main.class.getResource(fxmlFileName);
+            System.out.println("FXML URL: " + fxmlURL);
+            FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+            pane = fxmlLoader.load();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        if (pane == null) {
+            System.out.println("null pane " + fxmlFileName);
+        }
+
+        return pane;
     }
 }

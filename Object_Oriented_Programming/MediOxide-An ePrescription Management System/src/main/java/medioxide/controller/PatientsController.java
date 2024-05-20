@@ -1,6 +1,5 @@
 package medioxide.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,11 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
-import medioxide.databaseConnector.DatabaseConnector;
+import javafx.scene.layout.AnchorPane;
+import medioxide.components.DataTableListView;
 import medioxide.databaseConnector.InsertIntoPatients;
 import medioxide.databaseConnector.SelectFromPatients;
 import medioxide.helper.HelperFunctions;
@@ -25,14 +23,15 @@ public class PatientsController implements Initializable {
     public TextField searchPatientsTextField;
     public TextField addressTextField;
     public TextField ageTextField;
-    public ToggleGroup tgGender;
+    public JFXRadioButton rbMale;
+    public JFXRadioButton rbFemale;
+    public JFXRadioButton rbOther;
     @FXML
     private TextField emailTextField;
     @FXML
     private TextField firstNameTextField;
     @FXML
     private TextField phoneTextField;
-
     @FXML
     private TextField surnameTextField;
 
@@ -49,59 +48,102 @@ public class PatientsController implements Initializable {
     private TableColumn<ModelPatients, String> collName;
     @FXML
     private TableColumn<ModelPatients, String> collPhone;
-    @FXML
-    private TableView<ModelPatients> tableView;
-    private final ObservableList<ModelPatients> patientsList = FXCollections.observableArrayList();
-
 
     private String name, surname, gender, phone, email, address;
     private int age;
 
+    @FXML
+    private AnchorPane s;
 
+    @FXML
+    private AnchorPane sap;
 
+    private final ToggleGroup genderToggleGroup = new ToggleGroup();
 
-
-    @FXML private void printName(ActionEvent event){
+    @FXML
+    private void printName(ActionEvent event) {
         String fName = firstNameTextField.getText();
         System.out.println(fName);
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setCellTable();
-        SelectFromPatients.showAllDataFromDatabase(patientsList, tableView);
-    }
-    void setCellTable() {
-        try {
-            collID.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-            collName.setCellValueFactory(new PropertyValueFactory<>("name"));
-            collAge.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
 
-            callGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-            collPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-            collAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        }catch (Exception e){
-            System.out.println("Set Column Error"+e.getMessage());
-        }
+        showAllButton();
+
+        showSearchButton();
+
+        initGenderToggle();
+
     }
+
+    private void initGenderToggle() {
+        rbMale.setToggleGroup(genderToggleGroup);
+        rbFemale.setToggleGroup(genderToggleGroup);
+        rbOther.setToggleGroup(genderToggleGroup);
+
+    }
+
+    private void showSearchButton() {
+        String query = "SELECT * FROM patients;";
+        ObservableList<ModelPatients> patientsList = FXCollections.emptyObservableList();
+
+        var table = new DataTableListView<ModelPatients>(patientsList);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 80.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        s.getChildren().add(table);
+    }
+
+    private void showAllButton() {
+        String query = "SELECT * FROM patients;";
+        var list = SelectFromPatients.getAllPatientList();
+        var patientsList = FXCollections.observableList(list);
+        var table = new DataTableListView<ModelPatients>(patientsList);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 0.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        sap.getChildren().add(table);
+    }
+
 
     public void searchButton(ActionEvent event) {
-            String searchID = searchPatientsTextField.getText();
-            tableView.getItems().clear();
-            SelectFromPatients.searchByID(patientsList, tableView, searchID);
+        String searchID = searchPatientsTextField.getText();
+        searchPatientsTextField.clear();
+        var list = SelectFromPatients.getPatientListById(searchID);
+        var patientsList = FXCollections.observableList(list);
+
+
+        var table = new DataTableListView<ModelPatients>(patientsList);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 80.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        s.getChildren().add(table);
     }
 
-    private void addPatientsCreateAccountDataCollect(){
-        name = firstNameTextField.getText(); surname = surnameTextField.getText();
+    private void addPatientsCreateAccountDataCollect() {
+        name = firstNameTextField.getText();
+        surname = surnameTextField.getText();
         age = HelperFunctions.stringToInt(ageTextField.getText());
-        gender = ((JFXRadioButton)tgGender.getSelectedToggle()).getText();
+        gender = ((JFXRadioButton) genderToggleGroup.getSelectedToggle()).getText();
         phone = phoneTextField.getText();
         email = emailTextField.getText();
         address = addressTextField.getText();
     }
 
-    private void displayAllData(){
+    private void displayAllData() {
         System.out.println("First Name: " + name);
         System.out.println("Surname: " + surname);
         System.out.println("Age: " + age);
