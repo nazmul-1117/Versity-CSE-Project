@@ -16,7 +16,9 @@ import medioxide.databaseConnector.SelectFromPatients;
 import medioxide.helper.HelperFunctions;
 import medioxide.model.ModelPatients;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PatientsController implements Initializable {
@@ -26,6 +28,8 @@ public class PatientsController implements Initializable {
     public JFXRadioButton rbMale;
     public JFXRadioButton rbFemale;
     public JFXRadioButton rbOther;
+    public TextField removePatientsSearchTextField;
+    public AnchorPane removePatientsAnchorPane;
     @FXML
     private TextField emailTextField;
     @FXML
@@ -70,10 +74,9 @@ public class PatientsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         showAllButton();
-
         showSearchButton();
-
         initGenderToggle();
+        removePatientsSearchButton();
 
     }
 
@@ -81,7 +84,6 @@ public class PatientsController implements Initializable {
         rbMale.setToggleGroup(genderToggleGroup);
         rbFemale.setToggleGroup(genderToggleGroup);
         rbOther.setToggleGroup(genderToggleGroup);
-
     }
 
     private void showSearchButton() {
@@ -116,9 +118,25 @@ public class PatientsController implements Initializable {
 
 
     public void searchButton(ActionEvent event) {
+
+        List list;
+
         String searchID = searchPatientsTextField.getText();
+        try {
+            int id = Integer.parseInt(searchID);
+//            var list = SelectFromPatients.getPatientListById(searchID);
+            list = SelectFromPatients.getPatientListById(searchID);
+            System.out.println("search by id");
+        }catch (Exception e){
+            list = SelectFromPatients.getPatientListByName(searchID);
+//            var list = SelectFromPatients.getPatientListByName(searchID);
+            System.out.println("search by Name");
+        }finally {
+
+        }
+
         searchPatientsTextField.clear();
-        var list = SelectFromPatients.getPatientListById(searchID);
+
         var patientsList = FXCollections.observableList(list);
 
 
@@ -162,5 +180,32 @@ public class PatientsController implements Initializable {
         InsertIntoPatients.insertData(this.age, name, gender, phone, address);
         displayAllData();
         System.out.println("Data successfully inserted\nThank You....!");
+    }
+
+    public void removePatientsSearchButton() {
+        List list;
+
+        String searchID = removePatientsSearchTextField.getText();
+        try {
+            int id = Integer.parseInt(searchID);
+            list = SelectFromPatients.getPatientListById(searchID);
+        }catch (Exception e){
+            list = SelectFromPatients.getPatientListByName(searchID);
+        }
+        removePatientsSearchTextField.clear();
+        var patientsList = FXCollections.observableList(list);
+        var table = new DataTableListView<ModelPatients>(patientsList);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        table.maxHeight(20.0);
+//        AnchorPane.setBottomAnchor(table, 70.0);
+//        AnchorPane.setTopAnchor(table, 80.0);
+//        AnchorPane.setLeftAnchor(table, 0.0);
+//        AnchorPane.setRightAnchor(table, 0.0);
+
+        table.setPrefWidth(1366D);
+        table.setPrefHeight(80D);
+        removePatientsAnchorPane.getChildren().add(table);
     }
 }

@@ -1,7 +1,9 @@
 .backgroundImage{
-    -fx-background-image: url("file:src/main/resources/medioxide/java/image/background.PNG");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover;
+/*    -fx-background-image: url("file:src/main/resources/medioxide/java/image/background.PNG");*/
+/*    -fx-background-repeat: no-repeat;*/
+/*    -fx-background-size: cover;*/
+
+    -fx-background-color: #292929
 }
 
 .iconAdd{
@@ -12,13 +14,12 @@
 
 .topMenuBar{
     -fx-background-color: transparent;
-/*    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);*/
     -fx-text-family: "Arial";
     -fx-background-radius: 10px;
 }
 
 .searchBar{
-    -fx-background-color: #022141;
+    -fx-background-color: #003869;
     -fx-background-radius: 15;
     -fx-text-fill: #00ffff;
 }
@@ -29,25 +30,27 @@
 }
 
 .mainFXMLLoaderBorderPane{
-    -fx-background-color: #1b17852d;
+    -fx-background-color: #292929;
     -fx-background-radius: 30px;
 
-    -fx-border-radius: 30px;
-    -fx-border-color: #7cff00;
+    -fx-border-radius: 0px;
+    -fx-border-style: none;
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-style: solid;
 }
 
 .leftMenuBar{
-    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);
+    -fx-background-color: transparent;
+/*    -fx-background-color: linear-gradient(to bottom right, #292929, #001c06);*/
+/*    -fx-background-color: linear-gradient(to bottom right, #07728c, #036b16);*/
 /*    -fx-background-color: linear-gradient(to bottom right, #0198b7, #018618);*/
     -fx-text-family: "Arial";
 
-    -fx-border-radius: 30px;
+    -fx-border-radius: 0px;
     -fx-background-radius: 30px;
-    -fx-border-color: #7cff00;
-    -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-style: solid;
+/*    -fx-border-color: #7cff00;*/
+    -fx-border-color: transparent #a40057 transparent transparent;
+    -fx-border-width: 1;
+    -fx-border-style: none;
 }
 
 .leftMenuBarButton{
@@ -55,6 +58,7 @@
     -fx-background-radius: 10px;
 
     -fx-text-family: "Arial";
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-font-size: 18;
 }
@@ -72,11 +76,11 @@
                 -fx-background-radius: 10px;
 
                 -fx-border-radius: 10px;
-                -fx-border-color: #dd02ff;
+                -fx-border-color: #006dda;
                 -fx-border-width: 3px;
                 -fx-border-color: transparent transparent blue transparent;
 
-                -fx-text-fill: #0016d9;
+                -fx-text-fill: #08fc00;
                 -fx-alignment: CENTER;
 
                 -fx-transition: 10s;
@@ -93,9 +97,8 @@
 
 .mainDashBoard{
     -fx-background-color: #000000;
-    -fx-background-radius: 30px;
-    -fx-border-color: #103220;
-    -fx-border-radius: 30px;
+    -fx-background-radius: 0px;
+    -fx-border-style: none;
 
 }
 

@@ -23,6 +23,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.initStyle(StageStyle.UNDECORATED);
+        stage.setResizable(true);
         stage.show();
     }
 

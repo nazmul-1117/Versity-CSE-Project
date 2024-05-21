@@ -1,10 +1,7 @@
 .mainDashBoard{
-    -fx-background-color: #ffffff00;
+    -fx-background-color: #292929;
     -fx-background-radius: 30px;
-    -fx-border-radius: 30px;
-    -fx-border-color: #7cff00;
-    -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-style: solid;
+    -fx-border-style: none;
 }
 
 .topMenuBarHBox{
@@ -26,8 +23,6 @@
 .topAddPane{
     -fx-background-radius: 20px;
     -fx-background-color: linear-gradient(to bottom right, #ff6b00 0%, #7800a9 100%);
-
-/*    -fx-background-color: linear-gradient(to bottom right, #f5e102, #fd5b00);*/
 }
 
 .mainContentPane{
@@ -37,20 +32,20 @@
 
 .addPatientsLeftPane{
     -fx-background-color: green;
-    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
 }
 
 .searchPatientsPane{
     -fx-background-color: #0243a2;
-    -fx-border-radius: 20px
+    -fx-background-radius: 20px
 }
 
 .modifyPatientsPane{
     -fx-background-color: #3e0080;
-    -fx-border-radius: 20px
+    -fx-background-radius: 20px
 }
 
 .removePatientsPane{
     -fx-background-color: #800000;
-    -fx-border-radius: 20px
+    -fx-background-radius: 20px
 }

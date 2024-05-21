@@ -46,9 +46,7 @@ public class MainController implements Initializable {
         problemJFXButton.setStyle("-fx-background-color: transparent");
         medicineJFXButton.setStyle("-fx-background-color: transparent");
 
-        buttonColor.setStyle("-fx-text-fill: black;");
-        buttonColor.setStyle("-fx-background-color: #00ff7f");
-
+        buttonColor.setStyle("-fx-background-color: #00ff7f;"+"-fx-text-fill: #000000;");
     }
 
     public void leftMenubarButtonHandler(ActionEvent event) {
@@ -97,11 +95,7 @@ public class MainController implements Initializable {
         }else if(event.getSource().equals(maximizeButton)){
             stage1 = (Stage) ((Button)event.getSource()).getScene().getWindow();
 
-            if (stage1.isMaximized()){
-                stage1.setMaximized(false);
-            }else {
-                stage1.setMaximized(true);
-            }
+            stage1.setMaximized(!stage1.isMaximized());
 
             System.out.println("Maximized button");
 

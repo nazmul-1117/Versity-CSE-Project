@@ -28,18 +28,15 @@ public class SelectFromPatients {
                 ));
             }
         } catch (SQLException e) {
-            System.out.println("SQL Query Execution Failed" + e.toString());
+            System.out.println("SQL Query Execution Failed");
         }
 
         return patientsList;
     }
 
-
     public static List<ModelPatients> getPatientListById(String searchId) {
         var patientsList = new ArrayList<ModelPatients>();
-
         var conn = DatabaseConnector.getConnection();
-
 
         try {
             String query = "SELECT * FROM patients WHERE id = ?;";
@@ -59,7 +56,38 @@ public class SelectFromPatients {
                 ));
             }
         } catch (SQLException e) {
-            System.out.println("SQL Query Execution Failed" + e.toString());
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return patientsList;
+    }
+
+    public static List<ModelPatients> getPatientListByName(String searchName) {
+        var patientsList = new ArrayList<ModelPatients>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            searchName = "%"+searchName+"%";
+            String query = "SELECT * FROM patients WHERE name LIKE ?;";
+
+            var ps = conn.prepareStatement(query);
+            ps.setString(1, searchName);
+            var resultSet = ps.executeQuery();
+            System.out.println("RS "+resultSet);
+
+            while (resultSet.next()) {
+                patientsList.add(new ModelPatients(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("age"),
+
+                        resultSet.getString("gender"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("address")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
         }
 
         return patientsList;

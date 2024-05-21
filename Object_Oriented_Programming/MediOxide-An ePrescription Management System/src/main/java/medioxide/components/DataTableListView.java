@@ -26,47 +26,37 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
                 protected void updateItem(ModelPatients t, boolean b) {
                     super.updateItem(t, b);
                     if (t != null) {
-//                        if (t.getSl() % 2 == 0) {
-//                            setStyle("-fx-background-color:#F9F9F9;");
-//                        } else {
-//                            setStyle("-fx-background-color:#C9F0F0;");
-//                        }
                     }
                 }
             };
-
-//            row.setOnMouseClicked(event -> {
-//                // Handle row click event if needed
-//            });
-
             return row;
         });
     }
 
     private void columnSetup() {
-        var column1 = new TableColumn<ModelPatients, Integer>("id");
+        var column1 = new TableColumn<ModelPatients, Integer>("ID");
         column1.setPrefWidth(20);
         column1.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
 
 
-        var column2 = new TableColumn<ModelPatients, String>("name");
+        var column2 = new TableColumn<ModelPatients, String>("Name");
         column2.setPrefWidth(30);
         column2.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
-        var column3 = new TableColumn<ModelPatients, Integer>("age");
+        var column3 = new TableColumn<ModelPatients, Integer>("Age");
         column3.setPrefWidth(40);
         column3.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
 
 
-        var column4 = new TableColumn<ModelPatients, String>("gender");
+        var column4 = new TableColumn<ModelPatients, String>("Gender");
         column4.setPrefWidth(40);
         column4.setCellValueFactory(cellData -> cellData.getValue().genderProperty());
 
-        var column5 = new TableColumn<ModelPatients, String>("phone");
+        var column5 = new TableColumn<ModelPatients, String>("Phone");
         column5.setPrefWidth(40);
         column5.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
 
-        var column6 = new TableColumn<ModelPatients, String>("address");
+        var column6 = new TableColumn<ModelPatients, String>("Address");
         column6.setPrefWidth(40);
         column6.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
 
