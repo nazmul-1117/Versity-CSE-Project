@@ -1,0 +1,33 @@
+
+.universalBox{
+    -fx-background-color: #36454F;
+    -fx-background-radius: 15px;
+    -fx-text-fill: #17ff06;
+    -fx-font-family: "Arial";
+
+    -fx-border-style: none;
+}
+
+.boxOne{
+    -fx-background-color: #051f10;
+    -fx-background-color: linear-gradient(to bottom right, #051f10, #89899d);
+    -fx-background-radius: 15px;
+}
+
+.boxTwo{
+    -fx-background-color: #000036;
+    -fx-background-color: linear-gradient(to bottom right, #000036, #89899d);
+    -fx-background-radius: 15px;
+}
+
+.boxThree{
+    -fx-background-color: linear-gradient(to bottom right, #1a1110, #89899d);
+/*    -fx-background-color: #1a1110;*/
+    -fx-background-radius: 15px;
+}
+
+.boxFour{
+    -fx-background-color: linear-gradient(to bottom right, #32174d, #89899d);
+/*    -fx-background-color: #1d2951;*/
+    -fx-background-radius: 15px;
+}

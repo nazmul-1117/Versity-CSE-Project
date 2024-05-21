@@ -14,7 +14,7 @@
 
 .topMenuBar{
     -fx-background-color: transparent;
-    -fx-text-family: "Arial";
+    -fx-font-family: "Arial";
     -fx-background-radius: 10px;
 }
 
@@ -81,7 +81,7 @@
                 -fx-border-color: transparent transparent blue transparent;
 
                 -fx-text-fill: #08fc00;
-                -fx-alignment: CENTER;
+/*                -fx-alignment: CENTER;*/
 
                 -fx-transition: 10s;
 }

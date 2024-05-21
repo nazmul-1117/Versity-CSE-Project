@@ -46,7 +46,7 @@ public class MainController implements Initializable {
         problemJFXButton.setStyle("-fx-background-color: transparent");
         medicineJFXButton.setStyle("-fx-background-color: transparent");
 
-        buttonColor.setStyle("-fx-background-color: #00ff7f;"+"-fx-text-fill: #000000;");
+        buttonColor.setStyle("-fx-background-color: #00C9CF;"+"-fx-text-fill: #000000;");
     }
 
     public void leftMenubarButtonHandler(ActionEvent event) {
