@@ -42,4 +42,18 @@ public class InsertIntoPatients {
         }
 
     }
+
+    public  static  void deleteData(int id){
+        String query = "DELETE FROM patients WHERE id = ?";
+        try {
+            var connection = DatabaseConnector.getConnection();
+            var ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            var resultSet = ps.executeUpdate();
+        }catch (SQLException sqlException){
+            System.out.println(sqlException.getMessage());
+            System.out.println("SQL connection failed");
+        }
+
+    }
 }

@@ -1,9 +1,6 @@
 package medioxide.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class ModelPatients {
     private IntegerProperty id;
@@ -12,14 +9,16 @@ public class ModelPatients {
     private StringProperty gender;
     private StringProperty phone;
     private StringProperty address;
+    private BooleanProperty action;
 
-    public ModelPatients(int id, String name, int age, String gender, String phone, String address) {
+    public ModelPatients(int id, String name, int age, String gender, String phone, String address, boolean action) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.age = new SimpleIntegerProperty(age);
         this.gender = new SimpleStringProperty(gender);
         this.phone = new SimpleStringProperty(phone);
         this.address = new SimpleStringProperty(address);
+        this.action = new SimpleBooleanProperty(action);
     }
 
     public int getId() {
@@ -92,5 +91,17 @@ public class ModelPatients {
 
     public void setAddress(String address) {
         this.address.set(address);
+    }
+
+    public boolean isAction() {
+        return action.get();
+    }
+
+    public BooleanProperty actionProperty() {
+        return action;
+    }
+
+    public void setAction(boolean action) {
+        this.action.set(action);
     }
 }

@@ -14,6 +14,7 @@ import medioxide.components.DataTableListView;
 import medioxide.databaseConnector.InsertIntoPatients;
 import medioxide.databaseConnector.SelectFromPatients;
 import medioxide.helper.HelperFunctions;
+import medioxide.helper.OnClickListener;
 import medioxide.model.ModelPatients;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PatientsController implements Initializable {
+public class PatientsController implements Initializable, OnClickListener {
     public TextField searchPatientsTextField;
     public TextField addressTextField;
     public TextField ageTextField;
@@ -90,7 +91,7 @@ public class PatientsController implements Initializable {
         String query = "SELECT * FROM patients;";
         ObservableList<ModelPatients> patientsList = FXCollections.emptyObservableList();
 
-        var table = new DataTableListView<ModelPatients>(patientsList);
+        var table = new DataTableListView<ModelPatients>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -105,7 +106,7 @@ public class PatientsController implements Initializable {
         String query = "SELECT * FROM patients;";
         var list = SelectFromPatients.getAllPatientList();
         var patientsList = FXCollections.observableList(list);
-        var table = new DataTableListView<ModelPatients>(patientsList);
+        var table = new DataTableListView<ModelPatients>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -121,17 +122,18 @@ public class PatientsController implements Initializable {
 
         List list;
 
-        String searchID = searchPatientsTextField.getText();
+        String searchID = searchPatientsTextField.getText().trim();
+
         try {
             int id = Integer.parseInt(searchID);
 //            var list = SelectFromPatients.getPatientListById(searchID);
-            list = SelectFromPatients.getPatientListById(searchID);
+            list = SelectFromPatients.getPatientListById(id);
             System.out.println("search by id");
-        }catch (Exception e){
+        } catch (Exception e) {
             list = SelectFromPatients.getPatientListByName(searchID);
 //            var list = SelectFromPatients.getPatientListByName(searchID);
             System.out.println("search by Name");
-        }finally {
+        } finally {
 
         }
 
@@ -140,7 +142,7 @@ public class PatientsController implements Initializable {
         var patientsList = FXCollections.observableList(list);
 
 
-        var table = new DataTableListView<ModelPatients>(patientsList);
+        var table = new DataTableListView<ModelPatients>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -185,27 +187,33 @@ public class PatientsController implements Initializable {
     public void removePatientsSearchButton() {
         List list;
 
-        String searchID = removePatientsSearchTextField.getText();
+        String searchID = removePatientsSearchTextField.getText().trim();
         try {
             int id = Integer.parseInt(searchID);
-            list = SelectFromPatients.getPatientListById(searchID);
-        }catch (Exception e){
+            list = SelectFromPatients.getPatientListById(id);
+        } catch (Exception e) {
             list = SelectFromPatients.getPatientListByName(searchID);
         }
         removePatientsSearchTextField.clear();
         var patientsList = FXCollections.observableList(list);
-        var table = new DataTableListView<ModelPatients>(patientsList);
+        var table = new DataTableListView<ModelPatients>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
-        table.maxHeight(20.0);
+        table.maxHeight(10.0);
 //        AnchorPane.setBottomAnchor(table, 70.0);
 //        AnchorPane.setTopAnchor(table, 80.0);
 //        AnchorPane.setLeftAnchor(table, 0.0);
 //        AnchorPane.setRightAnchor(table, 0.0);
 
         table.setPrefWidth(1366D);
-        table.setPrefHeight(80D);
+        table.setPrefHeight(50D);
         removePatientsAnchorPane.getChildren().add(table);
+    }
+
+    @Override
+    public void onDeleteClick(int id) {
+        InsertIntoPatients.deleteData(id);
+        //showAllButton();
     }
 }

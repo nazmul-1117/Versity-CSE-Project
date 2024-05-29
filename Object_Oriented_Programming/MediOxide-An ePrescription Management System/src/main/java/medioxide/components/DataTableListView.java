@@ -2,14 +2,23 @@ package medioxide.components;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import medioxide.databaseConnector.InsertIntoPatients;
+import medioxide.helper.OnClickListener;
+import medioxide.java.Main;
 import medioxide.model.ModelPatients;
 
+import java.util.Objects;
+
 public class DataTableListView<T> extends TableView<ModelPatients> {
-    public DataTableListView(ObservableList<ModelPatients> observableList) {
+    OnClickListener listener;
+    public DataTableListView(ObservableList<ModelPatients> observableList, OnClickListener listener) {
         super(observableList);
+        this.listener = listener;
         setup();
         setSelectionModel(null);
     }
@@ -61,19 +70,67 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
         column6.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
 
 
+        var column7 = new TableColumn<ModelPatients, Boolean>("Action");
+        column7.setPrefWidth(40);
+        column7.setCellValueFactory(cellData -> cellData.getValue().actionProperty());
+        column7.setCellFactory(col -> new ButtonCell<>());
+
+
         ObservableList<TableColumn<ModelPatients, ?>> tableHeaders = FXCollections.observableArrayList(
                 column1,
                 column2,
                 column3,
                 column4,
                 column5,
-                column6
+                column6,
+                column7
         );
 
         getSelectionModel().clearSelection();
         getColumns().clear();
         getColumns().setAll(tableHeaders);
         setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+
+    private class ButtonCell<S, T> extends TableCell<S, T> {
+        private final Button editButton;
+        private final Button deleteButton;
+
+        ButtonCell() {
+            editButton = new Button();
+            editButton.setStyle("-fx-background-color: #007F80 ;");
+            var eyeImageView = new ImageView(new Image(Objects.requireNonNull(Main.class.getResource("image/home.png")).toExternalForm()));
+            eyeImageView.setFitWidth(14);
+            eyeImageView.setFitHeight(14);
+            editButton.setGraphic(eyeImageView);
+
+            deleteButton = new Button();
+            deleteButton.setStyle("-fx-background-color: #E34E3B ;");
+            var printImageView = new ImageView(new Image(Objects.requireNonNull(Main.class.getResource("image/home.png")).toExternalForm()));
+            printImageView.setFitWidth(14);
+            printImageView.setFitHeight(14);
+            deleteButton.setGraphic(printImageView);
+            deleteButton.setOnMouseClicked(mouseEvent -> {
+                var currentItem = getTableRow().getItem();
+                if (currentItem instanceof ModelPatients m) {
+                    listener.onDeleteClick(m.getId());
+                }
+            });
+
+        }
+
+        @Override
+        protected void updateItem(T item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                setGraphic(null);
+            } else {
+                HBox hBox = new HBox(10, editButton, deleteButton);
+                hBox.setAlignment(Pos.CENTER_RIGHT);
+                setGraphic(hBox);
+            }
+        }
     }
 
 }

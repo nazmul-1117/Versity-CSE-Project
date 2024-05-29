@@ -24,7 +24,8 @@ public class SelectFromPatients {
 
                         resultSet.getString("gender"),
                         resultSet.getString("phone"),
-                        resultSet.getString("address")
+                        resultSet.getString("address"),
+                        true
                 ));
             }
         } catch (SQLException e) {
@@ -34,14 +35,14 @@ public class SelectFromPatients {
         return patientsList;
     }
 
-    public static List<ModelPatients> getPatientListById(String searchId) {
+    public static List<ModelPatients> getPatientListById(int searchId) {
         var patientsList = new ArrayList<ModelPatients>();
         var conn = DatabaseConnector.getConnection();
 
         try {
             String query = "SELECT * FROM patients WHERE id = ?;";
             var ps = conn.prepareStatement(query);
-            ps.setString(1, searchId);
+            ps.setInt(1, searchId);
             var resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
@@ -52,7 +53,7 @@ public class SelectFromPatients {
 
                         resultSet.getString("gender"),
                         resultSet.getString("phone"),
-                        resultSet.getString("address")
+                        resultSet.getString("address"), true
                 ));
             }
         } catch (SQLException e) {
@@ -67,13 +68,13 @@ public class SelectFromPatients {
         var conn = DatabaseConnector.getConnection();
 
         try {
-            searchName = "%"+searchName+"%";
+            searchName = "%" + searchName + "%";
             String query = "SELECT * FROM patients WHERE name LIKE ?;";
 
             var ps = conn.prepareStatement(query);
             ps.setString(1, searchName);
             var resultSet = ps.executeQuery();
-            System.out.println("RS "+resultSet);
+            System.out.println("RS " + resultSet);
 
             while (resultSet.next()) {
                 patientsList.add(new ModelPatients(
@@ -83,7 +84,7 @@ public class SelectFromPatients {
 
                         resultSet.getString("gender"),
                         resultSet.getString("phone"),
-                        resultSet.getString("address")
+                        resultSet.getString("address"), true
                 ));
             }
         } catch (SQLException e) {
