@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -14,7 +15,9 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -105,31 +108,119 @@
                                             </font>
                                         </Label>
                                         <TextField fx:id="addressTextField" layoutX="130.0" layoutY="285.0" promptText="Village/Moholla,Post" />
-                                        <Label layoutX="400.0" layoutY="30.0" prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
-                                            <font>
-                                                <Font name="Arial Bold" size="14.0" />
-                                            </font>
-                                        </Label>
-                                        <TextField layoutX="491.0" layoutY="30.0" promptText="Enter First Name" />
                                         <Line endX="15.0" endY="370.0" layoutX="365.0" startX="15.0" startY="30.0" stroke="#fdff05" strokeWidth="2.0" />
-                                        <JFXButton layoutX="614.0" layoutY="181.0" onAction="#createButton" stylesheets="@style/patients.css" text="Create" textFill="#fdff00">
-                                            <font>
+                              <HBox layoutX="391.0" layoutY="20.0" prefHeight="0.0" prefWidth="301.0">
+                                 <children>
+                                    <Label prefHeight="16.0" prefWidth="190.0" text="Patients Previous History" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXCheckBox fx:id="previousHistoryCheckbox" checkedColor="#1fd000" onAction="#previousHistoryCheckboxAction" unCheckedColor="#8700c6" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </HBox>
+                              <VBox fx:id="previousHistoryVBox" layoutX="391.0" layoutY="20.0" prefHeight="352.0" prefWidth="301.0" spacing="20.0" visible="false">
+                                 <children>
+                                    <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
-                                            </font>
-                                            <styleClass>
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField promptText="Enter First Name">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="Enter First Name" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="318.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="Enter First Name" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="329.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="Enter First Name" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="91.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="Enter First Name" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="335.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="146.0" text="First Name" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField promptText="Enter First Name" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="276.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                       <children>
+                                          <JFXButton onAction="#createButton" stylesheets="@style/patients.css" text="Create" textFill="#fdff00">
+                                             <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                             </font>
+                                             <styleClass>
                                                 <String fx:value="topAddPane" />
                                                 <String fx:value="topMenuBarHBoxHover" />
-                                            </styleClass>
-                                        </JFXButton>
-                                        <JFXButton layoutX="534.0" layoutY="181.0" onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
-                                            <font>
+                                             </styleClass>
+                                          </JFXButton>
+                                          <JFXButton onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
+                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
-                                            </font>
-                                            <styleClass>
+                                             </font>
+                                             <styleClass>
                                                 <String fx:value="modifyPatientsPane" />
                                                 <String fx:value="topMenuBarHBoxHover" />
-                                            </styleClass>
-                                        </JFXButton>
+                                             </styleClass>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets top="30.0" />
+                                 </padding>
+                              </VBox>
                                     </children>
                                 </Pane>
                             </children>

@@ -1,5 +1,6 @@
 package medioxide.controller;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import medioxide.components.DataTableListView;
 import medioxide.databaseConnector.InsertIntoPatients;
 import medioxide.databaseConnector.SelectFromPatients;
@@ -31,6 +34,8 @@ public class PatientsController implements Initializable, OnClickListener {
     public JFXRadioButton rbOther;
     public TextField removePatientsSearchTextField;
     public AnchorPane removePatientsAnchorPane;
+    public VBox previousHistoryVBox;
+    public JFXCheckBox previousHistoryCheckbox;
     @FXML
     private TextField emailTextField;
     @FXML
@@ -78,7 +83,6 @@ public class PatientsController implements Initializable, OnClickListener {
         showSearchButton();
         initGenderToggle();
         removePatientsSearchButton();
-
     }
 
     private void initGenderToggle() {
@@ -161,6 +165,14 @@ public class PatientsController implements Initializable, OnClickListener {
         phone = phoneTextField.getText();
         email = emailTextField.getText();
         address = addressTextField.getText();
+
+        if (name == null || name.trim().isEmpty()){
+            firstNameTextField.setTooltip(new Tooltip("jf"));
+            firstNameTextField.setStyle("-fx-text-fill: red");
+            firstNameTextField.setText("Please Input valid Name");
+
+            System.out.println("name is empty");
+        }
     }
 
     private void displayAllData() {
@@ -215,5 +227,16 @@ public class PatientsController implements Initializable, OnClickListener {
     public void onDeleteClick(int id) {
         InsertIntoPatients.deleteData(id);
         //showAllButton();
+    }
+
+    public void previousHistoryCheckboxAction(ActionEvent event) {
+
+        if(previousHistoryCheckbox.isSelected()){
+            System.out.println("selected");
+            previousHistoryVBox.setVisible(true);
+        }else{
+            System.out.println("not selected");
+            previousHistoryVBox.setVisible(false);
+        }
     }
 }
