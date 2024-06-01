@@ -31,21 +31,28 @@
 }
 
 .addPatientsLeftPane{
-    -fx-background-color: green;
+    -fx-background-color: #141814;
     -fx-background-radius: 20px;
 }
 
 .searchPatientsPane{
     -fx-background-color: #0243a2;
-    -fx-background-radius: 20px
+    -fx-background-radius: 20px;
 }
 
 .modifyPatientsPane{
     -fx-background-color: #3e0080;
-    -fx-background-radius: 20px
+    -fx-background-radius: 20px;
+}
+
+.textField{
+    -fx-background-color: #001641;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
 }
 
 .removePatientsPane{
     -fx-background-color: #800000;
-    -fx-background-radius: 20px
+    -fx-background-radius: 20px;
 }

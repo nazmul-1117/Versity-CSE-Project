@@ -93,4 +93,25 @@ public class SelectFromPatients {
 
         return patientsList;
     }
+
+    public static boolean searchById(int searchId){
+        var patientsList = new ArrayList<ModelPatients>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM patients WHERE id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            var resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println(resultSet.getString("name"));
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return false;
+    }
 }

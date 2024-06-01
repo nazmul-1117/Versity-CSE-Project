@@ -7,10 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import medioxide.components.DataTableListView;
@@ -20,15 +20,26 @@ import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
 import medioxide.model.ModelPatients;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PatientsController implements Initializable, OnClickListener {
-    public TextField searchPatientsTextField;
-    public TextField addressTextField;
-    public TextField ageTextField;
+
+    public TextField addNameTextField;
+    public TextField addSurnameTextField;
+    public TextField addAgeTextField;
+    public TextField addPhoneTextField;
+    public TextField addEmailTextField;
+    public TextField addDeptTextField;
+    public TextField addDiseasesTextField;
+    public TextField addAddressTextField;
+    public TextField addWeightTextField;
+    public TextField addSystolicBPTextField;
+    public TextField addDiastolicTextField;
+    public TextField addBodyTempTextField;
+    public TextField addFamilyProblemTextField;
+
     public JFXRadioButton rbMale;
     public JFXRadioButton rbFemale;
     public JFXRadioButton rbOther;
@@ -36,14 +47,9 @@ public class PatientsController implements Initializable, OnClickListener {
     public AnchorPane removePatientsAnchorPane;
     public VBox previousHistoryVBox;
     public JFXCheckBox previousHistoryCheckbox;
-    @FXML
-    private TextField emailTextField;
-    @FXML
-    private TextField firstNameTextField;
-    @FXML
-    private TextField phoneTextField;
-    @FXML
-    private TextField surnameTextField;
+    public TextField modifySearchTextField;
+    public Label yourID;
+    public TextField searchPatientsTextField;
 
 
     @FXML
@@ -72,8 +78,7 @@ public class PatientsController implements Initializable, OnClickListener {
 
     @FXML
     private void printName(ActionEvent event) {
-        String fName = firstNameTextField.getText();
-        System.out.println(fName);
+        System.out.println( addNameTextField.getText());
     }
 
     @Override
@@ -121,7 +126,6 @@ public class PatientsController implements Initializable, OnClickListener {
         sap.getChildren().add(table);
     }
 
-
     public void searchButton(ActionEvent event) {
 
         List list;
@@ -157,22 +161,25 @@ public class PatientsController implements Initializable, OnClickListener {
         s.getChildren().add(table);
     }
 
-    private void addPatientsCreateAccountDataCollect() {
-        name = firstNameTextField.getText();
-        surname = surnameTextField.getText();
-        age = HelperFunctions.stringToInt(ageTextField.getText());
+    private boolean dataCollect() {
+        name = addNameTextField.getText();
+        surname = addSurnameTextField.getText();
+        age = HelperFunctions.stringToInt(addAgeTextField.getText());
         gender = ((JFXRadioButton) genderToggleGroup.getSelectedToggle()).getText();
-        phone = phoneTextField.getText();
-        email = emailTextField.getText();
-        address = addressTextField.getText();
+        phone = addPhoneTextField.getText();
+        email = addEmailTextField.getText();
+        address = addAddressTextField.getText();
+        System.out.println("data collected");
 
-        if (name == null || name.trim().isEmpty()){
-            firstNameTextField.setTooltip(new Tooltip("jf"));
-            firstNameTextField.setStyle("-fx-text-fill: red");
-            firstNameTextField.setText("Please Input valid Name");
-
+        if (name.trim().isEmpty()){
+            addNameTextField.clear();
+            addNameTextField.setStyle("-fx-prompt-text-fill: red");
+            addNameTextField.setPromptText("Please Input valid Name");
             System.out.println("name is empty");
+            return false;
         }
+
+        return true;
     }
 
     private void displayAllData() {
@@ -189,7 +196,13 @@ public class PatientsController implements Initializable, OnClickListener {
     }
 
     public void createButton(ActionEvent event) {
-        addPatientsCreateAccountDataCollect();
+        System.out.println("create button called");
+
+        if (!dataCollect()){
+            System.out.println("Data cannot be inserted");
+            return;
+        }
+
         name = name + " " + surname;
         InsertIntoPatients.insertData(this.age, name, gender, phone, address);
         displayAllData();
@@ -238,5 +251,20 @@ public class PatientsController implements Initializable, OnClickListener {
             System.out.println("not selected");
             previousHistoryVBox.setVisible(false);
         }
+    }
+
+    public void modifySearchButton(ActionEvent event) {
+        try {
+            int id = Integer.parseInt(modifySearchTextField.getText().trim());
+
+            if (SelectFromPatients.searchById(id))
+                yourID.setText(Integer.toString(id));
+            else
+                yourID.setText("ID not found");
+
+        }catch (Exception e){
+            yourID.setText("Enter Valid input");
+        }
+
     }
 }
