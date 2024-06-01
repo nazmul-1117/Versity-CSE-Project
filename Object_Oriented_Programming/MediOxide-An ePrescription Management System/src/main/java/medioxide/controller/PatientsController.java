@@ -1,6 +1,7 @@
 package medioxide.controller;
 
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,7 @@ import medioxide.helper.OnClickListener;
 import medioxide.model.ModelPatients;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,6 +52,7 @@ public class PatientsController implements Initializable, OnClickListener {
     public TextField modifySearchTextField;
     public Label yourID;
     public TextField searchPatientsTextField;
+    public JFXComboBox comboBox;
 
 
     @FXML
@@ -88,6 +91,8 @@ public class PatientsController implements Initializable, OnClickListener {
         showSearchButton();
         initGenderToggle();
         removePatientsSearchButton();
+
+        initComboBox();
     }
 
     private void initGenderToggle() {
@@ -266,5 +271,19 @@ public class PatientsController implements Initializable, OnClickListener {
             yourID.setText("Enter Valid input");
         }
 
+    }
+
+
+    private void initComboBox(){
+        ObservableList <String> list = FXCollections.observableList(new ArrayList<>()) ;
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        comboBox.setItems(list);
+    }
+    public void comboMethod(ActionEvent event) {
+        var item = comboBox.getSelectionModel().getSelectedItem();
+        System.out.println(item);
     }
 }
