@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2024 at 10:51 AM
+-- Generation Time: Jun 02, 2024 at 11:30 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,9 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `medioxide`
 --
-
-DROP DATABASE IF EXISTS `medioxide_temp`
-
 CREATE DATABASE IF NOT EXISTS `medioxide` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `medioxide`;
 
@@ -55,11 +52,11 @@ CREATE TABLE IF NOT EXISTS `doctor_personal_info` (
 
 DROP TABLE IF EXISTS `doctor_professional_info`;
 CREATE TABLE IF NOT EXISTS `doctor_professional_info` (
-  `doctor_id` int(11) DEFAULT NULL,
-  `doctor_department` varchar(255) DEFAULT NULL,
+  `doctor_id` int(11) NOT NULL,
+  `doctor_department` varchar(255) DEFAULT 'Neurology',
   `doctor_specialty` varchar(255) DEFAULT NULL,
   `doctor_room_number` int(11) DEFAULT NULL,
-  `doctor_degree` varchar(255) DEFAULT 'MBBS',
+  `doctor_degree` varchar(255) DEFAULT 'MBBS.',
   KEY `doctor_id` (`doctor_id`),
   KEY `doctor_department` (`doctor_department`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `medical_problems` (
   `medical_problem_treatment` text DEFAULT NULL,
   PRIMARY KEY (`medical_problem_id`),
   KEY `medical_department` (`medical_department`)
-) ENGINE=InnoDB AUTO_INCREMENT=7000 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5000 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -180,21 +177,21 @@ CREATE TABLE IF NOT EXISTS `patients_personal_info` (
 -- Constraints for table `doctor_professional_info`
 --
 ALTER TABLE `doctor_professional_info`
-  ADD CONSTRAINT `doctor_professional_info_ibfk_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctor_personal_info` (`doctor_id`),
-  ADD CONSTRAINT `doctor_professional_info_ibfk_2` FOREIGN KEY (`doctor_department`) REFERENCES `medical_department` (`departmental_name`);
+  ADD CONSTRAINT `doctor_professional_info_ibfk_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctor_personal_info` (`doctor_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `doctor_professional_info_ibfk_2` FOREIGN KEY (`doctor_department`) REFERENCES `medical_department` (`departmental_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `medical_problems`
 --
 ALTER TABLE `medical_problems`
-  ADD CONSTRAINT `medical_department` FOREIGN KEY (`medical_department`) REFERENCES `medical_department` (`departmental_name`);
+  ADD CONSTRAINT `medical_problems_ibfk_1` FOREIGN KEY (`medical_department`) REFERENCES `medical_department` (`departmental_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `patients_medical_info`
 --
 ALTER TABLE `patients_medical_info`
-  ADD CONSTRAINT `patients_medical_info_ibfk_1` FOREIGN KEY (`patients_id`) REFERENCES `patients_personal_info` (`patients_id`),
-  ADD CONSTRAINT `patients_medical_info_ibfk_2` FOREIGN KEY (`patients_visiting_department`) REFERENCES `medical_department` (`departmental_name`);
+  ADD CONSTRAINT `patients_medical_info_ibfk_1` FOREIGN KEY (`patients_id`) REFERENCES `patients_personal_info` (`patients_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `patients_medical_info_ibfk_2` FOREIGN KEY (`patients_visiting_department`) REFERENCES `medical_department` (`departmental_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
