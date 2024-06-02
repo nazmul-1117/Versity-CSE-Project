@@ -92,7 +92,7 @@
                                                   </font>
                                               </JFXRadioButton>
                   
-                                                    <JFXRadioButton fx:id="rbOther" layoutX="270.0068359375" layoutY="135.0" text="Others" textFill="WHITE">
+                                                    <JFXRadioButton fx:id="rbOther" layoutX="270.0068359375" layoutY="135.0" text="Other" textFill="WHITE">
                                                   <unSelectedColor>
                                                       <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
                                                   </unSelectedColor>
@@ -136,7 +136,7 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </HBox>
-                                    <VBox fx:id="previousHistoryVBox" layoutX="11.0" layoutY="13.0" prefHeight="327.0" prefWidth="301.0" spacing="20.0" visible="false">
+                                    <VBox fx:id="previousHistoryVBox" layoutX="11.0" layoutY="13.0" prefHeight="327.0" prefWidth="301.0" spacing="20.0">
                                        <children>
                                           <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                                              <children>
@@ -192,12 +192,12 @@
                                                       <Font name="Arial Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <JFXCheckBox checkedColor="#1fd000" text="Allergy" textFill="WHITE" unCheckedColor="#8700c6">
+                                                <JFXCheckBox fx:id="addAllergyCheckBox" checkedColor="#1fd000" onAction="#prevProblemCheckBoxAction" text="Allergy" textFill="WHITE" unCheckedColor="#8700c6">
                                                    <font>
                                                       <Font name="Arial Bold" size="12.0" />
                                                    </font>
                                                 </JFXCheckBox>
-                                                <JFXCheckBox checkedColor="#1fd000" layoutX="160.0" layoutY="10.0" prefHeight="18.0" prefWidth="76.0" text="Diabetes" textFill="WHITE" unCheckedColor="#8700c6">
+                                                <JFXCheckBox fx:id="addDiabetesCheckBox" checkedColor="#1fd000" layoutX="160.0" layoutY="10.0" onAction="#prevProblemCheckBoxAction" prefHeight="18.0" prefWidth="76.0" text="Diabetes" textFill="WHITE" unCheckedColor="#8700c6">
                                                    <font>
                                                       <Font name="Arial Bold" size="12.0" />
                                                    </font>

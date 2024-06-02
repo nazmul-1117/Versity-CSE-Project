@@ -11,7 +11,29 @@ public class ModelPatients {
     private StringProperty address;
     private BooleanProperty action;
 
-    public ModelPatients(int id, String name, int age, String gender, String phone, String address, boolean action) {
+    public int getWeight() {
+        return weight.get();
+    }
+
+    public IntegerProperty weightProperty() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight.set(weight);
+    }
+
+    private IntegerProperty weight;
+    private IntegerProperty systolic_bp;
+    private IntegerProperty diastolic_bp;
+
+
+    public ModelPatients(int id, String name, int age,
+                         String gender, String phone, String address, boolean action) {
+        int weight=10;
+        int systolic_bp=20;
+        int diastolic_bp=30;
+
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.age = new SimpleIntegerProperty(age);
@@ -19,6 +41,9 @@ public class ModelPatients {
         this.phone = new SimpleStringProperty(phone);
         this.address = new SimpleStringProperty(address);
         this.action = new SimpleBooleanProperty(action);
+        this.weight = new SimpleIntegerProperty(weight);
+        this.systolic_bp = new SimpleIntegerProperty(systolic_bp);
+        this.diastolic_bp = new SimpleIntegerProperty(diastolic_bp);
     }
 
     public int getId() {

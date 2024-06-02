@@ -53,6 +53,8 @@ public class PatientsController implements Initializable, OnClickListener {
     public Label yourID;
     public TextField searchPatientsTextField;
     public JFXComboBox comboBox;
+    public JFXCheckBox addAllergyCheckBox;
+    public JFXCheckBox addDiabetesCheckBox;
 
 
     @FXML
@@ -69,6 +71,11 @@ public class PatientsController implements Initializable, OnClickListener {
     private TableColumn<ModelPatients, String> collPhone;
 
     private String name, surname, gender, phone, email, address;
+
+    private int weight, systolic_bp, diastolic_bp;
+    private float bodyTemp;
+    private String visiting_dept, familyProb;
+    private String prevProblem = "";
     private int age;
 
     @FXML
@@ -174,6 +181,17 @@ public class PatientsController implements Initializable, OnClickListener {
         phone = addPhoneTextField.getText();
         email = addEmailTextField.getText();
         address = addAddressTextField.getText();
+
+        weight = HelperFunctions.stringToInt(addWeightTextField.getText());
+        systolic_bp = HelperFunctions.stringToInt(addSystolicBPTextField.getText());
+        diastolic_bp = HelperFunctions.stringToInt(addDiastolicTextField.getText());
+
+        visiting_dept = addDeptTextField.getText();
+        bodyTemp = HelperFunctions.stringToFloat(addBodyTempTextField.getText());
+        familyProb = addFamilyProblemTextField.getText();
+
+        System.out.println(prevProblem);
+
         System.out.println("data collected");
 
         if (name.trim().isEmpty()){
@@ -202,16 +220,17 @@ public class PatientsController implements Initializable, OnClickListener {
 
     public void createButton(ActionEvent event) {
         System.out.println("create button called");
-
         if (!dataCollect()){
             System.out.println("Data cannot be inserted");
             return;
         }
 
         name = name + " " + surname;
-        InsertIntoPatients.insertData(this.age, name, gender, phone, address);
+        InsertIntoPatients.insertData(age, weight, systolic_bp, diastolic_bp, bodyTemp,
+                name, gender, phone, address, visiting_dept, prevProblem, familyProb);
+
         displayAllData();
-        System.out.println("Data successfully inserted\nThank You....!");
+//        System.out.println("Data successfully inserted\nThank You....!");
     }
 
     public void removePatientsSearchButton() {
@@ -231,10 +250,6 @@ public class PatientsController implements Initializable, OnClickListener {
         table.setLayoutX(0);
         table.setLayoutY(80);
         table.maxHeight(10.0);
-//        AnchorPane.setBottomAnchor(table, 70.0);
-//        AnchorPane.setTopAnchor(table, 80.0);
-//        AnchorPane.setLeftAnchor(table, 0.0);
-//        AnchorPane.setRightAnchor(table, 0.0);
 
         table.setPrefWidth(1366D);
         table.setPrefHeight(50D);
@@ -273,7 +288,6 @@ public class PatientsController implements Initializable, OnClickListener {
 
     }
 
-
     private void initComboBox(){
         ObservableList <String> list = FXCollections.observableList(new ArrayList<>()) ;
         list.add("a");
@@ -285,5 +299,13 @@ public class PatientsController implements Initializable, OnClickListener {
     public void comboMethod(ActionEvent event) {
         var item = comboBox.getSelectionModel().getSelectedItem();
         System.out.println(item);
+    }
+
+    public void prevProblemCheckBoxAction() {
+
+        if (addAllergyCheckBox.isSelected()) prevProblem += "Allergy, ";
+        if (addDiabetesCheckBox.isSelected()) prevProblem += "Diabetes, ";
+
+        System.out.println(prevProblem);
     }
 }
