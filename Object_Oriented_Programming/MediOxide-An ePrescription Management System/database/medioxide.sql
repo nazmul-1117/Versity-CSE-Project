@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2024 at 11:30 AM
+-- Generation Time: Jun 02, 2024 at 11:42 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `medical_problems` (
   `medical_problem_treatment` text DEFAULT NULL,
   PRIMARY KEY (`medical_problem_id`),
   KEY `medical_department` (`medical_department`)
-) ENGINE=InnoDB AUTO_INCREMENT=5000 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7000 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
