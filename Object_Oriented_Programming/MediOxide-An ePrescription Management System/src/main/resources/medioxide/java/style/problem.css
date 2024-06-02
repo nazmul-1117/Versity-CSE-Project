@@ -1,0 +1,20 @@
+
+.textField{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #00ffba;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+.choice-box {
+    -fx-background-color: #037a7a91;
+    -fx-backgroundcolor: #02bbfd;
+    -fx-focus-color: #ffffff;
+    -fx-faint-focus-color: #00ff22;
+    -fx-control-inner-background: #b2b2b262;
+    -fx-selection-bar: "midnightblue";
+    -fx-selection-bar-text-fill: "white";
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #00ffba;
+}

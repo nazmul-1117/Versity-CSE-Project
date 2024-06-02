@@ -47,6 +47,15 @@
 
 .textField{
     -fx-background-color: #001641;
+
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+.comboBox{
+    -fx-background-color: #363841;
+    -fx-background-color: linear-gradient(to bottom right, #ff6b00 0%, #7800a9 100%);
     -fx-text-fill: #ffffff;
     -fx-background-radius: 5px;
     -fx-font-size: 14px;

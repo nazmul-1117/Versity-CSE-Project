@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.MainController">
+<AnchorPane prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.ProblemController">
     <children>
-        <Label layoutX="260.0" layoutY="217.0" prefHeight="197.0"
-               prefWidth="602.0" text="Problem Window" textFill="#00ff77">
+        <Label layoutX="246.0" layoutY="53.0" prefHeight="197.0" prefWidth="602.0" text="Problem Window" textFill="#00ff77">
             <font>
                 <Font name="Arial Bold" size="64.0" />
             </font>
         </Label>
+      <Pane layoutX="300.0" layoutY="288.0" prefHeight="188.0" prefWidth="452.0">
+         <children>
+            <JFXButton layoutX="165.0" layoutY="116.0" maxWidth="150.0" onAction="#modifySearchButton" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #02f302; -fx-background-radius: 5;" text="Search">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXComboBox fx:id="comboBox" editable="true" focusColor="#00ff2d" labelFloat="true" layoutX="106.0" layoutY="21.0" onAction="#comboMethod" prefHeight="43.0" prefWidth="204.0" promptText="Dept" styleClass="choice-box" stylesheets="@style/problem.css" unFocusColor="#e5ff00" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

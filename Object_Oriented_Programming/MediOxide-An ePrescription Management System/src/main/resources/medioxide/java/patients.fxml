@@ -110,7 +110,7 @@
                                           <Font name="Arial Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="addDeptTextField" layoutX="110.0068359375" layoutY="288.0" promptText="Neurology" styleClass="textField" stylesheets="@style/patients.css" />
+                                    <JFXComboBox fx:id="addDeptComboBox" focusColor="#00ff3c" layoutX="117.0" layoutY="286.0" onAction="#comboMethod" prefHeight="30.0" prefWidth="164.0" styleClass="comboBox" stylesheets="@style/patients.css" unFocusColor="#e4ff00" />
                                     <Label layoutX="0.0068359375" layoutY="328.0" prefHeight="20.0" prefWidth="120.0" text="Diseases" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold" size="14.0" />
@@ -295,7 +295,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <JFXComboBox fx:id="comboBox" focusColor="#00ff3c" layoutX="139.0" layoutY="179.0" onAction="#comboMethod" prefHeight="48.0" prefWidth="127.0" unFocusColor="#e4ff00" />
+                              <JFXComboBox fx:id="comboBox" focusColor="#00ff3c" layoutX="139.0" layoutY="206.0" onAction="#comboMethod" prefHeight="21.0" prefWidth="127.0" styleClass="textField" stylesheets="@style/patients.css" unFocusColor="#e4ff00" />
                            </children>
                         </Pane>
                         <Pane layoutX="380.0" prefHeight="405.0" prefWidth="699.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">

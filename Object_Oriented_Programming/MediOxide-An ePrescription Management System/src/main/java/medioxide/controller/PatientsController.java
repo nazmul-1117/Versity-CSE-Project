@@ -33,7 +33,6 @@ public class PatientsController implements Initializable, OnClickListener {
     public TextField addAgeTextField;
     public TextField addPhoneTextField;
     public TextField addEmailTextField;
-    public TextField addDeptTextField;
     public TextField addDiseasesTextField;
     public TextField addAddressTextField;
     public TextField addWeightTextField;
@@ -41,6 +40,10 @@ public class PatientsController implements Initializable, OnClickListener {
     public TextField addDiastolicTextField;
     public TextField addBodyTempTextField;
     public TextField addFamilyProblemTextField;
+
+    public JFXCheckBox addAllergyCheckBox;
+    public JFXCheckBox addDiabetesCheckBox;
+    public JFXComboBox addDeptComboBox;
 
     public JFXRadioButton rbMale;
     public JFXRadioButton rbFemale;
@@ -53,8 +56,7 @@ public class PatientsController implements Initializable, OnClickListener {
     public Label yourID;
     public TextField searchPatientsTextField;
     public JFXComboBox comboBox;
-    public JFXCheckBox addAllergyCheckBox;
-    public JFXCheckBox addDiabetesCheckBox;
+
 
 
     @FXML
@@ -186,7 +188,7 @@ public class PatientsController implements Initializable, OnClickListener {
         systolic_bp = HelperFunctions.stringToInt(addSystolicBPTextField.getText());
         diastolic_bp = HelperFunctions.stringToInt(addDiastolicTextField.getText());
 
-        visiting_dept = addDeptTextField.getText();
+        visiting_dept = addDeptComboBox.getSelectionModel().getSelectedItem().toString();
         bodyTemp = HelperFunctions.stringToFloat(addBodyTempTextField.getText());
         familyProb = addFamilyProblemTextField.getText();
 
@@ -290,15 +292,25 @@ public class PatientsController implements Initializable, OnClickListener {
 
     private void initComboBox(){
         ObservableList <String> list = FXCollections.observableList(new ArrayList<>()) ;
-        list.add("a");
-        list.add("b");
-        list.add("c");
+        list.add("Burn Plastic Surgery");
+        list.add("Cardiology & CCU");
+        list.add("Gastroenterology");
+        list.add("Gynae & Obstetrics");
+        list.add("Medicine");
+        list.add("Neurology");
+        list.add("Orthopedic Surgery");
+        list.add("Pediatrics");
+        list.add("Psychiatry");
+        list.add("Radiology & Imaging");
 
-        comboBox.setItems(list);
+        //comboBox.setItems(list);
+        addDeptComboBox.setItems(list);
     }
     public void comboMethod(ActionEvent event) {
         var item = comboBox.getSelectionModel().getSelectedItem();
-        System.out.println(item);
+
+        String getitem = addDeptComboBox.getSelectionModel().getSelectedItem().toString();
+        System.out.println(getitem);
     }
 
     public void prevProblemCheckBoxAction() {
