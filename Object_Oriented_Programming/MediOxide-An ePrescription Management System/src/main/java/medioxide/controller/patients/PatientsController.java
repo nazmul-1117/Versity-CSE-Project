@@ -7,13 +7,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medioxide.components.DataTableListView;
 import medioxide.databaseConnector.InsertIntoPatients;
 import medioxide.databaseConnector.SelectFromPatients;
@@ -21,6 +25,7 @@ import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
 import medioxide.model.ModelPatients;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,7 @@ import java.util.ResourceBundle;
 
 public class PatientsController implements Initializable, OnClickListener {
 
+    //add patients attributes
     public TextField addNameTextField;
     public TextField addSurnameTextField;
     public TextField addAgeTextField;
@@ -48,6 +54,19 @@ public class PatientsController implements Initializable, OnClickListener {
     public JFXRadioButton rbMale;
     public JFXRadioButton rbFemale;
     public JFXRadioButton rbOther;
+
+    //Modify patients attributes
+    public TextField modifyNameTextField;
+    public TextField modifySurnameTextField;
+    public TextField modifyAgeTextField;
+    public TextField modifyPhoneTextField;
+    public TextField modifyEmailTextField;
+    public TextField modifyAddressTextField;
+
+    public JFXRadioButton modifyRBMale;
+    public JFXRadioButton modifyRBFemale;
+    public JFXRadioButton modifyRBOther;
+
     public TextField removePatientsSearchTextField;
     public AnchorPane removePatientsAnchorPane;
     public VBox previousHistoryVBox;
@@ -56,6 +75,7 @@ public class PatientsController implements Initializable, OnClickListener {
     public Label yourID;
     public TextField searchPatientsTextField;
     public JFXComboBox comboBox;
+
 
 
 
@@ -319,5 +339,16 @@ public class PatientsController implements Initializable, OnClickListener {
         if (addDiabetesCheckBox.isSelected()) prevProblem += "Diabetes, ";
 
         System.out.println(prevProblem);
+    }
+
+    public void modifySaveChangeButton(ActionEvent event) throws IOException {
+        String fxml = "modify_patients.fxml";
+        FXMLLoader  fxmlLoader  = new FXMLLoader(getClass().getResource(fxml));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        stage.initStyle(StageStyle.DECORATED);
+        stage.show();
     }
 }

@@ -100,14 +100,14 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
         ButtonCell() {
             editButton = new Button();
             editButton.setStyle("-fx-background-color: #007F80 ;");
-            var eyeImageView = new ImageView(new Image(Objects.requireNonNull(Main.class.getResource("image/home.png")).toExternalForm()));
+            var eyeImageView = new ImageView(new Image(Objects.requireNonNull(Main.class.getResource("image/edit.png")).toExternalForm()));
             eyeImageView.setFitWidth(14);
             eyeImageView.setFitHeight(14);
             editButton.setGraphic(eyeImageView);
 
             deleteButton = new Button();
             deleteButton.setStyle("-fx-background-color: #E34E3B ;");
-            var printImageView = new ImageView(new Image(Objects.requireNonNull(Main.class.getResource("image/home.png")).toExternalForm()));
+            var printImageView = new ImageView(new Image(Objects.requireNonNull(Main.class.getResource("image/delete.png")).toExternalForm()));
             printImageView.setFitWidth(14);
             printImageView.setFitHeight(14);
             deleteButton.setGraphic(printImageView);
