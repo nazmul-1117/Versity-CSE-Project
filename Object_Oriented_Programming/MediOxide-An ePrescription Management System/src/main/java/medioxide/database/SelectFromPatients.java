@@ -114,4 +114,32 @@ public class SelectFromPatients {
 
         return false;
     }
+
+    public static List<ModelPatients> getModifyPatientList() {
+        var patientsList = new ArrayList<ModelPatients>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM patients";
+            var ps = conn.prepareStatement(query);
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                patientsList.add(new ModelPatients(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("age"),
+
+                        resultSet.getString("gender"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("address"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return patientsList;
+    }
 }

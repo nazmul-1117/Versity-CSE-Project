@@ -7,13 +7,6 @@ public class InsertIntoPatients {
     public static void insertData(int age, int weight, int s_bp, int d_bp, float body_temp,
                                   String ... s){
 
-//        String query = "START TRANSACTION;" +
-//        String query = "START TRANSACTION; INSERT INTO patients(name, age, gender, phone, address ) VALUES (?, ?, ?, ?, ?);" +
-//                "SET @patients_id = LAST_INSERT_ID();" +
-//                "INSERT INTO medical_info(patients_id, weight, s_bp, d_bp) " +
-//                "VALUES (@patients_id, ?, ?, ?);" +
-//                "COMMIT;";
-
         String query1 = "START TRANSACTION;";
         String query2 = "INSERT INTO patients(name, age, gender, phone, address ) VALUES (?, ?, ?, ?, ?); ";
 
