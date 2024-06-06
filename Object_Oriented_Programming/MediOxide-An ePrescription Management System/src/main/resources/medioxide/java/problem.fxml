@@ -24,5 +24,10 @@
             <JFXComboBox fx:id="comboBox" editable="true" focusColor="#00ff2d" labelFloat="true" layoutX="106.0" layoutY="21.0" onAction="#comboMethod" prefHeight="43.0" prefWidth="204.0" promptText="Dept" styleClass="choice-box" stylesheets="@style/problem.css" unFocusColor="#e5ff00" />
          </children>
       </Pane>
+      <JFXButton layoutX="142.0" layoutY="370.0" onAction="#popup" prefHeight="127.0" prefWidth="266.0" style="-fx-background-color: green;" text="Popup Button" textFill="#0c00ff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>
