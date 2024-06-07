@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -23,6 +24,7 @@ import medioxide.database.InsertIntoPatients;
 import medioxide.database.SelectFromPatients;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
+import medioxide.java.Main;
 import medioxide.model.ModelPatients;
 
 import java.io.IOException;
@@ -76,7 +78,7 @@ public class PatientsController implements Initializable, OnClickListener {
     public TextField searchPatientsTextField;
     public JFXComboBox comboBox;
 
-    private String name, surname, gender, phone, email, address;
+    private String name, surname, gender, phone, email, address, diseases;
 
     private int weight, systolic_bp, diastolic_bp;
     private float bodyTemp;
@@ -193,10 +195,10 @@ public class PatientsController implements Initializable, OnClickListener {
         diastolic_bp = HelperFunctions.stringToInt(addDiastolicTextField.getText());
 
         visiting_dept = addDeptComboBox.getSelectionModel().getSelectedItem().toString();
+        diseases = addDiseasesTextField.getText();
         bodyTemp = HelperFunctions.stringToFloat(addBodyTempTextField.getText());
-        familyProb = addFamilyProblemTextField.getText();
-
         System.out.println(prevProblem);
+        familyProb = addFamilyProblemTextField.getText();
 
         System.out.println("data collected");
 
@@ -231,9 +233,8 @@ public class PatientsController implements Initializable, OnClickListener {
             return;
         }
 
-        name = name + " " + surname;
         InsertIntoPatients.insertData(age, weight, systolic_bp, diastolic_bp, bodyTemp,
-                name, gender, phone, address, visiting_dept, prevProblem, familyProb);
+                name, surname, gender, phone, email, address, visiting_dept, diseases, prevProblem, familyProb);
 
         displayAllData();
 //        System.out.println("Data successfully inserted\nThank You....!");
@@ -266,6 +267,28 @@ public class PatientsController implements Initializable, OnClickListener {
     public void onDeleteClick(int id) {
         InsertIntoPatients.deleteData(id);
         //showAllButton();
+    }
+
+    @Override
+    public void onEditClick(int id) {
+//        System.out.println("yyyyyyyyyyyyyyyyyy");
+        try {
+            String fxml = "modify_patients.fxml";
+            URL fxmlURL = Main.class.getResource(fxml);
+            System.out.println("URL: " + fxmlURL);
+
+            FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
     }
 
     public void previousHistoryCheckboxAction(ActionEvent event) {

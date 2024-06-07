@@ -103,6 +103,13 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
             eyeImageView.setFitWidth(14);
             eyeImageView.setFitHeight(14);
             editButton.setGraphic(eyeImageView);
+            editButton.setOnMouseClicked(mouseEvent -> {
+
+                var currentItem = getTableRow().getItem();
+                if (currentItem instanceof ModelPatients m) {
+                    listener.onEditClick(m.getId());
+                }
+            });
 
             deleteButton = new Button();
             deleteButton.setStyle("-fx-background-color: #E34E3B ;");
@@ -111,6 +118,7 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
             printImageView.setFitHeight(14);
             deleteButton.setGraphic(printImageView);
             deleteButton.setOnMouseClicked(mouseEvent -> {
+
                 var currentItem = getTableRow().getItem();
                 if (currentItem instanceof ModelPatients m) {
                     listener.onDeleteClick(m.getId());

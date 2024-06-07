@@ -8,26 +8,19 @@ public class InsertIntoPatients {
                                   String ... s){
 
         String query1 = "START TRANSACTION;";
-        String query2 = "INSERT INTO patients(name, age, gender, phone, address ) VALUES (?, ?, ?, ?, ?); ";
+        String query2 = "INSERT INTO patients_personal_info " +
+                "(patients_name, patients_surname, patients_age, patients_gender, " +
+                "patients_mobile, patients_email, patients_address)\n" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?);\n";
 
         String query3 = "SET @patients_id = LAST_INSERT_ID(); " ;
 
-        String query4 = "INSERT INTO medical_info( patients_id, weight, s_bp, d_bp, visiting_dept, body_temp, prev_problem, family_problem ) " +
-                "VALUES (@patients_id, ?, ?, ?, ?, ?, ?, ?);";
+        String query4 = "INSERT INTO patients_medical_info (patients_id, patients_visiting_department," +
+                " patients_diseases, patients_weight, patients_systolic_bp, patients_diastolic_bp, " +
+                "patients_body_temp, patients_previous_problem, patients_family_problem)\n" +
+                "VALUES (@patients_id, ?, ?, ?, ?, ?, ?, ?, ?);\n";
 
         String query5 = "COMMIT;";
-
-//        try {
-//            var connection = DatabaseConnector.getConnection();
-//            PreparedStatement ps = connection.prepareStatement(query4);
-//
-//            var resultSet = ps.executeQuery();
-//
-////            System.out.println("Resultset: " + resultSet +"\n\n\n");
-//        }catch (SQLException sqlException){
-//            System.out.println("SQL connection failed");
-//            sqlException.printStackTrace();
-//        }
 
         try {
             Connection connection = DatabaseConnector.getConnection();
@@ -41,14 +34,16 @@ public class InsertIntoPatients {
 
             ps2 = connection.prepareStatement(query2);
 
-                ps2.setString(1, s[0]);
-                ps2.setInt(2, age);
-                ps2.setString(3, s[1]);
-                System.out.println("first 3 column");
+            ps2.setString(1, s[0]); //name
+            ps2.setString(2, s[1]); //surname
+            ps2.setInt(3, age); //age
+            ps2.setString(4, s[2]); //gender
+            System.out.println("first 4 column");
 
-                ps2.setString(4, s[2]);
-                ps2.setString(5, s[3]);
-                System.out.println("second 2 column");
+            ps2.setString(5, s[3]); //phone
+            ps2.setString(6, s[4]); //email
+            ps2.setString(7, s[5]); //address
+            System.out.println("second 3 column");
 
             ps3 = connection.prepareStatement(query3);
             System.out.println("PS3 executed");
@@ -56,16 +51,20 @@ public class InsertIntoPatients {
             ps4 = connection.prepareStatement(query4);
             System.out.println("PS4 executed");
 
-                ps4.setInt(1, weight);
-                ps4.setInt(2, s_bp);
-                ps4.setInt(3, d_bp);
+//            s[6] = "Neurology";
+
+            ps4.setString(1, s[6]); //dept
+            ps4.setString(2, s[7]);
+
+            ps4.setInt(3, weight);
+            ps4.setInt(4, s_bp);
+            ps4.setInt(5, d_bp);
+            ps4.setFloat(6, body_temp);
             System.out.println("weight, s dp, d dp saved");
 
-                ps4.setString(4, s[4]);
-                ps4.setFloat(5, body_temp);
-                ps4.setString(6, s[5]);
-                ps4.setString(7, s[6]);
-                System.out.println("third 3 column");
+            ps4.setString(7, s[8]);
+            ps4.setString(8, s[9]);
+            System.out.println("third 3 column");
 
             ps5 = connection.prepareStatement(query5);
 
@@ -84,6 +83,7 @@ public class InsertIntoPatients {
 
             }catch (SQLException sqlException){
                 System.out.println("\nExecuted Statement failed for: "+ sqlException.getMessage()+"\n\n");
+                System.out.println("Query: " + ps4);
             }
 
             if (statement1 < 0) {
@@ -98,7 +98,7 @@ public class InsertIntoPatients {
     }
 
     public  static  void deleteData(int id){
-        String query = "DELETE FROM patients WHERE id = ?";
+        String query = "DELETE FROM patients_personal_info WHERE id = ?";
         try {
             var connection = DatabaseConnector.getConnection();
             var ps = connection.prepareStatement(query);
