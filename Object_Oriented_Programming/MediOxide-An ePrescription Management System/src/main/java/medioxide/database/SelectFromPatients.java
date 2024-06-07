@@ -1,4 +1,4 @@
-package medioxide.databaseConnector;
+package medioxide.database;
 
 import medioxide.model.ModelPatients;
 

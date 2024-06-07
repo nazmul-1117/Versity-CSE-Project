@@ -50,4 +50,6 @@ public class ProblemController implements Initializable {
                 initComboBox();
     }
 
+    public void popup(ActionEvent event) {
+    }
 }

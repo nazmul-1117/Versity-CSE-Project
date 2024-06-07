@@ -14,7 +14,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.patients.ModifyPatientsController">
+<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="medioxide.controller.patients.ModifyPatientsController">
    <children>
       <Pane layoutY="-14.0" prefHeight="527.0" prefWidth="435.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
          <children>

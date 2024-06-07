@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import medioxide.databaseConnector.InsertIntoPatients;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
 import medioxide.model.ModelPatients;

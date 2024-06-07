@@ -1,4 +1,4 @@
-package medioxide.controller;
+package medioxide.controller.patients;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -19,8 +19,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import medioxide.components.DataTableListView;
-import medioxide.databaseConnector.InsertIntoPatients;
-import medioxide.databaseConnector.SelectFromPatients;
+import medioxide.database.InsertIntoPatients;
+import medioxide.database.SelectFromPatients;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
 import medioxide.model.ModelPatients;
@@ -75,22 +75,6 @@ public class PatientsController implements Initializable, OnClickListener {
     public Label yourID;
     public TextField searchPatientsTextField;
     public JFXComboBox comboBox;
-
-
-
-
-    @FXML
-    private TableColumn<ModelPatients, String> callGender;
-    @FXML
-    private TableColumn<ModelPatients, String> collAddress;
-    @FXML
-    private TableColumn<ModelPatients, Integer> collAge;
-    @FXML
-    private TableColumn<ModelPatients, Integer> collID;
-    @FXML
-    private TableColumn<ModelPatients, String> collName;
-    @FXML
-    private TableColumn<ModelPatients, String> collPhone;
 
     private String name, surname, gender, phone, email, address;
 
@@ -327,7 +311,7 @@ public class PatientsController implements Initializable, OnClickListener {
         addDeptComboBox.setItems(list);
     }
     public void comboMethod(ActionEvent event) {
-        var item = comboBox.getSelectionModel().getSelectedItem();
+//        var item = comboBox.getSelectionModel().getSelectedItem();
 
         String getitem = addDeptComboBox.getSelectionModel().getSelectedItem().toString();
         System.out.println(getitem);

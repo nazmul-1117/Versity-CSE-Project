@@ -20,7 +20,8 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1100.0"
             styleClass="mainDashBoard" stylesheets="@style/patients.css"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="medioxide.controller.patients.PatientsController">
     <children>
         <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="220.0" prefWidth="1080.0" styleClass="topAddPane" stylesheets="@style/patients.css">
@@ -310,37 +311,37 @@
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="modifyNameTextField1" layoutX="110.0068359375" promptText="Enter Name" styleClass="textField" stylesheets="@style/patients.css" />
+                                                <TextField fx:id="modifyNameTextField" layoutX="110.0" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                                 <Label layoutX="0.0068359375" layoutY="47.0" prefHeight="20.0" prefWidth="143.0" text="Surname" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="modifySurnameTextField1" layoutX="110.0068359375" layoutY="45.0" promptText="Enter Surname" styleClass="textField" stylesheets="@style/patients.css" />
+                                                <TextField fx:id="modifySurnameTextField" layoutX="110.0" layoutY="45.0" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                                 <Label layoutX="0.0068359375" layoutY="90.0" prefHeight="20.0" prefWidth="120.0" text="Age*" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="modifyAgeTextField1" layoutX="110.0068359375" layoutY="90.0" promptText="Enter Age" styleClass="textField" stylesheets="@style/patients.css" />
+                                                <TextField fx:id="modifyAgeTextField" layoutX="110.0" layoutY="90.0" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                                 <Label layoutX="0.0068359375" layoutY="170.0" prefHeight="20.0" prefWidth="120.0" text="Phone Number" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="modifyPhoneTextField1" layoutX="110.0068359375" layoutY="170.0" promptText="+880XXXXXXXXXX" styleClass="textField" stylesheets="@style/patients.css" text="+880" />
+                                                <TextField fx:id="modifyPhoneTextField" layoutX="110.0" layoutY="170.0" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                                 <Label layoutX="0.0068359375" layoutY="210.0" prefHeight="20.0" prefWidth="120.0" text="Email" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="modifyEmailTextField1" layoutX="110.0068359375" layoutY="210.0" promptText="nazmul@medioxide.com" styleClass="textField" stylesheets="@style/patients.css" />
+                                                <TextField fx:id="modifyEmailTextField" layoutX="110.0" layoutY="210.0" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                                 <Label layoutX="0.0068359375" layoutY="133.0" prefHeight="20.0" prefWidth="120.0" text="Gender" textFill="WHITE">
                                                     <font>
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <JFXRadioButton fx:id="rbMale1" layoutX="110.0068359375" layoutY="135.0" selected="true" text="Male" textFill="WHITE">
+                                                <JFXRadioButton fx:id="modifyRBMale" layoutX="109.0068359375" layoutY="135.0" selected="true" text="Male" textFill="WHITE">
                                                     <unSelectedColor>
                                                         <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
                                                     </unSelectedColor>
@@ -348,7 +349,7 @@
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </JFXRadioButton>
-                                                <JFXRadioButton fx:id="rbFemale1" layoutX="180.0068359375" layoutY="135.0" text="Female" textFill="WHITE">
+                                                <JFXRadioButton fx:id="modifyRBFemale" layoutX="179.0068359375" layoutY="135.0" text="Female" textFill="WHITE">
                                                     <unSelectedColor>
                                                         <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
                                                     </unSelectedColor>
@@ -356,7 +357,7 @@
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </JFXRadioButton>
-                                                <JFXRadioButton fx:id="rbOther1" layoutX="270.0068359375" layoutY="135.0" text="Others" textFill="WHITE">
+                                                <JFXRadioButton fx:id="modifyRBOther" layoutX="269.0068359375" layoutY="135.0" text="Others" textFill="WHITE">
                                                     <unSelectedColor>
                                                         <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
                                                     </unSelectedColor>
@@ -369,144 +370,28 @@
                                                         <Font name="Arial Bold" size="14.0" />
                                                     </font>
                                                 </Label>
-                                                <Label layoutX="0.0068359375" layoutY="291.0" prefHeight="20.0" prefWidth="120.0" text="Visiting Dept" textFill="WHITE">
-                                                    <font>
-                                                        <Font name="Arial Bold" size="14.0" />
-                                                    </font>
-                                                </Label>
-                                                <TextField fx:id="modifyDeptTextField1" layoutX="110.0068359375" layoutY="288.0" promptText="Neuroscience" styleClass="textField" stylesheets="@style/patients.css" />
-                                                <Label layoutX="0.0068359375" layoutY="328.0" prefHeight="20.0" prefWidth="120.0" text="Diseases" textFill="WHITE">
-                                                    <font>
-                                                        <Font name="Arial Bold" size="14.0" />
-                                                    </font>
-                                                </Label>
-                                                <TextField fx:id="modifyDiseasesTextField1" layoutX="110.0068359375" layoutY="325.0" promptText="Brain Stroke" styleClass="textField" stylesheets="@style/patients.css" />
-                                                <TextField fx:id="modifyAddressTextField1" layoutX="110.0068359375" layoutY="249.0" promptText="Village/moholla/post" styleClass="textField" stylesheets="@style/patients.css" />
+                                                <TextField fx:id="modifyAddressTextField" layoutX="110.0" layoutY="249.0" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                             </children>
                                         </Pane>
-                                        <Line endX="15.0" endY="370.0" layoutX="365.0" startX="15.0" startY="30.0" stroke="#fdff05" strokeWidth="2.0" />
-                                        <Pane layoutX="380.0" layoutY="7.0">
-                                            <children>
-                                                <HBox layoutY="10.0" prefHeight="0.0" prefWidth="301.0">
-                                                    <children>
-                                                        <Label prefHeight="16.0" prefWidth="190.0" text="Patients Previous History" textFill="WHITE">
-                                                            <font>
-                                                                <Font name="Arial Bold" size="14.0" />
-                                                            </font>
-                                                        </Label>
-                                                        <JFXCheckBox fx:id="l" checkedColor="#1fd000" unCheckedColor="#8700c6" />
-                                                    </children>
-                                                    <padding>
-                                                        <Insets left="10.0" />
-                                                    </padding>
-                                                </HBox>
-                                                <VBox fx:id="previousHistoryVBox1" layoutX="11.0" layoutY="13.0" prefHeight="327.0" prefWidth="301.0" spacing="20.0">
-                                                    <children>
-                                                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                                                            <children>
-                                                                <Label prefHeight="20.0" prefWidth="146.0" text="Weight" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="14.0" />
-                                                                    </font>
-                                                                    <HBox.margin>
-                                                                        <Insets />
-                                                                    </HBox.margin>
-                                                                </Label>
-                                                                <TextField fx:id="modifyWeightTextField1" promptText="60 (KG)" styleClass="textField" stylesheets="@style/patients.css">
-                                                                    <HBox.margin>
-                                                                        <Insets />
-                                                                    </HBox.margin>
-                                                                </TextField>
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox prefHeight="100.0" prefWidth="200.0">
-                                                            <children>
-                                                                <Label prefHeight="20.0" prefWidth="146.0" text="Systolic BP" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="14.0" />
-                                                                    </font>
-                                                                </Label>
-                                                                <TextField fx:id="modifySystolicBPTextField1" promptText="80" styleClass="textField" stylesheets="@style/patients.css" />
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox layoutX="10.0" layoutY="318.0" prefHeight="100.0" prefWidth="200.0">
-                                                            <children>
-                                                                <Label prefHeight="20.0" prefWidth="146.0" text="Diastolic BP" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="14.0" />
-                                                                    </font>
-                                                                </Label>
-                                                                <TextField fx:id="modifyDiastolicTextField1" promptText="120" styleClass="textField" stylesheets="@style/patients.css" />
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox layoutX="10.0" layoutY="329.0" prefHeight="100.0" prefWidth="200.0">
-                                                            <children>
-                                                                <Label prefHeight="20.0" prefWidth="146.0" text="Body Temp" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="14.0" />
-                                                                    </font>
-                                                                </Label>
-                                                                <TextField fx:id="modifyBodyTempTextField1" promptText="98" styleClass="textField" stylesheets="@style/patients.css" />
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox layoutX="10.0" layoutY="91.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                                            <children>
-                                                                <Label prefHeight="20.0" prefWidth="146.0" text="Previous Problem" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="14.0" />
-                                                                    </font>
-                                                                </Label>
-                                                                <JFXCheckBox checkedColor="#1fd000" text="Allergy" textFill="WHITE" unCheckedColor="#8700c6">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="12.0" />
-                                                                    </font>
-                                                                </JFXCheckBox>
-                                                                <JFXCheckBox checkedColor="#1fd000" layoutX="160.0" layoutY="10.0" prefHeight="18.0" prefWidth="76.0" text="Diabetes" textFill="WHITE" unCheckedColor="#8700c6">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="12.0" />
-                                                                    </font>
-                                                                </JFXCheckBox>
-                                                            </children>
-                                                        </HBox>
-                                                        <HBox layoutX="10.0" layoutY="335.0" prefHeight="100.0" prefWidth="200.0">
-                                                            <children>
-                                                                <Label prefHeight="20.0" prefWidth="146.0" text="Family Problem" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Arial Bold" size="14.0" />
-                                                                    </font>
-                                                                </Label>
-                                                                <TextField fx:id="modifyFamilyProblemTextField1" promptText="Azma" styleClass="textField" stylesheets="@style/patients.css" />
-                                                            </children>
-                                                        </HBox>
-                                                    </children>
-                                                    <padding>
-                                                        <Insets top="30.0" />
-                                                    </padding>
-                                                </VBox>
-                                                <HBox alignment="CENTER_RIGHT" layoutX="29.0" layoutY="344.0" prefHeight="41.0" prefWidth="276.0" spacing="10.0">
-                                                    <children>
-                                                        <JFXButton onAction="#createButton" stylesheets="@style/patients.css" text="Save" textFill="#fdff00">
-                                                            <font>
-                                                                <Font name="Arial Bold" size="14.0" />
-                                                            </font>
-                                                            <styleClass>
-                                                                <String fx:value="topAddPane" />
-                                                                <String fx:value="topMenuBarHBoxHover" />
-                                                            </styleClass>
-                                                        </JFXButton>
-                                                        <JFXButton onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
-                                                            <font>
-                                                                <Font name="Arial Bold" size="14.0" />
-                                                            </font>
-                                                            <styleClass>
-                                                                <String fx:value="modifyPatientsPane" />
-                                                                <String fx:value="topMenuBarHBoxHover" />
-                                                            </styleClass>
-                                                        </JFXButton>
-                                                    </children>
-                                                </HBox>
-                                            </children>
-                                        </Pane>
+                                        <Line endX="15.0" endY="370.0" layoutX="397.0" layoutY="-3.0" startX="15.0" startY="30.0" stroke="#fdff05" strokeWidth="2.0" />
+                                        <JFXButton layoutX="157.0" layoutY="342.0" stylesheets="@style/patients.css" text="Save Changes" textFill="#fdff00">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="topAddPane" />
+                                                <String fx:value="topMenuBarHBoxHover" />
+                                            </styleClass>
+                                        </JFXButton>
+                                        <JFXButton layoutX="300.0" layoutY="342.0" onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="modifyPatientsPane" />
+                                                <String fx:value="topMenuBarHBoxHover" />
+                                            </styleClass>
+                                        </JFXButton>
                                     </children>
                                 </Pane>
                             </children>
