@@ -11,24 +11,36 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="medioxide.controller.patients.ModifyPatientsController">
+<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.patients.ModifyPatientsController">
    <children>
-      <Pane layoutY="-14.0" prefHeight="527.0" prefWidth="435.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
+      <Pane layoutY="-14.0" prefHeight="584.0" prefWidth="435.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
          <children>
             <Pane layoutX="19.9931640625" layoutY="30.0">
                <children>
-                  <VBox prefHeight="724.0" prefWidth="414.0" spacing="20.0">
+                  <VBox prefHeight="357.0" prefWidth="415.0" spacing="20.0">
                      <children>
                         <HBox prefHeight="32.0" prefWidth="414.0">
                            <children>
-                              <JFXButton onAction="#cancelButton" prefHeight="10.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 50;" />
+                              <JFXButton onAction="#cancelButton" prefHeight="10.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 100;" styleClass="modifyCloseButton" stylesheets="@style/patients.css" />
                            </children>
                         </HBox>
+                        <VBox spacing="25.0">
+                           <children>
+                              <Line endX="313.5" startX="-100.0" stroke="#9c4d00" />
+                              <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="76.0" prefWidth="389.0" text="Update Patients" textFill="#03a110">
+                                 <font>
+                                    <Font name="Arial Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="313.5" startX="-100.0" stroke="#9c4d00" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="-10.0" />
+                           </VBox.margin>
+                        </VBox>
                         <HBox>
                            <children>
                               <Label prefHeight="20.0" prefWidth="120.0" text="Name*" textFill="WHITE">
@@ -85,7 +97,7 @@
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
                               </JFXRadioButton>
-                              <JFXRadioButton fx:id="modifyRBOther" text="Others" textFill="WHITE">
+                              <JFXRadioButton fx:id="modifyRBOther" text="Other" textFill="WHITE">
                                  <unSelectedColor>
                                     <Color red="0.972000002861023" green="1.0" blue="0.019999999552965164" />
                                  </unSelectedColor>

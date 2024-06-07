@@ -1,24 +1,31 @@
 package medioxide.controller.patients;
 
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXRadioButton;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.LoadException;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import medioxide.components.DataTableListView;
 import medioxide.database.InsertIntoPatients;
 import medioxide.database.SelectFromPatients;
@@ -26,12 +33,6 @@ import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
 import medioxide.model.ModelPatients;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class PatientsController implements Initializable, OnClickListener {
 
@@ -68,8 +69,6 @@ public class PatientsController implements Initializable, OnClickListener {
     public JFXRadioButton modifyRBMale;
     public JFXRadioButton modifyRBFemale;
     public JFXRadioButton modifyRBOther;
-
-    public TextField removePatientsSearchTextField;
     public AnchorPane removePatientsAnchorPane;
     public VBox previousHistoryVBox;
     public JFXCheckBox previousHistoryCheckbox;
@@ -105,7 +104,7 @@ public class PatientsController implements Initializable, OnClickListener {
         showAllButton();
         showSearchButton();
         initGenderToggle();
-        removePatientsSearchButton();
+        //removePatientsSearchButton();
 
         initComboBox();
     }
@@ -132,7 +131,7 @@ public class PatientsController implements Initializable, OnClickListener {
     }
 
     private void showAllButton() {
-        String query = "SELECT * FROM patients;";
+        String query = "SELECT * FROM patients_personal_info;";
         var list = SelectFromPatients.getAllPatientList();
         var patientsList = FXCollections.observableList(list);
         var table = new DataTableListView<ModelPatients>(patientsList, this);
@@ -237,36 +236,14 @@ public class PatientsController implements Initializable, OnClickListener {
                 name, surname, gender, phone, email, address, visiting_dept, diseases, prevProblem, familyProb);
 
         displayAllData();
+        showAllButton();
 //        System.out.println("Data successfully inserted\nThank You....!");
     }
-
-    public void removePatientsSearchButton() {
-        List list;
-
-        String searchID = removePatientsSearchTextField.getText().trim();
-        try {
-            int id = Integer.parseInt(searchID);
-            list = SelectFromPatients.getPatientListById(id);
-        } catch (Exception e) {
-            list = SelectFromPatients.getPatientListByName(searchID);
-        }
-        removePatientsSearchTextField.clear();
-        var patientsList = FXCollections.observableList(list);
-        var table = new DataTableListView<ModelPatients>(patientsList, this);
-
-        table.setLayoutX(0);
-        table.setLayoutY(80);
-        table.maxHeight(10.0);
-
-        table.setPrefWidth(1366D);
-        table.setPrefHeight(50D);
-        removePatientsAnchorPane.getChildren().add(table);
-    }
-
     @Override
     public void onDeleteClick(int id) {
+        System.out.println("delete id: " + id);
         InsertIntoPatients.deleteData(id);
-        //showAllButton();
+        showAllButton();
     }
 
     @Override
@@ -348,14 +325,4 @@ public class PatientsController implements Initializable, OnClickListener {
         System.out.println(prevProblem);
     }
 
-    public void modifySaveChangeButton(ActionEvent event) throws IOException {
-        String fxml = "modify_patients.fxml";
-        FXMLLoader  fxmlLoader  = new FXMLLoader(getClass().getResource(fxml));
-        Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-
-        stage.initStyle(StageStyle.DECORATED);
-        stage.show();
-    }
 }

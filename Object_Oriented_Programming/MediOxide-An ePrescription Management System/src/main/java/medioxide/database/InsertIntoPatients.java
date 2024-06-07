@@ -98,15 +98,20 @@ public class InsertIntoPatients {
     }
 
     public  static  void deleteData(int id){
-        String query = "DELETE FROM patients_personal_info WHERE id = ?";
+        String query = "DELETE FROM patients_personal_info WHERE patients_id = ?;";
         try {
             var connection = DatabaseConnector.getConnection();
-            var ps = connection.prepareStatement(query);
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            System.out.println("Delete id(database): " + id);
+
             ps.setInt(1, id);
+            System.out.println("ID seated done, Query: " + ps);
+
             var resultSet = ps.executeUpdate();
         }catch (SQLException sqlException){
             System.out.println(sqlException.getMessage());
-            System.out.println("SQL connection failed");
+            System.out.println("SQL connection failed for delete query");
         }
 
     }

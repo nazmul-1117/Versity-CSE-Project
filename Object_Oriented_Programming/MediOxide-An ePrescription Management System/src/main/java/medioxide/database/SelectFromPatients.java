@@ -32,7 +32,7 @@ public class SelectFromPatients {
                 ));
             }
         } catch (SQLException e) {
-            System.out.println("SQL Query Execution Failed");
+            System.out.println("SQL Query Execution Failed for get all patients list");
         }
 
         return patientsList;
@@ -43,9 +43,11 @@ public class SelectFromPatients {
         var conn = DatabaseConnector.getConnection();
 
         try {
-            String query = "SELECT * FROM patients_personal_info WHERE id = ?;";
+            String query = "SELECT * FROM patients_personal_info WHERE patients_id = ?;";
             var ps = conn.prepareStatement(query);
             ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
             var resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
@@ -73,13 +75,13 @@ public class SelectFromPatients {
 
         try {
             searchName = "%" + searchName + "%";
-            String query = "SELECT * FROM patients_personal_info WHERE name LIKE ?;";
+            String query = "SELECT * FROM patients_personal_info WHERE patients_name LIKE ?;";
 
             var ps = conn.prepareStatement(query);
             ps.setString(1, searchName);
-            var resultSet = ps.executeQuery();
-            System.out.println("RS " + resultSet);
+            System.out.println("PS: " + ps);
 
+            var resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 patientsList.add(new ModelPatients(
                         resultSet.getInt("patients_id"),
@@ -104,17 +106,17 @@ public class SelectFromPatients {
         var conn = DatabaseConnector.getConnection();
 
         try {
-            String query = "SELECT * FROM patients_personal_info WHERE id = ?;";
+            String query = "SELECT * FROM patients_personal_info WHERE patients_id = ?;";
             var ps = conn.prepareStatement(query);
             ps.setInt(1, searchId);
             var resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println(resultSet.getString("name"));
+                System.out.println(resultSet.getString("patients_name"));
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println("SQL Query Execution Failed");
+            System.out.println("Search by ID SQL Query Execution Failed");
         }
 
         return false;
@@ -197,6 +199,8 @@ public class SelectFromPatients {
         } catch (SQLException e) {
             System.out.println("Data not be inserted");
         }
+
+        System.out.println("Update Successfully for ID: " + id + "\n");
         
     }
 }
