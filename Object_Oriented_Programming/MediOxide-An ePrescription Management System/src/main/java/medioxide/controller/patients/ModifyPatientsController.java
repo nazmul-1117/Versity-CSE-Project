@@ -7,8 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import medioxide.database.InsertIntoPatients;
-import medioxide.database.SelectFromPatients;
+import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
 
 import java.net.URL;
@@ -59,7 +58,7 @@ public class ModifyPatientsController implements Initializable {
         int id = 3000;
 
         collectData();
-        SelectFromPatients.updatePatientsIntoDatabase(id, age, name, surname, gender, phone, email, address);
+        PatientsDBTable.updatePatientsIntoDatabase(id, age, name, surname, gender, phone, email, address);
     }
 
 

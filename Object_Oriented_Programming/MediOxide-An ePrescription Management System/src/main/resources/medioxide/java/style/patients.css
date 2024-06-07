@@ -41,7 +41,11 @@
 }
 
 .textField{
-    -fx-background-color: #001641;
+    -fx-background-color: transparent;
+/*    -fx-background-color: #001641;*/
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-border-color: transparent transparent blue transparent;
 
     -fx-text-fill: #ffffff;
     -fx-background-radius: 5px;

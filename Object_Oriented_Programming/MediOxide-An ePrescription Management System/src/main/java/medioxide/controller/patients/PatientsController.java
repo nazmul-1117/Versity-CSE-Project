@@ -27,8 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import medioxide.components.DataTableListView;
-import medioxide.database.InsertIntoPatients;
-import medioxide.database.SelectFromPatients;
+import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
@@ -132,7 +131,7 @@ public class PatientsController implements Initializable, OnClickListener {
 
     private void showAllButton() {
         String query = "SELECT * FROM patients_personal_info;";
-        var list = SelectFromPatients.getAllPatientList();
+        var list = PatientsDBTable.getAllPatientList();
         var patientsList = FXCollections.observableList(list);
         var table = new DataTableListView<ModelPatients>(patientsList, this);
 
@@ -154,10 +153,10 @@ public class PatientsController implements Initializable, OnClickListener {
         try {
             int id = Integer.parseInt(searchID);
 //            var list = SelectFromPatients.getPatientListById(searchID);
-            list = SelectFromPatients.getPatientListById(id);
+            list = PatientsDBTable.getPatientListById(id);
             System.out.println("search by id");
         } catch (Exception e) {
-            list = SelectFromPatients.getPatientListByName(searchID);
+            list = PatientsDBTable.getPatientListByName(searchID);
 //            var list = SelectFromPatients.getPatientListByName(searchID);
             System.out.println("search by Name");
         } finally {
@@ -232,7 +231,7 @@ public class PatientsController implements Initializable, OnClickListener {
             return;
         }
 
-        InsertIntoPatients.insertData(age, weight, systolic_bp, diastolic_bp, bodyTemp,
+        PatientsDBTable.insertData(age, weight, systolic_bp, diastolic_bp, bodyTemp,
                 name, surname, gender, phone, email, address, visiting_dept, diseases, prevProblem, familyProb);
 
         displayAllData();
@@ -242,7 +241,7 @@ public class PatientsController implements Initializable, OnClickListener {
     @Override
     public void onDeleteClick(int id) {
         System.out.println("delete id: " + id);
-        InsertIntoPatients.deleteData(id);
+        PatientsDBTable.deleteData(id);
         showAllButton();
     }
 
@@ -283,7 +282,7 @@ public class PatientsController implements Initializable, OnClickListener {
         try {
             int id = Integer.parseInt(modifySearchTextField.getText().trim());
 
-            if (SelectFromPatients.searchById(id))
+            if (PatientsDBTable.searchById(id))
                 yourID.setText(Integer.toString(id));
             else
                 yourID.setText("ID not found");
