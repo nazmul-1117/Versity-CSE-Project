@@ -9,7 +9,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
-import medioxide.model.patients.PatientsModel;
 import medioxide.model.patients.PatientsModifyModel;
 
 import java.net.URL;
@@ -29,26 +28,17 @@ public class ModifyPatientsController implements Initializable {
     public JFXRadioButton modifyRBMale;
 
     private PatientsModifyModel patientsModel;
-
-    private static String username;
-
     private String name, surname, gender, phone, email, address;
     private int age;
 
+
     private ToggleGroup genderToggleGroup = new ToggleGroup();
-
     public ModifyPatientsController() {}
-
-    public void setGenderToggleGroup(ToggleGroup genderToggleGroup) {
-        this.genderToggleGroup = genderToggleGroup;
-    }
-
     public void setModelPatients(PatientsModifyModel patientsModel) {
         this.patientsModel = patientsModel;
 
         setData();
     }
-
     private void  setData(){
         modifyNameTextField.setText(patientsModel.getName());
         modifySurnameTextField.setText(patientsModel.getSurname());
@@ -76,7 +66,6 @@ public class ModifyPatientsController implements Initializable {
         modifyRBFemale.setToggleGroup(genderToggleGroup);
         modifyRBMale.setToggleGroup(genderToggleGroup);
     }
-
     private void  collectData(){
         name = modifyNameTextField.getText();
         surname = modifySurnameTextField.getText();
@@ -93,12 +82,9 @@ public class ModifyPatientsController implements Initializable {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
-
     public void saveChangeButton(ActionEvent event) {
-        int id = 3000;
-
         collectData();
-        PatientsDBTable.updatePatientsIntoDatabase(id, age, name, surname, gender, phone, email, address);
+        PatientsDBTable.updatePatientsIntoDatabase(patientsModel.getId(), age, name, surname, gender, phone, email, address);
     }
 
 
@@ -106,9 +92,6 @@ public class ModifyPatientsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         initGenderToggle();
-//        this.modifyNameTextField.setText(this.name);
-        System.out.println("Database Name: " + username);
     }
 }

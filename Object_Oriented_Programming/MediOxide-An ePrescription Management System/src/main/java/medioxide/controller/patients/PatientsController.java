@@ -76,28 +76,22 @@ public class PatientsController implements Initializable, OnClickListener {
     public Label yourID;
     public TextField searchPatientsTextField;
     public JFXComboBox comboBox;
-
     private String name, surname, gender, phone, email, address, diseases;
-
     private int weight, systolic_bp, diastolic_bp;
     private float bodyTemp;
     private String visiting_dept, familyProb;
     private String prevProblem = "";
     private int age;
-
     @FXML
     private AnchorPane s;
-
     @FXML
     private AnchorPane sap;
 
     private final ToggleGroup genderToggleGroup = new ToggleGroup();
-
     @FXML
     private void printName(ActionEvent event) {
         System.out.println( addNameTextField.getText());
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -108,13 +102,11 @@ public class PatientsController implements Initializable, OnClickListener {
 
         initComboBox();
     }
-
     private void initGenderToggle() {
         rbMale.setToggleGroup(genderToggleGroup);
         rbFemale.setToggleGroup(genderToggleGroup);
         rbOther.setToggleGroup(genderToggleGroup);
     }
-
     private void showSearchButton() {
         String query = "SELECT * FROM patients;";
         ObservableList<PatientsModel> patientsList = FXCollections.emptyObservableList();
@@ -129,7 +121,6 @@ public class PatientsController implements Initializable, OnClickListener {
         AnchorPane.setRightAnchor(table, 0.0);
         s.getChildren().add(table);
     }
-
     private void showAllButton() {
         String query = "SELECT * FROM patients_personal_info;";
         var list = PatientsDBTable.getAllPatientList();
@@ -144,7 +135,6 @@ public class PatientsController implements Initializable, OnClickListener {
         AnchorPane.setRightAnchor(table, 0.0);
         sap.getChildren().add(table);
     }
-
     public void searchButton(ActionEvent event) {
 
         List list;
@@ -179,7 +169,6 @@ public class PatientsController implements Initializable, OnClickListener {
         AnchorPane.setRightAnchor(table, 0.0);
         s.getChildren().add(table);
     }
-
     private boolean dataCollect() {
         name = addNameTextField.getText();
         surname = addSurnameTextField.getText();
@@ -211,7 +200,6 @@ public class PatientsController implements Initializable, OnClickListener {
 
         return true;
     }
-
     private void displayAllData() {
         System.out.println("First Name: " + name);
         System.out.println("Surname: " + surname);
@@ -221,12 +209,10 @@ public class PatientsController implements Initializable, OnClickListener {
         System.out.println("Email: " + email);
         System.out.println("Address: " + address);
     }
-
     public void cancelButton(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
-
     public void createButton(ActionEvent event) {
         System.out.println("create button called");
         if (!dataCollect()){
@@ -247,7 +233,6 @@ public class PatientsController implements Initializable, OnClickListener {
         PatientsDBTable.deleteData(id);
         showAllButton();
     }
-
     @Override
     public void onEditClick(int id) {
         //ModelPatients mp = new ModelPatients();
@@ -266,7 +251,6 @@ public class PatientsController implements Initializable, OnClickListener {
 
                 ModifyPatientsController mpc = fxmlLoader.getController();
                 mpc.setModelPatients(model);
-                System.out.println("JJJJJJJJJJ send");
 
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -279,9 +263,7 @@ public class PatientsController implements Initializable, OnClickListener {
             System.out.println("modify_patients.fxml failed");
         }
 
-
     }
-
     public void previousHistoryCheckboxAction(ActionEvent event) {
 
         if(previousHistoryCheckbox.isSelected()){
@@ -292,7 +274,6 @@ public class PatientsController implements Initializable, OnClickListener {
             previousHistoryVBox.setVisible(false);
         }
     }
-
     public void modifySearchButton(ActionEvent event) {
         try {
             int id = Integer.parseInt(modifySearchTextField.getText().trim());
@@ -307,7 +288,6 @@ public class PatientsController implements Initializable, OnClickListener {
         }
 
     }
-
     private void initComboBox(){
         ObservableList <String> list = FXCollections.observableList(new ArrayList<>()) ;
         list.add("Burn Plastic Surgery");
@@ -330,7 +310,6 @@ public class PatientsController implements Initializable, OnClickListener {
         String getitem = addDeptComboBox.getSelectionModel().getSelectedItem().toString();
         System.out.println(getitem);
     }
-
     public void prevProblemCheckBoxAction() {
 
         if (addAllergyCheckBox.isSelected()) prevProblem += "Allergy, ";

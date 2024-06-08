@@ -1,6 +1,38 @@
 package medioxide.model.patients;
 
 public class PatientsModifyModel {
+    private int id;
+    private String name;
+    private String surname;
+    private int age;
+    private String gender;
+    private String phone;
+    private String email;
+    private String address;
+
+    public PatientsModifyModel() {
+    }
+
+    public PatientsModifyModel(int id, String name, String surname, int age, String gender, String phone, String email, String address) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.id = id;
+    }
+
+    public PatientsModifyModel(String name, String surname, int age, String gender, String phone, String email, String address) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
 
     public String getName() {
         return name;
@@ -58,24 +90,11 @@ public class PatientsModifyModel {
         this.address = address;
     }
 
-    private String name;
-    private String surname;
-    private int age;
-    private String gender;
-    private String phone;
-    private String email;
-    private String address;
-
-    public PatientsModifyModel() {
+    public int getId() {
+        return id;
     }
 
-    public PatientsModifyModel(String name, String surname, int age, String gender, String phone, String email, String address) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.gender = gender;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
+    public void setId(int id) {
+        this.id = id;
     }
 }

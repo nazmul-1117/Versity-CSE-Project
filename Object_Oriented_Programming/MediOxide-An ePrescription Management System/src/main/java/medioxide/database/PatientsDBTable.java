@@ -84,6 +84,7 @@ public class PatientsDBTable {
 
             while (resultSet.next()) {
                 patientsList.add(new PatientsModifyModel(
+                        resultSet.getInt("patients_id"),
                         resultSet.getString("patients_name"),
                         resultSet.getString("patients_surname"),
                         resultSet.getInt("patients_age"),
