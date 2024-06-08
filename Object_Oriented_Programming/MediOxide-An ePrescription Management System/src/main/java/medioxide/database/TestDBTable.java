@@ -17,22 +17,28 @@ public class TestDBTable {
         var conn = DatabaseConnector.getConnection();
 
         try {
-            String query = "SELECT * FROM medical_tests\n";
+            String query = "SELECT * FROM medical_tests;\n";
             var ps = conn.prepareStatement(query);
             var resultSet = ps.executeQuery();
 
-            while (resultSet.next()) {
-                testList.add(new TestTableViewModel(
+            try {
+                while (resultSet.next()) {
+                    testList.add(new TestTableViewModel(
 
-                        resultSet.getInt("medical_test_id "),
-                        resultSet.getString("medical_test_name"),
-                        resultSet.getString("medical_test_category"),
+                            resultSet.getInt("medical_test_id"),
+                            resultSet.getString("medical_test_name"),
+                            resultSet.getString("medical_test_category"),
 
-                        resultSet.getString("medical_test_description"),
-                        resultSet.getFloat("medical_test_normal_range"),
-                        resultSet.getFloat("medical_test_price")
-                ));
+                            resultSet.getString("medical_test_description"),
+                            resultSet.getFloat("medical_test_normal_range"),
+                            resultSet.getFloat("medical_test_price"),
+                            true
+                    ));
+                }
+            }catch (SQLException e){
+                System.out.println("SQL Query Execution Failed for while loop for all test list");
             }
+
         } catch (SQLException e) {
             System.out.println("SQL Query Execution Failed for get all test list");
         }

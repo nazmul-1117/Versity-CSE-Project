@@ -7,21 +7,30 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import medioxide.components.PatientsDataTableListView;
+import medioxide.components.TestDataTableView;
+import medioxide.database.PatientsDBTable;
 import medioxide.database.TestDBTable;
 import medioxide.helper.HelperFunctions;
+import medioxide.helper.OnClickListener;
+import medioxide.model.patients.PatientsModel;
 import medioxide.model.test.TestMainModel;
+import medioxide.model.test.TestTableViewModel;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class TestController implements Initializable {
+public class TestController implements Initializable, OnClickListener {
 
     public TextField addNormalRangeTextField;
     public TextField addTestNameTextField;
     public JFXTextArea addTestDescriptionTextField;
     public TextField addTestPriceTextField;
     public JFXComboBox addTestCategoryComboBox;
+
+    public AnchorPane showAllTest;
 
     private String name, category, description;
     private float normalRange, price;
@@ -57,7 +66,6 @@ public class TestController implements Initializable {
 
 
     }
-
     private void consolePrintAllData(){
         System.out.println("Name: " + name);
         System.out.println("Category: " + category);
@@ -79,8 +87,20 @@ public class TestController implements Initializable {
         }
 
     }
-
     public void cancelButton(ActionEvent event) {
+    }
+    private void showAllButton() {
+        var list = TestDBTable.getAllTestList();
+        var testList = FXCollections.observableList(list);
+        var table = new TestDataTableView<TestTableViewModel>(testList, this);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 0.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        showAllTest.getChildren().add(table);
     }
 
 
@@ -93,9 +113,17 @@ public class TestController implements Initializable {
 
 
     @Override
+    public void onDeleteClick(int id) {
+        System.out.println("On Delete Clicked for ID: " + id);
+    }
+    @Override
+    public void onEditClick(int id) {
+        System.out.println("On Edit Clicked for ID: " + id);
+    }
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         initComboBox();
+        showAllButton();
     }
-
 }

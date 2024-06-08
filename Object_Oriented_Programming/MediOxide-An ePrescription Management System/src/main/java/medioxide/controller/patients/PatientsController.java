@@ -27,7 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import medioxide.components.DataTableListView;
+import medioxide.components.PatientsDataTableListView;
 import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
@@ -92,16 +92,7 @@ public class PatientsController implements Initializable, OnClickListener {
     private void printName(ActionEvent event) {
         System.out.println( addNameTextField.getText());
     }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-        showAllButton();
-        showSearchButton();
-        initGenderToggle();
-        //removePatientsSearchButton();
-
-        initComboBox();
-    }
     private void initGenderToggle() {
         rbMale.setToggleGroup(genderToggleGroup);
         rbFemale.setToggleGroup(genderToggleGroup);
@@ -111,7 +102,7 @@ public class PatientsController implements Initializable, OnClickListener {
         String query = "SELECT * FROM patients;";
         ObservableList<PatientsModel> patientsList = FXCollections.emptyObservableList();
 
-        var table = new DataTableListView<PatientsModel>(patientsList, this);
+        var table = new PatientsDataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -122,10 +113,9 @@ public class PatientsController implements Initializable, OnClickListener {
         s.getChildren().add(table);
     }
     private void showAllButton() {
-        String query = "SELECT * FROM patients_personal_info;";
         var list = PatientsDBTable.getAllPatientList();
         var patientsList = FXCollections.observableList(list);
-        var table = new DataTableListView<PatientsModel>(patientsList, this);
+        var table = new PatientsDataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -159,7 +149,7 @@ public class PatientsController implements Initializable, OnClickListener {
         var patientsList = FXCollections.observableList(list);
 
 
-        var table = new DataTableListView<PatientsModel>(patientsList, this);
+        var table = new PatientsDataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -227,43 +217,6 @@ public class PatientsController implements Initializable, OnClickListener {
         showAllButton();
 //        System.out.println("Data successfully inserted\nThank You....!");
     }
-    @Override
-    public void onDeleteClick(int id) {
-        System.out.println("delete id: " + id);
-        PatientsDBTable.deleteData(id);
-        showAllButton();
-    }
-    @Override
-    public void onEditClick(int id) {
-        //ModelPatients mp = new ModelPatients();
-        try {
-            var list = PatientsDBTable.getModifyPatientListById(id);
-
-            if (!list.isEmpty()){
-                var model = list.get(0);
-
-                String fxml = "modify_patients.fxml";
-                URL fxmlURL = Main.class.getResource(fxml);
-                System.out.println("URL: " + fxmlURL);
-
-                FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
-                Scene scene = new Scene(fxmlLoader.load());
-
-                ModifyPatientsController mpc = fxmlLoader.getController();
-                mpc.setModelPatients(model);
-
-                Stage stage = new Stage();
-                stage.setScene(scene);
-
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.show();
-            }
-
-        }catch (IOException ioException){
-            System.out.println("modify_patients.fxml failed");
-        }
-
-    }
     public void previousHistoryCheckboxAction(ActionEvent event) {
 
         if(previousHistoryCheckbox.isSelected()){
@@ -316,6 +269,55 @@ public class PatientsController implements Initializable, OnClickListener {
         if (addDiabetesCheckBox.isSelected()) prevProblem += "Diabetes, ";
 
         System.out.println(prevProblem);
+    }
+
+
+    @Override
+    public void onDeleteClick(int id) {
+        System.out.println("delete id: " + id);
+        PatientsDBTable.deleteData(id);
+        showAllButton();
+    }
+    @Override
+    public void onEditClick(int id) {
+        //ModelPatients mp = new ModelPatients();
+        try {
+            var list = PatientsDBTable.getModifyPatientListById(id);
+
+            if (!list.isEmpty()){
+                var model = list.get(0);
+
+                String fxml = "modify_patients.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+                System.out.println("URL: " + fxmlURL);
+
+                FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                ModifyPatientsController mpc = fxmlLoader.getController();
+                mpc.setModelPatients(model);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
+
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        showAllButton();
+        showSearchButton();
+        initGenderToggle();
+        //removePatientsSearchButton();
+
+        initComboBox();
     }
 
 }

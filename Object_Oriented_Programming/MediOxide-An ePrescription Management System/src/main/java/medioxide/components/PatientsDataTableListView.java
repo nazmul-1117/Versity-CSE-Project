@@ -13,9 +13,9 @@ import medioxide.model.patients.PatientsModel;
 
 import java.util.Objects;
 
-public class DataTableListView<T> extends TableView<PatientsModel> {
+public class PatientsDataTableListView<T> extends TableView<PatientsModel> {
     OnClickListener listener;
-    public DataTableListView(ObservableList<PatientsModel> observableList, OnClickListener listener) {
+    public PatientsDataTableListView(ObservableList<PatientsModel> observableList, OnClickListener listener) {
         super(observableList);
         this.listener = listener;
         setup();
@@ -90,8 +90,6 @@ public class DataTableListView<T> extends TableView<PatientsModel> {
         getColumns().setAll(tableHeaders);
         setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
-
-
 
     private class ButtonCell<S, T> extends TableCell<S, T> {
         private final Button editButton;

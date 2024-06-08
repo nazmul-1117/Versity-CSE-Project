@@ -11,16 +11,20 @@ public class TestTableViewModel {
     private FloatProperty normalRange;
     private FloatProperty price;
 
+    private BooleanProperty action;
+
     public TestTableViewModel() {
     }
 
-    public TestTableViewModel(int id, String name, String category, String description, float normalRange, float price) {
+    public TestTableViewModel(int id, String name, String category, String description,
+                              float normalRange, float price, boolean action) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.category = new SimpleStringProperty(category);
         this.description = new SimpleStringProperty(description);
         this.normalRange = new SimpleFloatProperty(normalRange);
         this.price = new SimpleFloatProperty(price);
+        this.action = new SimpleBooleanProperty(action);
     }
 
     public String getCategory() {
@@ -93,6 +97,14 @@ public class TestTableViewModel {
 
     public void setDescription(String description) {
         this.description.set(description);
+    }
+
+    public BooleanProperty actionProperty() {
+        return action;
+    }
+
+    public void setAction(boolean action) {
+        this.action.set(action);
     }
 
 }
