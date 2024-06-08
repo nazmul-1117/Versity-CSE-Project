@@ -1,0 +1,10 @@
+
+.saveButton{
+    -fx-background-color: #33cb00;
+    -fx-background-radius: 5px;
+}
+
+.cancelButton{
+    -fx-background-color: #b90000;
+    -fx-background-radius: 5px;
+}

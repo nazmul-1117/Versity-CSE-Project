@@ -155,7 +155,6 @@ public class PatientsDBTable {
         return false;
     }
 
-    
     public static void updatePatientsIntoDatabase(int id, int age, String ... s){
         
         String query = "UPDATE patients_personal_info\n" +

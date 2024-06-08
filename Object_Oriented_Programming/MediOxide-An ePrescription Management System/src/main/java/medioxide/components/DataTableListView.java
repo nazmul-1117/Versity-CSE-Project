@@ -92,6 +92,7 @@ public class DataTableListView<T> extends TableView<PatientsModel> {
     }
 
 
+
     private class ButtonCell<S, T> extends TableCell<S, T> {
         private final Button editButton;
         private final Button deleteButton;
