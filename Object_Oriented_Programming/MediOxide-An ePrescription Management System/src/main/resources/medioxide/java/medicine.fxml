@@ -76,7 +76,7 @@
                 </Tab>
                 <Tab text="Show All Test">
                     <content>
-                        <AnchorPane fx:id="showAllTest" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css" />
+                        <AnchorPane fx:id="showAllMedicine" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css" />
                     </content>
                 </Tab>
                 <Tab style="-fx-background-color: yellow;" text="Search Test">
