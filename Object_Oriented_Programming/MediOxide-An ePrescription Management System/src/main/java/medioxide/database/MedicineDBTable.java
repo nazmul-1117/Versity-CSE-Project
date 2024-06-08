@@ -3,9 +3,7 @@ package medioxide.database;
 import medioxide.model.medicine.MedicineMainModel;
 import medioxide.model.medicine.MedicineModifyModel;
 import medioxide.model.medicine.MedicineTableViewModel;
-import medioxide.model.patients.PatientsModifyModel;
-import medioxide.model.test.TestMainModel;
-import medioxide.model.test.TestTableViewModel;
+import medioxide.model.patients.PatientsModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -163,6 +161,86 @@ public class MedicineDBTable {
 
         System.out.println("Update Successfully for ID: " + model.getId() + "\n");
 
+    }
+    public  static  void deleteMedicineData(int id) {
+        String query = "DELETE FROM medicine WHERE medicine_id = ?;";
+        try {
+            var connection = DatabaseConnector.getConnection();
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            System.out.println("Delete id(database): " + id);
+
+            ps.setInt(1, id);
+            System.out.println("ID seated done, Query: " + ps);
+
+            var resultSet = ps.executeUpdate();
+        } catch (SQLException sqlException) {
+            System.out.println(sqlException.getMessage());
+            System.out.println("SQL connection failed for delete query");
+        }
+    }
+
+
+    public static List<MedicineTableViewModel> getPatientListById(int searchId) {
+        var medicineList = new ArrayList<MedicineTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM medicine WHERE medicine_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                medicineList.add(new MedicineTableViewModel(
+                        resultSet.getInt("medicine_id"),
+                        resultSet.getString("medicine_name"),
+                        resultSet.getString("medicine_types"),
+
+                        resultSet.getString("medicine_generic"),
+                        resultSet.getString("medicine_brands"),
+                        resultSet.getString("medicine_description"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return medicineList;
+    }
+    public static List<MedicineTableViewModel> getPatientListByName(String searchName) {
+        var medicineList = new ArrayList<MedicineTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            searchName = "%" + searchName + "%";
+            String query = "SELECT * FROM medicine WHERE medicine_name LIKE ?;";
+
+            var ps = conn.prepareStatement(query);
+            ps.setString(1, searchName);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                medicineList.add(new MedicineTableViewModel(
+                        resultSet.getInt("medicine_id"),
+                        resultSet.getString("medicine_name"),
+                        resultSet.getString("medicine_types"),
+
+                        resultSet.getString("medicine_generic"),
+                        resultSet.getString("medicine_brands"),
+                        resultSet.getString("medicine_description"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return medicineList;
     }
 
 }

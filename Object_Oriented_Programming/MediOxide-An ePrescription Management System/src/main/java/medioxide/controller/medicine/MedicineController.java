@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import medioxide.components.MedicineDataTableView;
+import medioxide.components.PatientsDataTableListView;
 import medioxide.components.TestDataTableView;
 import medioxide.controller.patients.PatientsModifyController;
 import medioxide.database.MedicineDBTable;
@@ -20,10 +21,12 @@ import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
 import medioxide.model.medicine.MedicineMainModel;
 import medioxide.model.medicine.MedicineTableViewModel;
+import medioxide.model.patients.PatientsModel;
 import medioxide.model.test.TestTableViewModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MedicineController implements Initializable, OnClickListener {
@@ -32,8 +35,11 @@ public class MedicineController implements Initializable, OnClickListener {
     public TextField addTypeTextField;
     public TextField addGenericTextField;
     public TextField addBrandsTextField;
-    public AnchorPane showAllMedicine;
 
+    public TextField searchMedicineTextField;
+
+    public AnchorPane showAllMedicine;
+    public AnchorPane searchBoxAnchorPane;
     private MedicineMainModel model;
 
 
@@ -47,7 +53,6 @@ public class MedicineController implements Initializable, OnClickListener {
 
         model = new MedicineMainModel(name, type, generic, brands, description);
     }
-
     private void consoleShowData(){
         System.out.println("\nName: " + model.getName());
         System.out.println("Types: " + model.getTypes());
@@ -59,11 +64,34 @@ public class MedicineController implements Initializable, OnClickListener {
 
 
     public void medicineSearchButton(ActionEvent event) {
+        List list;
+        String searchItem = searchMedicineTextField.getText();
+
+        try {
+            int id = Integer.parseInt(searchItem);
+            list = MedicineDBTable.getPatientListById(id);
+
+        }catch (Exception e){
+            list = MedicineDBTable.getPatientListByName(searchItem);
+        }
+
+        var medicineList = FXCollections.observableList(list);
+        var table = new MedicineDataTableView<>(medicineList, this);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 80.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        searchBoxAnchorPane.getChildren().add(table);
+
     }
     public void saveButton(ActionEvent event) {
         dataCollect();
         consoleShowData();
         MedicineDBTable.insertIntoTest(model);
+        showAllButton();
     }
     public void cancelButton(ActionEvent event) {
     }
@@ -91,7 +119,8 @@ public class MedicineController implements Initializable, OnClickListener {
     @Override
     public void onDeleteClick(int id) {
         System.out.println("On delete clicked. ID: " + id);
-
+        MedicineDBTable.deleteMedicineData(id);
+        showAllButton();
     }
 
     @Override

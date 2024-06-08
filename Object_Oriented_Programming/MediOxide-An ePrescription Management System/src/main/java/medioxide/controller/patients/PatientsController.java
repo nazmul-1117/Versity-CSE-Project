@@ -275,7 +275,7 @@ public class PatientsController implements Initializable, OnClickListener {
     @Override
     public void onDeleteClick(int id) {
         System.out.println("delete id: " + id);
-        PatientsDBTable.deleteData(id);
+        PatientsDBTable.deletePatientsData(id);
         showAllButton();
     }
     @Override

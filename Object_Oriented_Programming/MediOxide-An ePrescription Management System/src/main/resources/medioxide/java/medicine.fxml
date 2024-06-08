@@ -81,14 +81,14 @@
                 </Tab>
                 <Tab style="-fx-background-color: yellow;" text="Search Test">
                     <content>
-                        <AnchorPane fx:id="s" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css">
+                        <AnchorPane fx:id="searchBoxAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css">
                             <children>
-                                <Label layoutX="20.0" layoutY="33.0" prefHeight="20.0" prefWidth="86.0" text="Patients ID" textFill="WHITE">
+                                <Label layoutX="20.0" layoutY="33.0" prefHeight="20.0" prefWidth="86.0" text="Medicine ID" textFill="WHITE">
                                     <font>
                                         <Font name="Arial Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="searchPatientsTextField" layoutX="120.0" layoutY="30.0" prefHeight="25.0" prefWidth="184.0" promptText="Enter Patients Id" />
+                                <TextField fx:id="searchMedicineTextField" layoutX="120.0" layoutY="30.0" prefHeight="25.0" prefWidth="184.0" promptText="Enter Patients Id" />
                                 <JFXButton layoutX="940.0" layoutY="30.0" maxWidth="150.0" onAction="#medicineSearchButton" prefHeight="20.0" prefWidth="121.0" style="-fx-background-color: #02f302; -fx-background-radius: 50;" text="Search">
                                     <font>
                                         <Font name="Arial Bold" size="18.0" />

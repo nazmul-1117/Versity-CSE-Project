@@ -298,7 +298,7 @@ public class PatientsDBTable {
         }
 
     }
-    public  static  void deleteData(int id){
+    public  static  void deletePatientsData(int id){
         String query = "DELETE FROM patients_personal_info WHERE patients_id = ?;";
         try {
             var connection = DatabaseConnector.getConnection();
