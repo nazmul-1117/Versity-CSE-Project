@@ -9,6 +9,7 @@ module medioxide {
     opens medioxide.model.test to javafx.base;
     opens medioxide.controller.patients to javafx.fxml;
     opens medioxide.controller.test to javafx.fxml;
+    opens medioxide.controller.medicine to javafx.fxml;
 
 
     exports medioxide.java;
