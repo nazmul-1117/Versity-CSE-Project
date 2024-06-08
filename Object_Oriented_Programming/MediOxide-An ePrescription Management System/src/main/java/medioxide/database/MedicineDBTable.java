@@ -1,7 +1,9 @@
 package medioxide.database;
 
 import medioxide.model.medicine.MedicineMainModel;
+import medioxide.model.medicine.MedicineModifyModel;
 import medioxide.model.medicine.MedicineTableViewModel;
+import medioxide.model.patients.PatientsModifyModel;
 import medioxide.model.test.TestMainModel;
 import medioxide.model.test.TestTableViewModel;
 
@@ -87,6 +89,80 @@ public class MedicineDBTable {
         }
 
         return testList;
+    }
+    public static List<MedicineModifyModel> getModifyMedicineListById(int searchId) {
+        var medicineList = new ArrayList<MedicineModifyModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM medicine WHERE medicine_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("Medicine PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                medicineList.add(new MedicineModifyModel(
+                        resultSet.getInt("medicine_id"),
+                        resultSet.getString("medicine_name"),
+                        resultSet.getString("medicine_types"),
+
+                        resultSet.getString("medicine_generic"),
+                        resultSet.getString("medicine_brands"),
+                        resultSet.getString("medicine_description")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return medicineList;
+    }
+
+    public static void updateMedicineData(MedicineModifyModel model){
+
+        String query = "UPDATE medicine\n" +
+                "SET \n" +
+                "\tmedicine_name = ?,\n" +
+                "    medicine_types = ?,\n" +
+                "    medicine_generic = ?,\n" +
+                "    medicine_brands = ?,\n" +
+                "    medicine_description = ?\n" +
+                "WHERE medicine_id = ?;";
+
+        try {
+            Connection connection = DatabaseConnector.getConnection();
+            PreparedStatement ps = connection.prepareStatement(query);
+
+            ps.setString(1, model.getName());
+            ps.setString(2, model.getTypes());
+            ps.setString(3, model.getGeneric());
+            ps.setString(4, model.getBrands());
+            ps.setString(5, model.getDescription());
+
+            ps.setInt(6, model.getId());
+
+
+            int statement=-1;
+            try {
+                statement = ps.executeUpdate();
+
+            }catch (SQLException sqlException){
+                System.out.println("\nExecuted Statement failed for: "+ sqlException.getMessage()+"\n\n");
+            }
+
+            if (statement < 0) {
+                System.out.println("Data Insert failed " + statement);
+            } else {
+                System.out.println("Data insert successful " + statement);
+            }
+        } catch (SQLException e) {
+            System.out.println("Data not be inserted");
+        }
+
+        System.out.println("Update Successfully for ID: " + model.getId() + "\n");
+
     }
 
 }

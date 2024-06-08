@@ -3,18 +3,26 @@ package medioxide.controller.medicine;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medioxide.components.MedicineDataTableView;
 import medioxide.components.TestDataTableView;
+import medioxide.controller.patients.PatientsModifyController;
 import medioxide.database.MedicineDBTable;
+import medioxide.database.PatientsDBTable;
 import medioxide.database.TestDBTable;
 import medioxide.helper.OnClickListener;
+import medioxide.java.Main;
 import medioxide.model.medicine.MedicineMainModel;
 import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.test.TestTableViewModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -59,7 +67,6 @@ public class MedicineController implements Initializable, OnClickListener {
     }
     public void cancelButton(ActionEvent event) {
     }
-
     private void showAllButton() {
         var list = MedicineDBTable.getAllTestList();
         var medicineList = FXCollections.observableList(list);
@@ -89,7 +96,32 @@ public class MedicineController implements Initializable, OnClickListener {
 
     @Override
     public void onEditClick(int id) {
-        System.out.println("On edit clicked. ID: " + id);
+        try {
+            var list = MedicineDBTable.getModifyMedicineListById(id);
+
+            if (!list.isEmpty()){
+                var model = list.get(0);
+
+                String fxml = "modify_medicine.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+                System.out.println("URL: " + fxmlURL);
+
+                FXMLLoader fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                MedicineModifyController mpc = fxmlLoader.getController();
+                mpc.setModel(model);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
 
     }
 

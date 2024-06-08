@@ -1,0 +1,27 @@
+
+.saveButton{
+    -fx-text-fill: black;
+    -fx-background-color: #33cb00;
+    -fx-background-radius: 5px;
+}
+
+.cancelButton{
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #b90000;
+    -fx-background-radius: 5px;
+}
+
+.buttonHover:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+/*    -fx-border-color: transparent transparent #b40073 transparent;*/
+    -fx-border-color: #00d000 transparent #b40073 transparent;
+
+    -fx-text-fill: #08fc00;
+    /*                -fx-alignment: CENTER;*/
+
+    -fx-transition: 10s;
+}
