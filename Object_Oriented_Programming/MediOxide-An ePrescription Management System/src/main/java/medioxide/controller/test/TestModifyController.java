@@ -28,17 +28,13 @@ public class TestModifyController implements Initializable {
     public TextField modifyDescriptionTextField;
     public TextField modifyNormalRangeTextField;
     public TextField modifyPriceTextField;
-
     private TestModifyModel model;
-    private TestModifyModel tempModel;
-    private int id;
 
 
     public TestModifyController() {}
 
-    public void setTestModifyModel(TestModifyModel tempModel) {
-        this.tempModel = tempModel;
-        id = tempModel.getId();
+    public void setTestModifyModel(TestModifyModel model) {
+        this.model = model;
         setData();
     }
     private void initComboBox(){
@@ -59,30 +55,16 @@ public class TestModifyController implements Initializable {
     }
     public void setData(){
 
-        try {
-            System.out.println("model is not null");
-
-//            modifyNameTextField.setText(tempModel.getName());
-//            modifyDescriptionTextField.setText(tempModel.getDescription());
-
-            modifyNormalRangeTextField.setText(Float.toString(tempModel.getNormalRange()));
-            modifyPriceTextField.setText(Float.toString(tempModel.getPrice()));
-
-        }catch (NullPointerException e){
-            System.out.println("\n----------->Null pointer<-------------------\n");
-        }
-
-        System.out.println("ID: " + tempModel.getId());
-        System.out.println("Name: " + tempModel.getName());
-        System.out.println("Category: " + tempModel.getCategory());
-        System.out.println("Description: " + tempModel.getDescription());
-        System.out.println("Normal Range: " + tempModel.getNormalRange());
-        System.out.println("Price: " + tempModel.getPrice());
+        modifyNameTextField.setText(model.getName());
+        modifyDescriptionTextField.setText(model.getDescription());
+        modifyNormalRangeTextField.setText(Float.toString(model.getNormalRange()));
+        modifyPriceTextField.setText(Float.toString(model.getPrice()));
     }
     private void  collectData(){
         String name, description, category;
         float normalRange, price;
 
+        int id = model.getId();
         name = modifyNameTextField.getText();
         category = modifyTestCategoryComboBox.getSelectionModel().getSelectedItem().toString();
         description = modifyDescriptionTextField.getText();
@@ -90,21 +72,16 @@ public class TestModifyController implements Initializable {
         normalRange = HelperFunctions.stringToFloat(modifyNormalRangeTextField.getText());
         price = HelperFunctions.stringToFloat(modifyPriceTextField.getText());
 
-        model = new TestModifyModel(name, category, description, normalRange, price);
-        System.out.println("ID: " +tempModel.getId());
+        model = null;
+        model = new TestModifyModel(id, name, category, description, normalRange, price);
     }
-
     public void cancelButton(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
     public void saveChangeButton(ActionEvent event) {
         collectData();
-
-            System.out.println("Update for ID: " + id + "\n");
-            System.out.println("Model Name: " + model.getName());
-//            TestDBTable.updateTestIntoDatabase(model);
-            System.out.println("Model is null");
+        TestDBTable.updateTestIntoDatabase(model);
     }
 
 

@@ -130,16 +130,14 @@ public class TestController implements Initializable, OnClickListener {
 
             if (!list.isEmpty()){
                 var model = list.get(0);
-                System.out.println("Model ID: " + model.getId());
 
                 String fxml = "modify_test.fxml";
                 URL fxmlURL = Main.class.getResource(fxml);
-                System.out.println("URL---------->: " + fxmlURL);
 
                 FXMLLoader fxmlLoader  = new FXMLLoader(fxmlURL);
                 Scene scene = new Scene(fxmlLoader.load());
 
-                TestModifyController tmc = new TestModifyController();
+                TestModifyController tmc = fxmlLoader.getController();
                 tmc.setTestModifyModel(model);
 
                 Stage stage = new Stage();

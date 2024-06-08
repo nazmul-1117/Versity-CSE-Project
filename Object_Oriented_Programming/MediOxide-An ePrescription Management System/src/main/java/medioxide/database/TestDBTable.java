@@ -107,7 +107,7 @@ public class TestDBTable {
             ps.setFloat(4, model.getNormalRange());
             ps.setFloat(5, model.getPrice());
 
-            ps.setInt(6, 50001);
+            ps.setInt(6, model.getId());
 
 
 
@@ -122,7 +122,7 @@ public class TestDBTable {
             if (statement < 0) {
                 System.out.println("Data Insert failed " + statement);
             } else {
-                System.out.println("Data insert successful " + statement);
+                System.out.println("Data Update successful " + statement);
             }
         } catch (SQLException e) {
             System.out.println("Data not be inserted");
@@ -132,7 +132,7 @@ public class TestDBTable {
 
     }
 
-    public static List<TestModifyModel> getModifyTestListById(int searchId) {
+    public static List<TestModifyModel> getModifyTestListById(int searchId){
         var testList = new ArrayList<TestModifyModel>();
         var conn = DatabaseConnector.getConnection();
 

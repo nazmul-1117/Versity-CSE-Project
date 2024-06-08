@@ -20,7 +20,6 @@ public class MedicineModifyController implements Initializable {
     public TextField modifyBrandTextField;
     public TextField modifyDescTextField;
 
-
     private MedicineModifyModel model;
 
 
