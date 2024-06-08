@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import medioxide.database.MedicineDBTable;
 import medioxide.helper.OnClickListener;
 import medioxide.model.medicine.MedicineMainModel;
 
@@ -49,6 +50,7 @@ public class MedicineController implements Initializable, OnClickListener {
     public void saveButton(ActionEvent event) {
         dataCollect();
         consoleShowData();
+        MedicineDBTable.insertIntoTest(model);
     }
     public void cancelButton(ActionEvent event) {
     }
