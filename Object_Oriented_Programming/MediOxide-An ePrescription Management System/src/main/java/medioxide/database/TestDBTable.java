@@ -1,7 +1,9 @@
 package medioxide.database;
 
 import medioxide.model.patients.PatientsModel;
+import medioxide.model.patients.PatientsModifyModel;
 import medioxide.model.test.TestMainModel;
+import medioxide.model.test.TestModifyModel;
 import medioxide.model.test.TestTableViewModel;
 
 import java.sql.Connection;
@@ -81,5 +83,82 @@ public class TestDBTable {
         }catch (SQLException e){
 
         }
+    }
+
+    public static void updateTestIntoDatabase(TestModifyModel model){
+
+        String query = "UPDATE medical_tests\n" +
+                "SET \n" +
+                "    medical_test_name = ?,\n" +
+                "    medical_test_category = ?,\n" +
+                "    medical_test_description = ?,\n" +
+                "    medical_test_normal_range = ?,\n" +
+                "    medical_test_price = ?\n" +
+                "WHERE medical_test_id = ?;";
+
+        try {
+            Connection connection = DatabaseConnector.getConnection();
+            PreparedStatement ps = connection.prepareStatement(query);
+
+            ps.setString(1, model.getName());
+            ps.setString(2, model.getCategory());
+            ps.setString(3, model.getDescription());
+
+            ps.setFloat(4, model.getNormalRange());
+            ps.setFloat(5, model.getPrice());
+
+            ps.setInt(6, 50001);
+
+
+
+            int statement=-1;
+            try {
+                statement = ps.executeUpdate();
+
+            }catch (SQLException sqlException){
+                System.out.println("\nExecuted Statement failed for: "+ sqlException.getMessage()+"\n\n");
+            }
+
+            if (statement < 0) {
+                System.out.println("Data Insert failed " + statement);
+            } else {
+                System.out.println("Data insert successful " + statement);
+            }
+        } catch (SQLException e) {
+            System.out.println("Data not be inserted");
+        }
+
+        System.out.println("Update Successfully for ID: " + model.getId() + "\n");
+
+    }
+
+    public static List<TestModifyModel> getModifyTestListById(int searchId) {
+        var testList = new ArrayList<TestModifyModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM medical_tests WHERE medical_test_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                testList.add(new TestModifyModel(
+                        resultSet.getInt("medical_test_id"),
+                        resultSet.getString("medical_test_name"),
+                        resultSet.getString("medical_test_category"),
+
+                        resultSet.getString("medical_test_description"),
+                        resultSet.getFloat("medical_test_normal_range"),
+                        resultSet.getFloat("medical_test_price")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return testList;
     }
 }

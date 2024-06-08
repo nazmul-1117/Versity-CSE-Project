@@ -173,8 +173,6 @@ public class PatientsDBTable {
             Connection connection = DatabaseConnector.getConnection();
             PreparedStatement ps = connection.prepareStatement(query);
 
-            ps = connection.prepareStatement(query);
-
             ps.setString(1, s[0]); //name
             ps.setString(2, s[1]);  //surname
             ps.setInt(3, age);

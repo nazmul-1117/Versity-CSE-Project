@@ -5,19 +5,24 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import medioxide.components.PatientsDataTableListView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medioxide.components.TestDataTableView;
+import medioxide.controller.patients.PatientsModifyController;
 import medioxide.database.PatientsDBTable;
 import medioxide.database.TestDBTable;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
-import medioxide.model.patients.PatientsModel;
+import medioxide.java.Main;
 import medioxide.model.test.TestMainModel;
 import medioxide.model.test.TestTableViewModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -52,11 +57,11 @@ public class TestController implements Initializable, OnClickListener {
 
         addTestCategoryComboBox.setItems(list);
     }
-
     private void dataCollect(){
 
         name = addTestNameTextField.getText();
         category = addTestCategoryComboBox.getSelectionModel().getSelectedItem().toString();
+
         description = addTestDescriptionTextField.getText();
 
         normalRange = HelperFunctions.stringToFloat(addNormalRangeTextField.getText());
@@ -118,7 +123,35 @@ public class TestController implements Initializable, OnClickListener {
     }
     @Override
     public void onEditClick(int id) {
-        System.out.println("On Edit Clicked for ID: " + id);
+        System.out.println("On edit clicked");
+
+        try {
+            var list = TestDBTable.getModifyTestListById(id);
+
+            if (!list.isEmpty()){
+                var model = list.get(0);
+                System.out.println("Model ID: " + model.getId());
+
+                String fxml = "modify_test.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+                System.out.println("URL---------->: " + fxmlURL);
+
+                FXMLLoader fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                TestModifyController tmc = new TestModifyController();
+                tmc.setTestModifyModel(model);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

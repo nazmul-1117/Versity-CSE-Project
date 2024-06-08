@@ -294,7 +294,7 @@ public class PatientsController implements Initializable, OnClickListener {
                 FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
                 Scene scene = new Scene(fxmlLoader.load());
 
-                ModifyPatientsController mpc = fxmlLoader.getController();
+                PatientsModifyController mpc = fxmlLoader.getController();
                 mpc.setModelPatients(model);
 
                 Stage stage = new Stage();

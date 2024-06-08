@@ -14,7 +14,7 @@ import medioxide.model.patients.PatientsModifyModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModifyPatientsController implements Initializable {
+public class PatientsModifyController implements Initializable {
 
     public TextField modifyNameTextField;
     public TextField modifySurnameTextField;
@@ -33,7 +33,7 @@ public class ModifyPatientsController implements Initializable {
 
 
     private ToggleGroup genderToggleGroup = new ToggleGroup();
-    public ModifyPatientsController() {}
+    public PatientsModifyController() {}
     public void setModelPatients(PatientsModifyModel patientsModel) {
         this.patientsModel = patientsModel;
 
@@ -75,8 +75,6 @@ public class ModifyPatientsController implements Initializable {
         phone = modifyPhoneTextField.getText();
         email = modifyEmailTextField.getText();
         address = modifyAddressTextField.getText();
-
-        
     }
     public void cancelButton(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
