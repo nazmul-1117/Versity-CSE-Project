@@ -133,12 +133,10 @@ public class PatientsController implements Initializable, OnClickListener {
 
         try {
             int id = Integer.parseInt(searchID);
-//            var list = SelectFromPatients.getPatientListById(searchID);
             list = PatientsDBTable.getPatientListById(id);
             System.out.println("search by id");
         } catch (Exception e) {
             list = PatientsDBTable.getPatientListByName(searchID);
-//            var list = SelectFromPatients.getPatientListByName(searchID);
             System.out.println("search by Name");
         } finally {
 

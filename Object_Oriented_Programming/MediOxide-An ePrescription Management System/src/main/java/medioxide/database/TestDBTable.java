@@ -1,7 +1,5 @@
 package medioxide.database;
 
-import medioxide.model.patients.PatientsModel;
-import medioxide.model.patients.PatientsModifyModel;
 import medioxide.model.test.TestMainModel;
 import medioxide.model.test.TestModifyModel;
 import medioxide.model.test.TestTableViewModel;
@@ -153,6 +151,68 @@ public class TestDBTable {
                         resultSet.getString("medical_test_description"),
                         resultSet.getFloat("medical_test_normal_range"),
                         resultSet.getFloat("medical_test_price")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return testList;
+    }
+
+    public static List<TestTableViewModel> getTestListById(int searchId) {
+        var testList = new ArrayList<TestTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM medical_tests WHERE medical_test_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                testList.add(new TestTableViewModel(
+                        resultSet.getInt("medical_test_id"),
+                        resultSet.getString("medical_test_name"),
+                        resultSet.getString("medical_test_category"),
+
+                        resultSet.getString("medical_test_description"),
+                        resultSet.getFloat("medical_test_normal_range"),
+                        resultSet.getFloat("medical_test_price"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return testList;
+    }
+    public static List<TestTableViewModel> getTestListByName(String searchName) {
+        var testList = new ArrayList<TestTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            searchName = "%" + searchName + "%";
+            String query = "SELECT * FROM medical_tests WHERE medical_test_name LIKE ?;";
+
+            var ps = conn.prepareStatement(query);
+            ps.setString(1, searchName);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                testList.add(new TestTableViewModel(
+                        resultSet.getInt("medical_test_id"),
+                        resultSet.getString("medical_test_name"),
+                        resultSet.getString("medical_test_category"),
+
+                        resultSet.getString("medical_test_description"),
+                        resultSet.getFloat("medical_test_normal_range"),
+                        resultSet.getFloat("medical_test_price"),
+                        true
                 ));
             }
         } catch (SQLException e) {

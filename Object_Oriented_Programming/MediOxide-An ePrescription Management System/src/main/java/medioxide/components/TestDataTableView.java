@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
-import medioxide.model.patients.PatientsModel;
 import medioxide.model.test.TestTableViewModel;
 
 import java.util.Objects;
