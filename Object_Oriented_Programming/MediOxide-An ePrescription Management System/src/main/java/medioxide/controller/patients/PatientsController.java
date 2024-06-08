@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -31,7 +32,7 @@ import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
-import medioxide.model.ModelPatients;
+import medioxide.model.patients.PatientsModel;
 
 public class PatientsController implements Initializable, OnClickListener {
 
@@ -116,9 +117,9 @@ public class PatientsController implements Initializable, OnClickListener {
 
     private void showSearchButton() {
         String query = "SELECT * FROM patients;";
-        ObservableList<ModelPatients> patientsList = FXCollections.emptyObservableList();
+        ObservableList<PatientsModel> patientsList = FXCollections.emptyObservableList();
 
-        var table = new DataTableListView<ModelPatients>(patientsList, this);
+        var table = new DataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -133,7 +134,7 @@ public class PatientsController implements Initializable, OnClickListener {
         String query = "SELECT * FROM patients_personal_info;";
         var list = PatientsDBTable.getAllPatientList();
         var patientsList = FXCollections.observableList(list);
-        var table = new DataTableListView<ModelPatients>(patientsList, this);
+        var table = new DataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -168,7 +169,7 @@ public class PatientsController implements Initializable, OnClickListener {
         var patientsList = FXCollections.observableList(list);
 
 
-        var table = new DataTableListView<ModelPatients>(patientsList, this);
+        var table = new DataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);
         table.setLayoutY(80);
@@ -222,6 +223,8 @@ public class PatientsController implements Initializable, OnClickListener {
     }
 
     public void cancelButton(ActionEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     public void createButton(ActionEvent event) {
@@ -247,24 +250,36 @@ public class PatientsController implements Initializable, OnClickListener {
 
     @Override
     public void onEditClick(int id) {
-//        System.out.println("yyyyyyyyyyyyyyyyyy");
+        //ModelPatients mp = new ModelPatients();
         try {
-            String fxml = "modify_patients.fxml";
-            URL fxmlURL = Main.class.getResource(fxml);
-            System.out.println("URL: " + fxmlURL);
+            var list = PatientsDBTable.getModifyPatientListById(id);
 
-            FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
+            if (!list.isEmpty()){
+                var model = list.get(0);
 
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
+                String fxml = "modify_patients.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+                System.out.println("URL: " + fxmlURL);
 
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
+                FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                ModifyPatientsController mpc = fxmlLoader.getController();
+                mpc.setModelPatients(model);
+                System.out.println("JJJJJJJJJJ send");
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
 
         }catch (IOException ioException){
             System.out.println("modify_patients.fxml failed");
         }
+
+
     }
 
     public void previousHistoryCheckboxAction(ActionEvent event) {

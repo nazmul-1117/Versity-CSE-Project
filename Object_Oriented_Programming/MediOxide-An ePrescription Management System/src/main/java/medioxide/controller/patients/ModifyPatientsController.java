@@ -9,6 +9,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
+import medioxide.model.patients.PatientsModel;
+import medioxide.model.patients.PatientsModifyModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,11 +28,49 @@ public class ModifyPatientsController implements Initializable {
     public JFXRadioButton modifyRBFemale;
     public JFXRadioButton modifyRBMale;
 
+    private PatientsModifyModel patientsModel;
+
+    private static String username;
+
     private String name, surname, gender, phone, email, address;
     private int age;
 
     private ToggleGroup genderToggleGroup = new ToggleGroup();
 
+    public ModifyPatientsController() {}
+
+    public void setGenderToggleGroup(ToggleGroup genderToggleGroup) {
+        this.genderToggleGroup = genderToggleGroup;
+    }
+
+    public void setModelPatients(PatientsModifyModel patientsModel) {
+        this.patientsModel = patientsModel;
+
+        setData();
+    }
+
+    private void  setData(){
+        modifyNameTextField.setText(patientsModel.getName());
+        modifySurnameTextField.setText(patientsModel.getSurname());
+        modifyAgeTextField.setText(Integer.toString(patientsModel.getAge()));
+
+        modifyPhoneTextField.setText(patientsModel.getPhone());
+        modifyEmailTextField.setText(patientsModel.getEmail());
+        modifyAddressTextField.setText(patientsModel.getAddress());
+
+        switch (patientsModel.getGender().toLowerCase()){
+            case "male":
+                modifyRBMale.setSelected(true);
+                break;
+
+            case "female":
+                modifyRBFemale.setSelected(true);
+                break;
+
+            default:
+                modifyRBOther.setSelected(true);
+        }
+    }
     private void initGenderToggle() {
         modifyRBOther.setToggleGroup(genderToggleGroup);
         modifyRBFemale.setToggleGroup(genderToggleGroup);
@@ -66,6 +106,9 @@ public class ModifyPatientsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         initGenderToggle();
+//        this.modifyNameTextField.setText(this.name);
+        System.out.println("Database Name: " + username);
     }
 }

@@ -9,13 +9,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
-import medioxide.model.ModelPatients;
+import medioxide.model.patients.PatientsModel;
 
 import java.util.Objects;
 
-public class DataTableListView<T> extends TableView<ModelPatients> {
+public class DataTableListView<T> extends TableView<PatientsModel> {
     OnClickListener listener;
-    public DataTableListView(ObservableList<ModelPatients> observableList, OnClickListener listener) {
+    public DataTableListView(ObservableList<PatientsModel> observableList, OnClickListener listener) {
         super(observableList);
         this.listener = listener;
         setup();
@@ -29,9 +29,9 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
 
     private void rowSetup() {
         setRowFactory(tTableView -> {
-            TableRow<ModelPatients> row = new TableRow<>() {
+            TableRow<PatientsModel> row = new TableRow<>() {
                 @Override
-                protected void updateItem(ModelPatients t, boolean b) {
+                protected void updateItem(PatientsModel t, boolean b) {
                     super.updateItem(t, b);
                     if (t != null) {
                     }
@@ -42,40 +42,40 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
     }
 
     private void columnSetup() {
-        var column1 = new TableColumn<ModelPatients, Integer>("ID");
+        var column1 = new TableColumn<PatientsModel, Integer>("ID");
         column1.setPrefWidth(20);
         column1.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
 
 
-        var column2 = new TableColumn<ModelPatients, String>("Name");
+        var column2 = new TableColumn<PatientsModel, String>("Name");
         column2.setPrefWidth(30);
         column2.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
-        var column3 = new TableColumn<ModelPatients, Integer>("Age");
+        var column3 = new TableColumn<PatientsModel, Integer>("Age");
         column3.setPrefWidth(40);
         column3.setCellValueFactory(cellData -> cellData.getValue().ageProperty().asObject());
 
 
-        var column4 = new TableColumn<ModelPatients, String>("Gender");
+        var column4 = new TableColumn<PatientsModel, String>("Gender");
         column4.setPrefWidth(40);
         column4.setCellValueFactory(cellData -> cellData.getValue().genderProperty());
 
-        var column5 = new TableColumn<ModelPatients, String>("Phone");
+        var column5 = new TableColumn<PatientsModel, String>("Phone");
         column5.setPrefWidth(40);
         column5.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
 
-        var column6 = new TableColumn<ModelPatients, String>("Address");
+        var column6 = new TableColumn<PatientsModel, String>("Address");
         column6.setPrefWidth(40);
         column6.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
 
 
-        var column7 = new TableColumn<ModelPatients, Boolean>("Action");
+        var column7 = new TableColumn<PatientsModel, Boolean>("Action");
         column7.setPrefWidth(40);
         column7.setCellValueFactory(cellData -> cellData.getValue().actionProperty());
         column7.setCellFactory(col -> new ButtonCell<>());
 
 
-        ObservableList<TableColumn<ModelPatients, ?>> tableHeaders = FXCollections.observableArrayList(
+        ObservableList<TableColumn<PatientsModel, ?>> tableHeaders = FXCollections.observableArrayList(
                 column1,
                 column2,
                 column3,
@@ -106,7 +106,7 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
             editButton.setOnMouseClicked(mouseEvent -> {
 
                 var currentItem = getTableRow().getItem();
-                if (currentItem instanceof ModelPatients m) {
+                if (currentItem instanceof PatientsModel m) {
                     listener.onEditClick(m.getId());
                 }
             });
@@ -120,7 +120,7 @@ public class DataTableListView<T> extends TableView<ModelPatients> {
             deleteButton.setOnMouseClicked(mouseEvent -> {
 
                 var currentItem = getTableRow().getItem();
-                if (currentItem instanceof ModelPatients m) {
+                if (currentItem instanceof PatientsModel m) {
                     listener.onDeleteClick(m.getId());
                 }
             });

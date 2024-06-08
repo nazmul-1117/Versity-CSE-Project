@@ -5,7 +5,7 @@ module medioxide {
     requires javafx.fxml;
 
     opens medioxide.controller to javafx.fxml;
-    opens medioxide.model to javafx.base;
+    opens medioxide.model.patients to javafx.base;
     opens medioxide.controller.patients to javafx.fxml;
 
 

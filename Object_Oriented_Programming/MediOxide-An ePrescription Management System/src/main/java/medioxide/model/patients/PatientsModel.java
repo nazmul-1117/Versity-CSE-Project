@@ -1,8 +1,8 @@
-package medioxide.model;
+package medioxide.model.patients;
 
 import javafx.beans.property.*;
 
-public class ModelPatients {
+public class PatientsModel {
     private IntegerProperty id;
     private IntegerProperty age;
     private StringProperty name;
@@ -27,8 +27,10 @@ public class ModelPatients {
     private IntegerProperty systolic_bp;
     private IntegerProperty diastolic_bp;
 
+    public PatientsModel() {
+    }
 
-    public ModelPatients(int id, String name, int age,
+    public PatientsModel(int id, String name, int age,
                          String gender, String phone, String address, boolean action) {
         int weight=10;
         int systolic_bp=20;

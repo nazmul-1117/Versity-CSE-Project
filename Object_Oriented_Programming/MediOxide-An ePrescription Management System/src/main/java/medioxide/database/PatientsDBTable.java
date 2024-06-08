@@ -1,6 +1,7 @@
 package medioxide.database;
 
-import medioxide.model.ModelPatients;
+import medioxide.model.patients.PatientsModel;
+import medioxide.model.patients.PatientsModifyModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PatientsDBTable {
-    public static List<ModelPatients> getAllPatientList() {
-        var patientsList = new ArrayList<ModelPatients>();
+    public static List<PatientsModel> getAllPatientList() {
+        var patientsList = new ArrayList<PatientsModel>();
         var conn = DatabaseConnector.getConnection();
 
         try {
@@ -19,7 +20,7 @@ public class PatientsDBTable {
             var resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
-                patientsList.add(new ModelPatients(
+                patientsList.add(new PatientsModel(
 
                         resultSet.getInt("patients_id"),
                         resultSet.getString("patients_name"),
@@ -38,8 +39,8 @@ public class PatientsDBTable {
         return patientsList;
     }
 
-    public static List<ModelPatients> getPatientListById(int searchId) {
-        var patientsList = new ArrayList<ModelPatients>();
+    public static List<PatientsModel> getPatientListById(int searchId) {
+        var patientsList = new ArrayList<PatientsModel>();
         var conn = DatabaseConnector.getConnection();
 
         try {
@@ -51,7 +52,7 @@ public class PatientsDBTable {
             var resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
-                patientsList.add(new ModelPatients(
+                patientsList.add(new PatientsModel(
                         resultSet.getInt("patients_id"),
                         resultSet.getString("patients_name"),
                         resultSet.getInt("patients_age"),
@@ -69,8 +70,39 @@ public class PatientsDBTable {
         return patientsList;
     }
 
-    public static List<ModelPatients> getPatientListByName(String searchName) {
-        var patientsList = new ArrayList<ModelPatients>();
+    public static List<PatientsModifyModel> getModifyPatientListById(int searchId) {
+        var patientsList = new ArrayList<PatientsModifyModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM patients_personal_info WHERE patients_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                patientsList.add(new PatientsModifyModel(
+                        resultSet.getString("patients_name"),
+                        resultSet.getString("patients_surname"),
+                        resultSet.getInt("patients_age"),
+
+                        resultSet.getString("patients_gender"),
+                        resultSet.getString("patients_mobile"),
+                        resultSet.getString("patients_email"),
+                        resultSet.getString("patients_address")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return patientsList;
+    }
+
+    public static List<PatientsModel> getPatientListByName(String searchName) {
+        var patientsList = new ArrayList<PatientsModel>();
         var conn = DatabaseConnector.getConnection();
 
         try {
@@ -83,7 +115,7 @@ public class PatientsDBTable {
 
             var resultSet = ps.executeQuery();
             while (resultSet.next()) {
-                patientsList.add(new ModelPatients(
+                patientsList.add(new PatientsModel(
                         resultSet.getInt("patients_id"),
                         resultSet.getString("patients_name"),
                         resultSet.getInt("patients_age"),
@@ -102,7 +134,7 @@ public class PatientsDBTable {
     }
 
     public static boolean searchById(int searchId){
-        var patientsList = new ArrayList<ModelPatients>();
+        var patientsList = new ArrayList<PatientsModel>();
         var conn = DatabaseConnector.getConnection();
 
         try {
@@ -122,33 +154,6 @@ public class PatientsDBTable {
         return false;
     }
 
-    public static List<ModelPatients> getModifyPatientList() {
-        var patientsList = new ArrayList<ModelPatients>();
-        var conn = DatabaseConnector.getConnection();
-
-        try {
-            String query = "SELECT * FROM patients_personal_info";
-            var ps = conn.prepareStatement(query);
-            var resultSet = ps.executeQuery();
-
-            while (resultSet.next()) {
-                patientsList.add(new ModelPatients(
-                        resultSet.getInt("patients_id"),
-                        resultSet.getString("patients_name"),
-                        resultSet.getInt("patients_age"),
-
-                        resultSet.getString("patients_gender"),
-                        resultSet.getString("patients_mobile"),
-                        resultSet.getString("patients_address"),
-                        true
-                ));
-            }
-        } catch (SQLException e) {
-            System.out.println("SQL Query Execution Failed");
-        }
-
-        return patientsList;
-    }
     
     public static void updatePatientsIntoDatabase(int id, int age, String ... s){
         
