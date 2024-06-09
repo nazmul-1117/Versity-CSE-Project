@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.problem.ProblemModifyController">
+<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.doctor.DoctorModifyController">
     <children>
-        <Pane layoutY="-14.0" prefHeight="584.0" prefWidth="435.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
+        <Pane layoutY="-14.0" prefHeight="610.0" prefWidth="435.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
             <children>
                 <Pane layoutX="19.9931640625" layoutY="30.0">
                     <children>
@@ -29,7 +29,7 @@
                                 <VBox spacing="25.0">
                                     <children>
                                         <Line endX="313.5" startX="-100.0" stroke="#9c4d00" />
-                                        <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="76.0" prefWidth="389.0" text="Update Problem Data" textFill="#03a110">
+                                        <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="76.0" prefWidth="389.0" text="Update Doctor Data" textFill="#03a110">
                                             <font>
                                                 <Font name="Arial Bold" size="24.0" />
                                             </font>
@@ -52,66 +52,85 @@
                                 </HBox>
                                 <HBox>
                                     <children>
-                                        <Label prefHeight="20.0" prefWidth="120.0" text="Department" textFill="WHITE">
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Phone Number" textFill="WHITE">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
                                         </Label>
-                              <JFXComboBox fx:id="modifyDeptComboBox" focusColor="#00ff3c" prefHeight="36.0" prefWidth="253.0" styleClass="comboBox" stylesheets="@style/patients.css" unFocusColor="#e4ff00" />
+                                        <TextField fx:id="modifyPhoneTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                     </children>
                                 </HBox>
                                 <HBox>
                                     <children>
-                                        <Label prefHeight="20.0" prefWidth="120.0" text="Symptoms" textFill="WHITE">
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Email" textFill="WHITE">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="modifySymptomsTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                                        <TextField fx:id="modifyEmailTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                     </children>
                                 </HBox>
                                 <HBox>
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="120.0" text="Department" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox fx:id="modifyDeptComboBox" focusColor="RED" prefHeight="30.0" prefWidth="253.0" styleClass="comboBox" stylesheets="@style/doctor.css" unFocusColor="#e4ff00" />
+                           </children>
+                                </HBox>
+                                <HBox>
                                     <children>
-                                        <Label prefHeight="20.0" prefWidth="120.0" text="Treatment" textFill="WHITE">
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Speciality" textFill="WHITE">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="modifyTreatmentTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                                        <TextField fx:id="modifySpecialityTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                     </children>
                                 </HBox>
                                 <HBox>
                                     <children>
-                                        <Label prefHeight="20.0" prefWidth="120.0" text="Description" textFill="WHITE">
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Room No" textFill="WHITE">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="modifyDescTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                                        <TextField fx:id="modifyRoomNoTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
                                     </children>
                                 </HBox>
-                                <HBox />
                                 <HBox>
                                     <children>
-                                        <JFXButton onAction="#saveChangeButton" stylesheets="@style/medicine.css" text="Save">
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Degree" textFill="WHITE">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
+                                        </Label>
+                                        <TextField fx:id="modifyDegreeTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="50.0" prefWidth="415.0">
+                                    <children>
+                                        <JFXButton onAction="#saveButton" stylesheets="@style/patients.css" text="Save" textFill="#fdff00">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="topAddPane" />
+                                                <String fx:value="topMenuBarHBoxHover" />
+                                            </styleClass>
                                             <HBox.margin>
                                                 <Insets right="10.0" />
                                             </HBox.margin>
-                                            <styleClass>
-                                                <String fx:value="saveButton" />
-                                                <String fx:value="buttonHover" />
-                                            </styleClass>
                                         </JFXButton>
-                                        <JFXButton onAction="#cancelButton" stylesheets="@style/medicine.css" text="Cancel" textFill="#fdff00">
+                                        <JFXButton onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
                                             <styleClass>
-                                                <String fx:value="cancelButton" />
-                                                <String fx:value="buttonHover" />
+                                                <String fx:value="modifyPatientsPane" />
+                                                <String fx:value="topMenuBarHBoxHover" />
                                             </styleClass>
                                         </JFXButton>
                                     </children>

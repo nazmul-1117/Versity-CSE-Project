@@ -1,8 +1,10 @@
 package medioxide.database;
 
 import medioxide.model.doctor.DoctorMainModel;
+import medioxide.model.doctor.DoctorModifyModel;
 import medioxide.model.doctor.DoctorTableViewModel;
 import medioxide.model.medicine.MedicineMainModel;
+import medioxide.model.medicine.MedicineModifyModel;
 import medioxide.model.patients.PatientsModel;
 
 import java.sql.Connection;
@@ -125,5 +127,102 @@ public class DoctorDBTable {
         }
 
         return doctorList;
+    }
+
+    public static List<DoctorModifyModel> getModifyDoctorListById(int searchId) {
+        var doctorList = new ArrayList<DoctorModifyModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT \n" +
+                    "di.doctor_id, di.doctor_name, di.doctor_phone, di.doctor_email, \n" +
+                    "dp.doctor_department, dp.doctor_specialty, dp.doctor_room_number, dp.doctor_degree\n" +
+                    "\n" +
+                    "FROM doctor_personal_info AS di INNER JOIN doctor_professional_info AS dp \n" +
+                    "ON di.doctor_id = dp.doctor_id\n" +
+                    "\n" +
+                    "WHERE di.doctor_id = ?";
+
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+//            System.out.println("Medicine PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                doctorList.add(new DoctorModifyModel(
+                        resultSet.getInt("doctor_id"),
+                        resultSet.getString("doctor_name"),
+                        resultSet.getString("doctor_phone"),
+                        resultSet.getString("doctor_email"),
+
+                        resultSet.getString("doctor_department"),
+                        resultSet.getString("doctor_specialty"),
+                        resultSet.getString("doctor_room_number"),
+                        resultSet.getString("doctor_degree")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return doctorList;
+    }
+
+    public static void updateDoctorData(DoctorModifyModel model){
+
+        String query1 = "UPDATE doctor_personal_info\n" +
+                "SET \n" +
+                "\tdoctor_name = ?,\n" +
+                "    doctor_phone = ?,\n" +
+                "    doctor_email = ?\n" +
+                "WHERE doctor_id = ?;";
+
+        String query2 = "UPDATE doctor_professional_info\n" +
+                "SET \n" +
+                "\tdoctor_department = ?,\n" +
+                "    doctor_specialty = ?,\n" +
+                "    doctor_room_number = ?,\n" +
+                "    doctor_degree = ?\n" +
+                "WHERE doctor_id = ?;";
+
+        try {
+            Connection connection = DatabaseConnector.getConnection();
+            PreparedStatement ps = connection.prepareStatement(query1);
+
+            ps.setString(1, model.getName());
+            ps.setString(2, model.getPhone());
+            ps.setString(3, model.getEmail());
+            ps.setInt(4, model.getId());
+            System.out.println("1st Table Query: " + ps);
+
+            PreparedStatement ps2 = connection.prepareStatement(query2);
+            ps2.setString(1, model.getDept());
+            ps2.setString(2, model.getSpeciality());
+            ps2.setString(3, model.getRoomNo());
+            ps2.setString(4, model.getDegree());
+            ps2.setInt(5, model.getId());
+            System.out.println("2nd Table Query: " + ps);
+
+
+            int statement=-1;
+            try {
+                statement = ps.executeUpdate();
+
+            }catch (SQLException sqlException){
+                System.out.println("\nExecuted Statement failed for: "+ sqlException.getMessage()+"\n\n");
+            }
+
+            if (statement < 0) {
+                System.out.println("Data Insert failed " + statement);
+            } else {
+                System.out.println("Data insert successful " + statement);
+            }
+        } catch (SQLException e) {
+            System.out.println("Data not be inserted");
+        }
+
+        System.out.println("Update Successfully for ID: " + model.getId() + "\n");
+
     }
 }

@@ -10,8 +10,6 @@ import javafx.scene.layout.HBox;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
 import medioxide.model.doctor.DoctorTableViewModel;
-import medioxide.model.patients.PatientsModel;
-
 import java.util.Objects;
 
 public class DoctorDataTableView<T> extends TableView<DoctorTableViewModel> {

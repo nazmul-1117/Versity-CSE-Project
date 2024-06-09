@@ -6,20 +6,27 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medioxide.components.DoctorDataTableView;
 import medioxide.components.PatientsDataTableListView;
+import medioxide.controller.patients.PatientsModifyController;
 import medioxide.database.DoctorDBTable;
 import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
+import medioxide.java.Main;
 import medioxide.model.doctor.DoctorMainModel;
 import medioxide.model.doctor.DoctorTableViewModel;
 import medioxide.model.patients.PatientsModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -86,7 +93,7 @@ public class DoctorController implements Initializable, OnClickListener {
 
         String licence = addLicenceTextField.getText();
         String hospital = addHospitalTextField.getText();
-        String dept = addDeptComboBox.getSelectionModel().getSelectedItem().toString();;
+        String dept = addDeptComboBox.getSelectionModel().getSelectedItem().toString();
 
         String speciality = addSpecialityTextField.getText();
         String room = addRoomTextField.getText();
@@ -141,6 +148,32 @@ public class DoctorController implements Initializable, OnClickListener {
     @Override
     public void onEditClick(int id) {
         System.out.println("Edit Clicked for ID: " + id);
+        try {
+            var list = DoctorDBTable.getModifyDoctorListById(id);
+
+            if (!list.isEmpty()){
+                var model = list.get(0);
+
+                String fxml = "modify_doctor.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+//                System.out.println("URL: " + fxmlURL);
+
+                FXMLLoader fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                DoctorModifyController dmc = fxmlLoader.getController();
+                dmc.setModel(model);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
 
     }
 
