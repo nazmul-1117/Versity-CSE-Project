@@ -1,0 +1,30 @@
+@import url("root.css");
+
+.date-picker{
+    -fx-background-color:#ededed;
+}
+
+.date-picker > .text-field {
+    -fx-background-color:#ededed;
+    -fx-text-fill: black;
+    -fx-border-color:transparent;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color:#e1e1e1;
+}
+
+.date-picker > .button {
+}
+
+.date-picker-new-prescription {
+    -fx-background-color:white;
+
+
+}
+
+.date-picker-new-prescription > .text-field {
+    -fx-background-color:white;
+    -fx-pref-height:32px;
+     -fx-border-insets:-1;
+}

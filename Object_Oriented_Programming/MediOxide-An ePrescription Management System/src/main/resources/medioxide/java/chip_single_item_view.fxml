@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<AnchorPane xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="medioxide.controller.others.ChipSingleItemController">
+    <children>
+        <HBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #368CBF; -fx-background-radius: 4px;"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label fx:id="imgIcon" style="-fx-text-fill: white;" text="x"/>
+                <Label fx:id="lblTitle" graphicTextGap="0.0" maxWidth="192.0"
+                       style="-fx-text-fill: white; -fx-line-spacing: -4px;"
+                       text="sdfffffffffffffffffffffffffffffffffffj jjjjjjjjjjjjjjjjjjjjjjj" wrapText="true"/>
+            </children>
+            <padding>
+                <Insets bottom="2.0" left="8.0" right="8.0" top="2.0"/>
+            </padding>
+        </HBox>
+    </children>
+</AnchorPane>

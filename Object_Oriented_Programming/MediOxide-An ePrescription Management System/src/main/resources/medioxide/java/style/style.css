@@ -1,0 +1,41 @@
+
+
+.parent{
+    -fx-background-color: white;
+}
+
+.sidebarColored{
+    -fx-background-color: #17212B;
+}
+
+
+.text-field{
+    -fx-background-color: #e5e5e5;
+    -fx-text-fill: black;
+    -fx-border-radius: 3px;
+}
+.text-field:focused{
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-color: #e25b15;
+    -fx-border-radius: 3px;
+    -fx-border-width: 0.4px;
+}
+
+.button {
+    -fx-background-color:#e25b15;
+    -fx-text-fill: white;
+}
+
+
+.round-button {
+    -fx-border-radius: 30px;
+    -fx-background-radius:100%;
+    -fx-background-color:green;
+}
+
+.error-text{
+    -fx-background-color:red;
+    -fx-fill:#FF4F35;
+    -fx-font-weight:bold;
+}

@@ -1,0 +1,29 @@
+@import url("root.css");
+
+.menu-sidebar-colored{
+    -fx-background-color: -fx-color-menu-sidebar;
+}
+
+.menu_button{
+    -fx-background-color:transparent;
+    -fx-border-color:white;
+    -fx-text-fill:white;
+    -fx-label-padding:-2px;
+    -fx-padding: 8px 0;
+}
+
+.active-menu{
+    -fx-text-fill: #4f4a4a;
+}
+
+.settings_button:hover{
+    -fx-background-color:#EC7D48;
+}
+
+.website_button:hover{
+    -fx-background-color:#EC7D48;
+}
+
+.logout_button:hover{
+    -fx-background-color:#B73D3B;
+}

@@ -1,8 +1,5 @@
 package medioxide.database;
 
-import medioxide.model.medicine.MedicineMainModel;
-import medioxide.model.medicine.MedicineModifyModel;
-import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.problem.ProblemMainModel;
 import medioxide.model.problem.ProblemModifyModel;
 import medioxide.model.problem.ProblemTableViewModel;
@@ -56,7 +53,7 @@ public class ProblemDBTable {
     }
 
 
-    public static List<ProblemTableViewModel> getAllTestList() {
+    public static List<ProblemTableViewModel> getAllProblemList() {
         var problemList = new ArrayList<ProblemTableViewModel>();
         var conn = DatabaseConnector.getConnection();
 

@@ -1,0 +1,14 @@
+@import url("root.css");
+
+.search-button{
+    -fx-padding:0px;
+    -fx-background-color:#6B70F9;
+    -fx-text-fill:white;
+}
+.search-button:hover{
+    -fx-background-color:#5660d9;
+}
+
+.icon-button{
+    -fx-background-color:transparent;
+}

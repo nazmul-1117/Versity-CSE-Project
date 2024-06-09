@@ -1,0 +1,93 @@
+@import url("root.css");
+
+.text-field{
+    -fx-background-color: #e5e5e5;
+    -fx-text-fill: black;
+    -fx-border-radius: 3px;
+}
+.text-field:focused{
+    -fx-border-style: solid;
+    -fx-border-insets:-1;
+}
+
+.text-food-category{
+    -fx-text-fill:-fx-color-food-category-card-text-color;
+    -fx-font-size:20px;
+    -fx-line-spacing: -8px;
+}
+
+.text-food-item-name{
+    -fx-text-fill:-fx-color-food-item-card-text-color;
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+    -fx-line-spacing: -8px;
+}
+
+.text-food-item-price{
+    -fx-text-fill:white;
+    -fx-font-size:12px;
+    -fx-background-color: -fx-color-food-item-card-price-background;
+    -fx-background-radius: 0px;
+}
+
+.text-selected-food-name{
+    -fx-font-size:14px;
+}
+
+.text-info-header{
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+}
+
+.text-total{
+    -fx-font-size:16px;
+    -fx-font-weight:bold;
+    -fx-fill:#fa2e2a;
+}
+
+.text-subtotal{
+    -fx-font-size:14px;
+}
+
+.text-discount{
+    -fx-font-size:14px;
+}
+
+.text-delivery{
+    -fx-font-size:14px;
+}
+
+.text-details-info-header{
+    -fx-font-size:18px;
+
+}
+.text-customer-info-title{
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+    -fx-pref-width:100px;
+}
+
+.text-customer-info-data{
+    -fx-font-size:14px;
+}
+
+.text-payment-info-title{
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+    -fx-pref-width:150px;
+}
+
+.text-payment-info-data{
+    -fx-font-size:14px;
+}
+
+.text-field-new-prescription{
+    -fx-background-color:white;
+    -fx-pref-height:32px;
+
+    -fx-focus-color: purple;
+}
+.text-field-new-prescription:focused{
+    -fx-border-color:green;
+}
+

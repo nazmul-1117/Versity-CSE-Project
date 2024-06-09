@@ -1,0 +1,16 @@
+
+.root, *{
+     -fx-font-family: "Poppins";
+
+     //color variables
+    -fx-color-menu-sidebar: #212D32;
+    -fx-color-food-category-card-background:  #6F829A;
+    -fx-color-food-category-card-text-color:  white;
+
+    -fx-color-food-item-card-background: #FCB0B0;
+    -fx-color-food-item-card-text-color: #2e2c30;
+    -fx-color-food-item-card-price-background:  #ed3734;
+
+    -fx-color-primary: #00A561;
+    -fx-color-secondary: #007F80;
+}

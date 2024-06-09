@@ -9,18 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import medioxide.components.MedicineDataTableView;
 import medioxide.components.ProblemTableView;
-import medioxide.controller.medicine.MedicineModifyController;
-import medioxide.database.MedicineDBTable;
 import medioxide.database.ProblemDBTable;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
-import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.problem.ProblemMainModel;
 
 import java.io.IOException;
@@ -89,7 +84,7 @@ public class ProblemController implements Initializable, OnClickListener {
     }
 
     private void showAllProblemList(){
-        var list = ProblemDBTable.getAllTestList();
+        var list = ProblemDBTable.getAllProblemList();
         var problemList = FXCollections.observableList(list);
         var table = new ProblemTableView<>(problemList, this);
 

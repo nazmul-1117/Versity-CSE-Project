@@ -1,0 +1,54 @@
+@import url("root.css");
+@import url("button_style.css");
+@import url("check_box.css");
+@import url("combo_box.css");
+@import url("date_picker_style.css");
+@import url("menu_style.css");
+@import url("scrollbar_style.css");
+@import url("split_pane_style.css");
+@import url("table_style.css");
+@import url("text_style.css");
+@import url("radio_button_style.css");
+
+.parent{
+    -fx-background-color: white;
+}
+
+.hidden{
+    visibility:false;
+}
+
+.radio-button .text{
+    -fx-font-size:12px;
+    -fx-fill:grey;
+    -fx-font-weight:bold;
+}
+
+.type-button{
+    -fx-background-color:#FDB0AF;
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+    -fx-background-radius:0px;
+}
+
+.type-button .text{
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+}
+
+.billing-info-text{
+   -fx-font-size:16px;
+}
+
+
+
+.active{
+    -fx-background-color:#EA6B69;
+}
+
+.dialog-pane .button-bar .container .button:cancel{
+visibility:false;
+}
+
+
+

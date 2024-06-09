@@ -1,0 +1,73 @@
+@import url("root.css");
+
+
+.check-box > .box {
+        -fx-background-color: transparent;
+        -fx-background-insets: 0;
+        -fx-border-color: #0000008a;
+        -fx-border-width: 2px;
+        -fx-border-radius: 2px;
+        -fx-padding: 0.083333em; /* 1px */
+        -fx-text-fill: -fx-text-base-color;
+        -fx-alignment: CENTER;
+        -fx-content-display: LEFT;
+}
+
+.check-box:hover > .box {
+    -fx-color: -fx-hover-base;
+}
+.check-box:armed .box {
+    -fx-color: -fx-pressed-base;
+}
+.check-box:focused > .box {
+    -fx-background-color: -fx-focus-color, -fx-inner-border, -fx-body-color, -fx-faint-focus-color, -fx-body-color;
+    -fx-background-insets: -0.2, 1, 2, -1.4, 2.6;
+    -fx-background-radius: 3, 2, 1, 4, 1;
+}
+.check-box:disabled {
+    -fx-opacity: 0.4;
+}
+.check-box:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-base-color;
+}
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 1 0 -1 0, 0;
+}
+.check-box {
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+    -fx-text-fill: -fx-text-background-color;
+    -material-design-color: #00BB9E;
+    -material-design-color-transparent-12: #3f51b51f;
+    -material-design-color-transparent-24: #3f51b53e;
+    -material-design-color-transparent-40: #3f51b566;
+}
+.check-box > .box {
+    -fx-background-radius: 3, 2, 1;
+    -fx-padding: 0.166667em 0.166667em 0.25em 0.25em; /* 2 2 3 3 */
+}
+.check-box > .box > .mark {
+    -fx-background-color: null;
+    -fx-padding: 0.45em;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 0.8;
+    -fx-shape: "M9.998,13.946L22.473,1.457L26.035,5.016L10.012,21.055L0.618,11.688L4.178,8.127L9.998,13.946Z";
+}
+.check-box:selected > .box > .mark {
+    -fx-background-color: white;
+}
+.check-box:indeterminate > .box {
+    -fx-padding: 0;
+}
+.check-box:indeterminate  > .box > .mark {
+    -fx-shape: "M0,0H10V2H0Z";
+    -fx-scale-shape: false;
+    -fx-padding: 0.666667em;
+}
+.check-box:selected > .box {
+    -fx-background-color: -material-design-color;
+    -fx-background-radius: 2px;
+    -fx-background-insets: 0;
+    -fx-border-color: transparent;
+}
