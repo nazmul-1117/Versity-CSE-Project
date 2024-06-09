@@ -16,5 +16,6 @@ module medioxide {
 
     exports medioxide.java;
     exports medioxide.controller.patients;
+    opens medioxide.controller.doctor to javafx.fxml;
 
 }
