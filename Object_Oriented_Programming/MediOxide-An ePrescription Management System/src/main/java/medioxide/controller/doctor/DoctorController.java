@@ -15,9 +15,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import medioxide.components.DoctorDataTableView;
+import medioxide.components.MedicineDataTableView;
 import medioxide.components.PatientsDataTableListView;
 import medioxide.controller.patients.PatientsModifyController;
 import medioxide.database.DoctorDBTable;
+import medioxide.database.MedicineDBTable;
 import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
 import medioxide.helper.OnClickListener;
@@ -29,6 +31,7 @@ import medioxide.model.patients.PatientsModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DoctorController implements Initializable, OnClickListener {
@@ -51,6 +54,7 @@ public class DoctorController implements Initializable, OnClickListener {
 
     public TextField searchDoctorTextField;
     public AnchorPane showAllDoctor;
+    public AnchorPane showDoctorListPane;
 
 
     private ToggleGroup genderToggleGroup = new ToggleGroup();
@@ -136,7 +140,27 @@ public class DoctorController implements Initializable, OnClickListener {
         System.out.println("Cancel Button");
     }
     public void searchButton(ActionEvent event) {
-        System.out.println("Search Button");
+        List list;
+        String searchItem = searchDoctorTextField.getText();
+
+        try {
+            int id = Integer.parseInt(searchItem);
+            list = DoctorDBTable.getDoctorListById(id);
+
+        }catch (Exception e){
+            list = MedicineDBTable.getPatientListByName(searchItem);
+        }
+
+        var medicineList = FXCollections.observableList(list);
+        var table = new DoctorDataTableView<>(medicineList, this);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 80.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        showDoctorListPane.getChildren().add(table);
     }
 
 

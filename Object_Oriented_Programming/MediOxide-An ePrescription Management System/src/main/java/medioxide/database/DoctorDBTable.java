@@ -5,6 +5,7 @@ import medioxide.model.doctor.DoctorModifyModel;
 import medioxide.model.doctor.DoctorTableViewModel;
 import medioxide.model.medicine.MedicineMainModel;
 import medioxide.model.medicine.MedicineModifyModel;
+import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.patients.PatientsModel;
 
 import java.sql.Connection;
@@ -110,7 +111,8 @@ public class DoctorDBTable {
             var resultSet = ps.executeQuery();
 
             //                System.out.println("ID: "+resultSet.getInt("doctor_id"));
-            while (resultSet.next()) doctorList.add(new DoctorTableViewModel(
+            while (resultSet.next())
+                doctorList.add(new DoctorTableViewModel(
 
                     resultSet.getInt("doctor_id"),
                     resultSet.getString("doctor_name"),
@@ -224,5 +226,82 @@ public class DoctorDBTable {
 
         System.out.println("Update Successfully for ID: " + model.getId() + "\n");
 
+    }
+
+    public static List<DoctorTableViewModel> getDoctorListById(int searchId) {
+        var doctorList = new ArrayList<DoctorTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT di.doctor_id, di.doctor_name, di.doctor_email, di.doctor_license_number,\n" +
+                    "dp.doctor_department, dp.doctor_specialty, dp.doctor_room_number \n" +
+                    "FROM doctor_personal_info AS di INNER JOIN doctor_professional_info AS dp \n" +
+                    "ON di.doctor_id = dp.doctor_id" +
+                    " Where di.doctor_id = ?";
+
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                doctorList.add(new DoctorTableViewModel(
+
+                        resultSet.getInt("doctor_id"),
+                        resultSet.getString("doctor_name"),
+                        resultSet.getString("doctor_email"),
+                        resultSet.getString("doctor_license_number"),
+
+                        resultSet.getString("doctor_department"),
+                        resultSet.getString("doctor_specialty"),
+                        resultSet.getString("doctor_room_number"),
+                        true
+                ));
+                System.out.println("ID: " + resultSet.getInt("doctor_id"));
+            }
+        } catch (SQLException e) {
+//            System.out.println("SQL Query Execution Failed for get by id");
+            System.out.println(e.getMessage());
+        }
+
+        return doctorList;
+    }
+
+    public static List<DoctorTableViewModel> getDoctorListByName(String searchName) {
+        var doctorList = new ArrayList<DoctorTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            searchName = "%" + searchName + "%";
+            String query = "SELECT di.doctor_id, di.doctor_name, di.doctor_email, di.doctor_license_number,"+
+                    "                    dp.doctor_department, dp.doctor_specialty, dp.doctor_room_number " +
+                    "                    FROM doctor_personal_info AS di INNER JOIN doctor_professional_info AS dp"+
+                    "WHERE doctor_name LIKE ?;";
+
+            var ps = conn.prepareStatement(query);
+            ps.setString(1, searchName);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                doctorList.add(new DoctorTableViewModel(
+
+                        resultSet.getInt("doctor_id"),
+                        resultSet.getString("doctor_name"),
+                        resultSet.getString("doctor_email"),
+                        resultSet.getString("doctor_license_number"),
+
+                        resultSet.getString("doctor_department"),
+                        resultSet.getString("doctor_specialty"),
+                        resultSet.getString("doctor_room_number"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed for get by name");
+        }
+
+        return doctorList;
     }
 }
