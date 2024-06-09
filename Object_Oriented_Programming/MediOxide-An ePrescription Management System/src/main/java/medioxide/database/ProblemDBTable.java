@@ -167,4 +167,18 @@ public class ProblemDBTable {
         System.out.println("Update Successfully for ID: " + model.getId() + "\n");
 
     }
+    public  static  void deleteProblemData(int id) {
+        String query = "DELETE FROM medical_problems WHERE medical_problem_id = ?;";
+        try {
+            var connection = DatabaseConnector.getConnection();
+
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+
+            var resultSet = ps.executeUpdate();
+        } catch (SQLException sqlException) {
+            System.out.println(sqlException.getMessage());
+            System.out.println("SQL connection failed for delete query");
+        }
+    }
 }

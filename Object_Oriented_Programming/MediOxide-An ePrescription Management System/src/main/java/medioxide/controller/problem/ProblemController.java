@@ -114,7 +114,6 @@ public class ProblemController implements Initializable, OnClickListener {
         initComboBox();
         showAllProblemList();
     }
-
     @Override
     public void onEditClick(int id) {
         System.out.println("Edit Clicked for: " + id);
@@ -145,11 +144,15 @@ public class ProblemController implements Initializable, OnClickListener {
         }catch (IOException ioException){
             System.out.println("modify_patients.fxml failed");
         }
+        showAllProblemList();
 
     }
     @Override
     public void onDeleteClick(int id) {
         System.out.println("Delete Clicked for: " + id);
+        ProblemDBTable.deleteProblemData(id);
+        System.out.println("Delete Problem successful for ID " + id);
+        showAllProblemList();
 
     }
 }
