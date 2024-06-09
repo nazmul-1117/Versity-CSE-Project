@@ -181,4 +181,67 @@ public class ProblemDBTable {
             System.out.println("SQL connection failed for delete query");
         }
     }
+
+
+    public static List<ProblemTableViewModel> getProblemListById(int searchId) {
+        var medicineList = new ArrayList<ProblemTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM medical_problems WHERE medical_problem_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                medicineList.add(new ProblemTableViewModel(
+                        resultSet.getInt("medical_problem_id"),
+                        resultSet.getString("medical_problem_name"),
+                        resultSet.getString("medical_department"),
+
+                        resultSet.getString("medical_problem_description"),
+                        resultSet.getString("medical_problem_symptoms"),
+                        resultSet.getString("medical_problem_treatment"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return medicineList;
+    }
+    public static List<ProblemTableViewModel> getProblemListByName(String searchName) {
+        var medicineList = new ArrayList<ProblemTableViewModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            searchName = "%" + searchName + "%";
+            String query = "SELECT * FROM medical_problems WHERE medical_problem_name LIKE ?;";
+
+            var ps = conn.prepareStatement(query);
+            ps.setString(1, searchName);
+            System.out.println("PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                medicineList.add(new ProblemTableViewModel(
+                        resultSet.getInt("medical_problem_id"),
+                        resultSet.getString("medical_problem_name"),
+                        resultSet.getString("medical_department"),
+
+                        resultSet.getString("medical_problem_description"),
+                        resultSet.getString("medical_problem_symptoms"),
+                        resultSet.getString("medical_problem_treatment"),
+                        true
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return medicineList;
+    }
 }

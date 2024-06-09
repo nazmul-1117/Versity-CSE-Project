@@ -26,6 +26,7 @@ import medioxide.model.problem.ProblemMainModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProblemController implements Initializable, OnClickListener {
@@ -104,6 +105,26 @@ public class ProblemController implements Initializable, OnClickListener {
     public void problemSearchButton(ActionEvent event) {
 
         String searchItem = searchProblemTextField.getText();
+        List list;
+
+        try {
+            int id = Integer.parseInt(searchItem);
+            list = ProblemDBTable.getProblemListById(id);
+
+        }catch (Exception e){
+            list =ProblemDBTable.getProblemListByName(searchItem);
+        }
+
+        var problemList = FXCollections.observableList(list);
+        var table = new ProblemTableView<>(problemList, this);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 80.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        searchBoxAnchorPane.getChildren().add(table);
     }
 
 
