@@ -1,8 +1,10 @@
 package medioxide.database;
 
 import medioxide.model.medicine.MedicineMainModel;
+import medioxide.model.medicine.MedicineModifyModel;
 import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.problem.ProblemMainModel;
+import medioxide.model.problem.ProblemModifyModel;
 import medioxide.model.problem.ProblemTableViewModel;
 
 import java.sql.Connection;
@@ -86,5 +88,83 @@ public class ProblemDBTable {
         }
 
         return problemList;
+    }
+
+    public static List<ProblemModifyModel> getModifyProblemListById(int searchId) {
+        var problemList = new ArrayList<ProblemModifyModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT * FROM medical_problems WHERE medical_problem_id = ?;";
+            var ps = conn.prepareStatement(query);
+            ps.setInt(1, searchId);
+//            System.out.println("Medicine PS: " + ps);
+
+            var resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                problemList.add(new ProblemModifyModel(
+
+                        resultSet.getInt("medical_problem_id"),
+                        resultSet.getString("medical_problem_name"),
+                        resultSet.getString("medical_department"),
+
+                        resultSet.getString("medical_problem_description"),
+                        resultSet.getString("medical_problem_symptoms"),
+                        resultSet.getString("medical_problem_treatment")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return problemList;
+    }
+
+    public static void updateProblemData(ProblemModifyModel model){
+
+        String query = "UPDATE medical_problems\n" +
+                "SET\n" +
+                "    medical_problem_name = ?,\n" +
+                "    medical_department = ?,\n" +
+                "    medical_problem_description = ?,\n" +
+                "    medical_problem_symptoms = ?,\n" +
+                "    medical_problem_treatment = ?\n" +
+                "    \n" +
+                "WHERE medical_problem_id = ?";
+
+        try {
+            Connection connection = DatabaseConnector.getConnection();
+            PreparedStatement ps = connection.prepareStatement(query);
+
+            ps.setString(1, model.getName());
+            ps.setString(2, model.getDepartment());
+            ps.setString(3, model.getDescription());
+
+            ps.setString(4, model.getSymptoms());
+            ps.setString(5, model.getTreatment());
+
+            ps.setInt(6, model.getId());
+
+
+            int statement=-1;
+            try {
+                statement = ps.executeUpdate();
+
+            }catch (SQLException sqlException){
+                System.out.println("\nExecuted Statement failed for: "+ sqlException.getMessage()+"\n\n");
+            }
+
+            if (statement < 0) {
+                System.out.println("Data Update failed " + statement);
+            } else {
+                System.out.println("Data Update successful " + statement);
+            }
+        } catch (SQLException e) {
+            System.out.println("Data not be Updated");
+        }
+
+        System.out.println("Update Successfully for ID: " + model.getId() + "\n");
+
     }
 }

@@ -5,18 +5,25 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medioxide.components.MedicineDataTableView;
 import medioxide.components.ProblemTableView;
+import medioxide.controller.medicine.MedicineModifyController;
 import medioxide.database.MedicineDBTable;
 import medioxide.database.ProblemDBTable;
 import medioxide.helper.OnClickListener;
+import medioxide.java.Main;
 import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.problem.ProblemMainModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -111,6 +118,33 @@ public class ProblemController implements Initializable, OnClickListener {
     @Override
     public void onEditClick(int id) {
         System.out.println("Edit Clicked for: " + id);
+
+        try {
+            var list = ProblemDBTable.getModifyProblemListById(id);
+
+            if (!list.isEmpty()){
+                var model = list.get(0);
+
+                String fxml = "modify_problem.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+//                System.out.println("URL: " + fxmlURL);
+
+                FXMLLoader fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                ProblemModifyController pmc = fxmlLoader.getController();
+                pmc.setModel(model);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
 
     }
     @Override
