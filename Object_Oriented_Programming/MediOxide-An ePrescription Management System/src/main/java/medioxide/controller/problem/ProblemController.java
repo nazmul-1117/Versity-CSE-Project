@@ -10,8 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import medioxide.components.MedicineDataTableView;
+import medioxide.components.ProblemTableView;
 import medioxide.database.MedicineDBTable;
 import medioxide.database.ProblemDBTable;
+import medioxide.helper.OnClickListener;
 import medioxide.model.medicine.MedicineTableViewModel;
 import medioxide.model.problem.ProblemMainModel;
 
@@ -19,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ProblemController implements Initializable {
+public class ProblemController implements Initializable, OnClickListener {
 
 
     public TextField addNameTextField;
@@ -79,17 +81,17 @@ public class ProblemController implements Initializable {
     }
 
     private void showAllProblemList(){
-//        var list = MedicineDBTable.getAllTestList();
-//        var medicineList = FXCollections.observableList(list);
-//        var table = new MedicineDataTableView<MedicineTableViewModel>(medicineList, this);
-//
-//        table.setLayoutX(0);
-//        table.setLayoutY(80);
-//        AnchorPane.setBottomAnchor(table, 0.0);
-//        AnchorPane.setTopAnchor(table, 0.0);
-//        AnchorPane.setLeftAnchor(table, 0.0);
-//        AnchorPane.setRightAnchor(table, 0.0);
-//        showAllProblem.getChildren().add(table);
+        var list = ProblemDBTable.getAllTestList();
+        var problemList = FXCollections.observableList(list);
+        var table = new ProblemTableView<>(problemList, this);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 0.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        showAllProblem.getChildren().add(table);
     }
 
     public void problemSearchButton(ActionEvent event) {
@@ -103,5 +105,17 @@ public class ProblemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initComboBox();
+        showAllProblemList();
+    }
+
+    @Override
+    public void onEditClick(int id) {
+        System.out.println("Edit Clicked for: " + id);
+
+    }
+    @Override
+    public void onDeleteClick(int id) {
+        System.out.println("Delete Clicked for: " + id);
+
     }
 }

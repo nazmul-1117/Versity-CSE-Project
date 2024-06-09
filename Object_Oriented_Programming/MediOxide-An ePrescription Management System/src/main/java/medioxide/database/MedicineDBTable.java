@@ -118,6 +118,7 @@ public class MedicineDBTable {
         return medicineList;
     }
 
+
     public static void updateMedicineData(MedicineModifyModel model){
 
         String query = "UPDATE medicine\n" +
