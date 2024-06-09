@@ -9,15 +9,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
+import medioxide.components.DoctorDataTableView;
+import medioxide.components.PatientsDataTableListView;
 import medioxide.database.DoctorDBTable;
+import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
+import medioxide.helper.OnClickListener;
 import medioxide.model.doctor.DoctorMainModel;
+import medioxide.model.doctor.DoctorTableViewModel;
+import medioxide.model.patients.PatientsModel;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class DoctorController implements Initializable {
+public class DoctorController implements Initializable, OnClickListener {
 
     public TextField addNameTextField;
     public TextField addSurnameTextField;
@@ -36,6 +43,7 @@ public class DoctorController implements Initializable {
     public JFXTextArea addDegreeTextField;
 
     public TextField searchDoctorTextField;
+    public AnchorPane showAllDoctor;
 
 
     private ToggleGroup genderToggleGroup = new ToggleGroup();
@@ -76,7 +84,7 @@ public class DoctorController implements Initializable {
         String email = adEmailTextField.getText();
         int nid = HelperFunctions.stringToInt(addNIDTextField.getText());
 
-        String licence = addLicenceTextField.getId();
+        String licence = addLicenceTextField.getText();
         String hospital = addHospitalTextField.getText();
         String dept = addDeptComboBox.getSelectionModel().getSelectedItem().toString();;
 
@@ -92,6 +100,20 @@ public class DoctorController implements Initializable {
         System.out.println("Name: " + model.getName());
         System.out.println("Gender: " + model.getGender());
         System.out.println("Dept: " + model.getDept());
+    }
+
+    private void showAllDoctorListData() {
+        var list =DoctorDBTable.getAllDoctorList();
+        var doctorList = FXCollections.observableList(list);
+        var table = new DoctorDataTableView<DoctorTableViewModel>(doctorList, this);
+
+        table.setLayoutX(0);
+        table.setLayoutY(80);
+        AnchorPane.setBottomAnchor(table, 0.0);
+        AnchorPane.setTopAnchor(table, 0.0);
+        AnchorPane.setLeftAnchor(table, 0.0);
+        AnchorPane.setRightAnchor(table, 0.0);
+        showAllDoctor.getChildren().add(table);
     }
 
 
@@ -110,10 +132,23 @@ public class DoctorController implements Initializable {
         System.out.println("Search Button");
     }
 
+
+    @Override
+    public void onDeleteClick(int id) {
+        System.out.println("Delete Clicked for ID: " + id);
+    }
+
+    @Override
+    public void onEditClick(int id) {
+        System.out.println("Edit Clicked for ID: " + id);
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initComboBox();
         initGenderToggle();
+        showAllDoctorListData();
 
     }
 }

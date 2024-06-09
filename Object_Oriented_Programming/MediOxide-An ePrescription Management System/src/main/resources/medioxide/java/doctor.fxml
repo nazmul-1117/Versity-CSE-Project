@@ -184,7 +184,7 @@
                 </Tab>
                 <Tab text="Show All Doctor">
                     <content>
-                        <AnchorPane fx:id="sap" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css" />
+                        <AnchorPane fx:id="showAllDoctor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css" />
                     </content>
                 </Tab>
                 <Tab style="-fx-background-color: yellow;" text="Search Doctor">

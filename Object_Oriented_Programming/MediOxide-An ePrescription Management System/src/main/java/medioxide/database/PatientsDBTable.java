@@ -31,6 +31,7 @@ public class PatientsDBTable {
                         resultSet.getString("patients_address"),
                         true
                 ));
+//                System.out.println("ID: "+resultSet.getInt("patients_id"));
             }
         } catch (SQLException e) {
             System.out.println("SQL Query Execution Failed for get all patients list");

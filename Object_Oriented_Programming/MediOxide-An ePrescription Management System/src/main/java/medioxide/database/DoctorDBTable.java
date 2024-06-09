@@ -1,11 +1,15 @@
 package medioxide.database;
 
 import medioxide.model.doctor.DoctorMainModel;
+import medioxide.model.doctor.DoctorTableViewModel;
 import medioxide.model.medicine.MedicineMainModel;
+import medioxide.model.patients.PatientsModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorDBTable {
 
@@ -42,19 +46,15 @@ public class DoctorDBTable {
             ps2.setString(2, model.getSurname()); //surname
             ps2.setString(3, model.getGender()); //gender
             ps2.setString(4, model.getPhone()); //phone
-            System.out.println("first 4 column");
 
             ps2.setString(5, model.getEmail()); //email
             ps2.setInt(6, model.getNid()); //nid
             ps2.setString(7, model.getLicence()); //licence
             ps2.setString(8, model.getHospital()); //hospital
-            System.out.println("second 4 column");
 
             ps3 = connection.prepareStatement(query3);
-            System.out.println("PS3 executed");
 
             ps4 = connection.prepareStatement(query4);
-            System.out.println("PS4 executed");
 
 
             ps4.setString(1, model.getDept()); //dept
@@ -62,8 +62,6 @@ public class DoctorDBTable {
             ps4.setString(3, model.getRoomNo());
             ps4.setString(4, model.getDegree());
             ps4.setInt(5, model.getExperience());
-
-            System.out.println("third 4 column");
 
             ps5 = connection.prepareStatement(query5);
 
@@ -94,5 +92,38 @@ public class DoctorDBTable {
             System.out.println("Data not be inserted");
         }
 
+    }
+
+    public static List<DoctorTableViewModel> getAllDoctorList() {
+        var doctorList = new ArrayList<DoctorTableViewModel>();
+        var connection = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT di.doctor_id, di.doctor_name, di.doctor_email, di.doctor_license_number,\n" +
+                    "dp.doctor_department, dp.doctor_specialty, dp.doctor_room_number \n" +
+                    "FROM doctor_personal_info AS di INNER JOIN doctor_professional_info AS dp \n" +
+                    "ON di.doctor_id = dp.doctor_id";
+
+            var ps = connection.prepareStatement(query);
+            var resultSet = ps.executeQuery();
+
+            //                System.out.println("ID: "+resultSet.getInt("doctor_id"));
+            while (resultSet.next()) doctorList.add(new DoctorTableViewModel(
+
+                    resultSet.getInt("doctor_id"),
+                    resultSet.getString("doctor_name"),
+                    resultSet.getString("doctor_email"),
+                    resultSet.getString("doctor_license_number"),
+
+                    resultSet.getString("doctor_department"),
+                    resultSet.getString("doctor_specialty"),
+                    resultSet.getString("doctor_room_number"),
+                    true
+            ));
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed for get all patients list");
+        }
+
+        return doctorList;
     }
 }
