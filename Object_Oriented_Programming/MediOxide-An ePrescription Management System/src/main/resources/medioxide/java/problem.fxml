@@ -2,32 +2,111 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1024.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.ProblemController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" styleClass="mainDashBoard" stylesheets="@style/patients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.problem.ProblemController">
     <children>
-        <Label layoutX="246.0" layoutY="53.0" prefHeight="197.0" prefWidth="602.0" text="Problem Window" textFill="#00ff77">
-            <font>
-                <Font name="Arial Bold" size="64.0" />
-            </font>
-        </Label>
-      <Pane layoutX="300.0" layoutY="288.0" prefHeight="188.0" prefWidth="452.0">
-         <children>
-            <JFXButton layoutX="165.0" layoutY="116.0" maxWidth="150.0" onAction="#modifySearchButton" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #02f302; -fx-background-radius: 5;" text="Search">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-            </JFXButton>
-            <JFXComboBox fx:id="comboBox" editable="true" focusColor="#00ff2d" labelFloat="true" layoutX="106.0" layoutY="21.0" onAction="#comboMethod" prefHeight="43.0" prefWidth="204.0" promptText="Dept" styleClass="choice-box" stylesheets="@style/problem.css" unFocusColor="#e5ff00" />
-         </children>
-      </Pane>
-      <JFXButton layoutX="142.0" layoutY="370.0" onAction="#popup" prefHeight="127.0" prefWidth="266.0" style="-fx-background-color: green;" text="Popup Button" textFill="#0c00ff">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </JFXButton>
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="220.0" prefWidth="1080.0" styleClass="topAddPane" stylesheets="@style/patients.css">
+            <children>
+                <Label layoutX="362.0" layoutY="80.0" prefHeight="66.0" prefWidth="383.0" text="Problem Window">
+                    <font>
+                        <Font name="Arial Bold" size="36.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <TabPane layoutX="10.0" layoutY="240.0" prefHeight="450.0" prefWidth="1080.0" stylesheets="@style/patients.css" tabClosingPolicy="UNAVAILABLE" tabMinHeight="35.0" tabMinWidth="100.0">
+            <tabs>
+                <Tab style="-fx-background-color: green;" styleClass="topMenuBarHBoxHover" text="Add New Problem">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="backgroundImage" stylesheets="@style.css">
+                            <children>
+                                <Pane prefHeight="405.0" prefWidth="699.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
+                                    <children>
+                                        <Label layoutX="71.0" layoutY="287.0" prefHeight="20.0" prefWidth="143.0" text="Description" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="70.0" layoutY="43.0" prefHeight="20.0" prefWidth="146.0" text="Problem Name*" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="addNameTextField" layoutX="200.0" layoutY="35.0" prefHeight="36.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                                        <JFXTextArea fx:id="addDescTextField" layoutX="200.0" layoutY="270.0" prefHeight="47.0" prefWidth="250.0" styleClass="textField" />
+                                        <Label layoutX="71.0" layoutY="100.0" prefHeight="20.0" prefWidth="146.0" text="Problem Dept" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox alignment="CENTER" layoutX="467.0" layoutY="336.0" prefHeight="79.0" prefWidth="218.0" spacing="20.0">
+                                            <children>
+                                                <JFXButton onAction="#saveButton" prefHeight="32.0" prefWidth="86.0" styleClass="saveButton" stylesheets="@style/test.css" text="Save" textFill="#0d0d0d" />
+                                                <JFXButton layoutX="76.0" layoutY="34.0" onAction="#cancelButton" prefHeight="32.0" prefWidth="86.0" styleClass="cancelButton" stylesheets="@style/test.css" text="Cancel" textFill="WHITE" />
+                                            </children>
+                                        </HBox>
+                                        <Label layoutX="71.0" layoutY="160.0" prefHeight="20.0" prefWidth="146.0" text="Symptoms " textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="addSymptomsTextField" layoutX="201.0" layoutY="158.0" prefHeight="36.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                                        <Label layoutX="70.0" layoutY="213.0" prefHeight="20.0" prefWidth="146.0" text="Treatment" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="addTreatmentTextField" layoutX="200.0" layoutY="211.0" prefHeight="36.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css" />
+                              <JFXComboBox fx:id="addDeptComboBox" focusColor="#00ff3c" layoutX="200.0" layoutY="90.0" prefHeight="36.0" prefWidth="253.0" styleClass="comboBox" stylesheets="@style/patients.css" unFocusColor="#e4ff00" />
+                                    </children>
+                                </Pane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Show All Problem">
+                    <content>
+                        <AnchorPane fx:id="showAllProblem" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css" />
+                    </content>
+                </Tab>
+                <Tab style="-fx-background-color: yellow;" text="Search Problem">
+                    <content>
+                        <AnchorPane fx:id="searchBoxAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="searchPatientsPane" stylesheets="@style/patients.css">
+                            <children>
+                                <Label layoutX="20.0" layoutY="33.0" prefHeight="20.0" prefWidth="86.0" text="Medicine ID" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="searchProblemTextField" layoutX="120.0" layoutY="30.0" prefHeight="25.0" prefWidth="184.0" promptText="Enter Patients Id" />
+                                <JFXButton layoutX="940.0" layoutY="30.0" maxWidth="150.0" onAction="#problemSearchButton" prefHeight="20.0" prefWidth="121.0" style="-fx-background-color: #02f302; -fx-background-radius: 50;" text="Search">
+                                    <font>
+                                        <Font name="Arial Bold" size="18.0" />
+                                    </font>
+                                </JFXButton>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+            <opaqueInsets>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </opaqueInsets>
+            <styleClass>
+                <String fx:value="topMenuBarHBox" />
+                <String fx:value="mainContentPane" />
+            </styleClass>
+        </TabPane>
     </children>
 </AnchorPane>

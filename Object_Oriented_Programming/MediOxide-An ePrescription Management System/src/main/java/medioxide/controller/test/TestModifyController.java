@@ -1,20 +1,15 @@
 package medioxide.controller.test;
 
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXRadioButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import medioxide.database.PatientsDBTable;
 import medioxide.database.TestDBTable;
 import medioxide.helper.HelperFunctions;
-import medioxide.model.patients.PatientsModifyModel;
-import medioxide.model.test.TestMainModel;
 import medioxide.model.test.TestModifyModel;
 
 import java.net.URL;

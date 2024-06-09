@@ -11,6 +11,7 @@ module medioxide {
     opens medioxide.controller.patients to javafx.fxml;
     opens medioxide.controller.test to javafx.fxml;
     opens medioxide.controller.medicine to javafx.fxml;
+    opens medioxide.controller.problem to javafx.fxml;
 
 
     exports medioxide.java;
