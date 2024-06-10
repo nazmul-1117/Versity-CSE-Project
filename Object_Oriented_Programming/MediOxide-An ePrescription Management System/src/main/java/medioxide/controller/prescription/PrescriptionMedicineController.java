@@ -10,12 +10,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import medioxide.model.prescription.PrescriptionMedicineModel;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class PrescriptionProblemController implements Initializable {
+public class PrescriptionMedicineController implements Initializable {
 
 
     public ComboBox medicineTypeComboBox;
@@ -29,6 +30,8 @@ public class PrescriptionProblemController implements Initializable {
     public TextField beforeAfterEatTime;
 
     private final ToggleGroup beforeAfterEat = new ToggleGroup();
+
+    private PrescriptionMedicineModel model;
 
 
 
@@ -52,13 +55,15 @@ public class PrescriptionProblemController implements Initializable {
         String name = medicineName.getText();
         String power = medicinePower.getText();
 
-        String morningDose = medicineMorningTime.getText();
-        String noonDose = medicineNoonTime.getText();
-        String nightDose = medicineNightTime.getText();
+        String dose = medicineMorningTime.getText() + " - " + medicineNoonTime.getText() + " - " +
+                medicineNightTime.getText();
+
 
         String beforeAfterEat = ((JFXRadioButton)this.beforeAfterEat.getSelectedToggle()).getText();
 
         String beforeAfterTime = beforeAfterEatTime.getText();
+
+        model = new PrescriptionMedicineModel(type, name, power, dose, beforeAfterEat, beforeAfterTime);
     }
 
     private void consoleShowAllData(){

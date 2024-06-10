@@ -9,9 +9,10 @@
             styleClass="mainFXMLLoaderBorderPane"
             stylesheets="@style.css" xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="medioxide.controller.MainController">
+            fx:controller="medioxide.controller.home.HomeController">
    <children>
-      <Pane fx:id="homeContentPane01" layoutX="11.0" layoutY="10.0" prefHeight="330.0" prefWidth="205.0" styleClass="boxOne" stylesheets="@style/dashboard.css">
+      <Pane fx:id="homeContentPane01" layoutX="11.0" layoutY="10.0" prefHeight="330.0" prefWidth="205.0"
+            styleClass="boxOne" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="5.0" layoutY="120.0" prefHeight="73.0" prefWidth="161.0" text="Total Prescription Generated" textFill="WHITE" />
             <Label fx:id="prescriptionTotalNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="0+" textFill="WHITE">
@@ -41,7 +42,7 @@
       <Pane fx:id="homeContentPane045" layoutX="675.0" layoutY="10.0" prefHeight="330.0" prefWidth="415.0" styleClass="boxFour" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="10.0" layoutY="120.0" prefHeight="73.0" prefWidth="161.0" text="Digonistocs" textFill="WHITE" />
-            <Label fx:id="totalDiagonusticNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="0+" textFill="WHITE">
+            <Label fx:id="totalDiagnosticNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="0+" textFill="WHITE">
                <font>
                   <Font size="96.0" />
                </font>

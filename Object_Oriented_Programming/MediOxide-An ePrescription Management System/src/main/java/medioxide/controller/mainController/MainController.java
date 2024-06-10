@@ -1,17 +1,17 @@
-package medioxide.controller;
+package medioxide.controller.mainController;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import medioxide.controller.mainController.FXMLLoadToPane;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 

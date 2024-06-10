@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -30,7 +31,11 @@
                                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold;" text="PERSON INFORMATION" textAlignment="CENTER" />
                         <HBox fx:id="PatientsInfo" prefHeight="50.0" prefWidth="738.0" spacing="50.0">
                            <children>
-                              <JFXButton fx:id="addPatientsButtonID" onAction="#addPatientsButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+Add" textFill="WHITE" />
+                              <JFXButton fx:id="addPatientsButtonID" onAction="#addPatientsButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-radius: 50;" stylesheets="@style/prescription.css" text="+Add" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="okayButton" />
+                                    <String fx:value="prescriptionCircleButton" />
+                                 </styleClass></JFXButton>
                               <HBox spacing="50.0">
                                  <children>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
@@ -69,7 +74,11 @@
                         </HBox>
                         <HBox fx:id="Doctor_Info" layoutX="10.0" layoutY="32.0" prefHeight="50.0" prefWidth="738.0" spacing="50.0">
                            <children>
-                              <JFXButton fx:id="addDoctorButtonID" onAction="#addDoctorButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+Add" textFill="WHITE" />
+                              <JFXButton fx:id="addDoctorButtonID" onAction="#addDoctorButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-radius: 50;" stylesheets="@style/prescription.css" text="+Add" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="okayButton" />
+                                    <String fx:value="prescriptionCircleButton" />
+                                 </styleClass></JFXButton>
                               <HBox spacing="50.0">
                                  <children>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
@@ -193,10 +202,14 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <JFXButton fx:id="addPatientsButtonID1" onAction="#addNewMedicine" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+Add" textFill="WHITE">
+                                    <JFXButton fx:id="addPatientsButtonID1" onAction="#addNewMedicine" prefHeight="48.0" prefWidth="50.0" style="-fx-background-radius: 50;" stylesheets="@style/prescription.css" text="+Add" textFill="WHITE">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                       <styleClass>
+                                          <String fx:value="createButton" />
+                                          <String fx:value="prescriptionCircleButton" />
+                                       </styleClass>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -241,10 +254,14 @@
                                         </HBox>
                                     </children>
                                 </HBox>
-                                <Button fx:id="btnGeneratePrescription" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" styleClass="createButton" stylesheets="@style/prescription.css" text="Generate Prescription" textAlignment="CENTER">
+                                <Button fx:id="btnGeneratePrescription" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" stylesheets="@style/prescription.css" text="Generate Prescription" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="12.0" />
-                           </font></Button>
+                           </font>
+                           <styleClass>
+                              <String fx:value="createButton" />
+                              <String fx:value="prescriptionButton" />
+                           </styleClass></Button>
                             </children>
                             <VBox.margin>
                                 <Insets />

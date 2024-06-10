@@ -58,17 +58,17 @@
                                 </HBox>
                                 <HBox alignment="TOP_RIGHT" prefHeight="148.0" prefWidth="415.0">
                                     <children>
-                                        <JFXButton onAction="#searchPatientsButton" stylesheets="@style/patients.css" text="Search" textFill="#fdff00">
+                                        <JFXButton onAction="#searchPatientsButton" stylesheets="@style/prescription.css" text="Search" textFill="#fdff00">
                                             <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                             </font>
-                                            <styleClass>
-                                                <String fx:value="topAddPane" />
-                                                <String fx:value="topMenuBarHBoxHover" />
-                                            </styleClass>
                                             <HBox.margin>
                                                 <Insets right="10.0" />
                                             </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="createButton" />
+                                    <String fx:value="prescriptionButton" />
+                                 </styleClass>
                                         </JFXButton>
                                     </children>
                                     <padding>
@@ -126,25 +126,25 @@
                                 </HBox>
                         <HBox layoutX="10.0" layoutY="193.0" prefHeight="41.0" prefWidth="415.0">
                            <children>
-                              <JFXButton onAction="#okayButton" stylesheets="@style/patients.css" text="OK" textFill="#fdff00">
+                              <JFXButton onAction="#okayButton" prefHeight="26.0" prefWidth="75.0" stylesheets="@style/prescription.css" text="OK" textFill="#fdff00">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
-                                 <styleClass>
-                                    <String fx:value="topAddPane" />
-                                    <String fx:value="topMenuBarHBoxHover" />
-                                 </styleClass>
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="createButton" />
+                                    <String fx:value="prescriptionButton" />
+                                 </styleClass>
                               </JFXButton>
-                              <JFXButton onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
+                              <JFXButton onAction="#cancelButton" prefHeight="26.0" prefWidth="78.0" stylesheets="@style/prescription.css" text="Cancel" textFill="#fdff00">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
                                  <styleClass>
-                                    <String fx:value="modifyPatientsPane" />
-                                    <String fx:value="topMenuBarHBoxHover" />
+                                    <String fx:value="cancelButton" />
+                                    <String fx:value="prescriptionButton" />
                                  </styleClass>
                               </JFXButton>
                            </children>

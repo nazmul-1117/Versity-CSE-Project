@@ -5,8 +5,58 @@
     -fx-background-radius: 10px;
 }
 
-.createButton{
+.okayButton{
     -fx-background-color: #00ff8c;
     -fx-text-fill: #070015;
+    -fx-font-weight: bold;
     -fx-background-radius: 7px;
+}
+
+.cancelButton{
+    -fx-background-color: #480026;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7px;
+}
+
+.createButton{
+    -fx-background-color: #00ad5e;
+    -fx-text-fill: #070015;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7px;
+}
+
+.addPatientsWindow{
+    -fx-background-color: #051714;
+    -fx-background-radius: 20px;
+}
+
+.addMedicineWindow{
+    -fx-background-color: #051714;
+    -fx-background-radius: 20px;
+}
+
+.prescriptionButton:hover{
+    -fx-background-color: #ff0016;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+
+    -fx-border-radius: 7px;
+    -fx-border-width: 2px;
+    -fx-border-color: #00ff00 transparent blue transparent;
+    -fx-cursor:hand;
+}
+
+
+.prescriptionCircleButton:hover{
+    -fx-background-color: #7a0067;
+    -fx-background-radius: 50px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+
+    -fx-border-radius: 50px;
+    -fx-border-width: 2px;
+    -fx-border-color: #00ff00 transparent #f8ec06 transparent;
+    -fx-cursor:hand;
 }

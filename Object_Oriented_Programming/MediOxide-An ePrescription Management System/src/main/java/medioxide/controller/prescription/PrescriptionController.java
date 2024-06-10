@@ -95,7 +95,7 @@ public class PrescriptionController implements Initializable {
 
     public void addNewMedicine(ActionEvent event) {
         try {
-                String fxml = "prescription_problem.fxml";
+                String fxml = "prescription_medicine.fxml";
                 URL fxmlURL = Main.class.getResource(fxml);
                 System.out.println("URL: " + fxmlURL);
 

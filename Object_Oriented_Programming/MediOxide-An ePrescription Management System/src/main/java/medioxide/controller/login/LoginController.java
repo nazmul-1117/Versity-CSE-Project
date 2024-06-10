@@ -1,4 +1,4 @@
-package medioxide.controller;
+package medioxide.controller.login;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

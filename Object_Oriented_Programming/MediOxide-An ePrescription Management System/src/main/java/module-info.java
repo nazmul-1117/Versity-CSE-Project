@@ -10,7 +10,6 @@ module medioxide {
     requires layout;
 
 
-    opens medioxide.controller to javafx.fxml;
     opens medioxide.model.patients to javafx.base;
     opens medioxide.model.test to javafx.base;
     opens medioxide.model.problem to javafx.base;
@@ -22,10 +21,12 @@ module medioxide {
     opens medioxide.controller.doctor to javafx.fxml;
     opens medioxide.controller.prescription to javafx.fxml;
     opens medioxide.controller.others to javafx.fxml;
+    opens medioxide.controller.login to javafx.fxml;
+    opens medioxide.controller.mainController to javafx.fxml;
+    opens medioxide.controller.home to javafx.fxml;
+
 
 
     exports medioxide.java;
     exports medioxide.controller.patients;
-
-
 }

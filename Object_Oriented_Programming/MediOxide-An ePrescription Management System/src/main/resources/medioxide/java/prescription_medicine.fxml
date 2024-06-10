@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -15,9 +14,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.prescription.PrescriptionProblemController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="medioxide.controller.prescription.PrescriptionMedicineController">
     <children>
-        <Pane prefHeight="500.0" prefWidth="600.0" styleClass="addMedicineWindow" stylesheets="@style/prescription.css">
+        <Pane prefHeight="500.0" prefWidth="600.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
          <children>
             <VBox prefHeight="500.0" prefWidth="600.0" spacing="20.0">
                <children>
@@ -139,11 +140,7 @@
                               <Insets right="10.0" top="20.0" />
                            </padding>
                            <children>
-                              <JFXButton onAction="#saveButton" prefHeight="41.0" prefWidth="94.0" stylesheets="@style/prescription.css" text="Save">
-                                 <styleClass>
-                                    <String fx:value="createButton" />
-                                    <String fx:value="prescriptionButton" />
-                                 </styleClass></JFXButton>
+                              <JFXButton onAction="#saveButton" prefHeight="41.0" prefWidth="94.0" styleClass="createButton" stylesheets="@style/prescription.css" text="Save" />
                            </children>
                         </HBox>
                      </children>

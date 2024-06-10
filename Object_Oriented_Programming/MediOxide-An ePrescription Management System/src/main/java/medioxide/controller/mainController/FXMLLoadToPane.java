@@ -1,4 +1,4 @@
-package medioxide.controller;
+package medioxide.controller.mainController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
