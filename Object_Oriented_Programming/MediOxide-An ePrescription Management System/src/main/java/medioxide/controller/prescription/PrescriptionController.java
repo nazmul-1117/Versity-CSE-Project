@@ -1,115 +1,115 @@
 package medioxide.controller.prescription;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import medioxide.controller.others.ChipSingleItemController;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import medioxide.controller.patients.PatientsModifyController;
+import medioxide.controller.problem.ProblemModifyController;
+import medioxide.database.PatientsDBTable;
+import medioxide.database.PrescriptionDBTable;
 import medioxide.database.ProblemDBTable;
 import medioxide.java.Main;
+import medioxide.model.prescription.PrescriptionPatientsModel;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-
-import medioxide.model.problem.ProblemTableViewModel;
-import org.controlsfx.control.textfield.TextFields;
 
 public class PrescriptionController implements Initializable {
-    @FXML
-    private FlowPane flowPanChiefComplaints;
-    private final ObservableList<ProblemTableViewModel> selectedProblem = FXCollections.observableArrayList();
-    private final List<ProblemTableViewModel> problemList = new ArrayList<>();
 
+    public TextField patientsID;
+    public TextField patientsName;
+    public TextField patientsAge;
+    public TextField patientsGender;
+
+    public TextField doctorID;
+    public TextField doctorName;
+    public TextField doctorDept;
+    public TextField doctorSpec;
+
+    public JFXButton addPatientsButtonID;
+    public JFXButton addDoctorButtonID;
+
+    private PrescriptionPatientsModel patientsModel;
+
+
+    private void setData(){
+        patientsID.clear();
+        patientsID.setText(Integer.toString(patientsModel.getId()));
+        patientsName.setText(patientsModel.getName());
+        patientsAge.setText(Integer.toString(patientsModel.getAge()));
+        patientsGender.setText(patientsModel.getGender());
+    }
+    public void addPatientsButtonClicked() {
+        int id=3000;
+        var patientsList = PrescriptionDBTable.getPatientListById(id);
+
+        if (patientsList != null){
+            patientsModel = patientsList.get(0);
+        }
+
+        try {
+            var list = PrescriptionDBTable.getPatientListById(id);
+
+            if (!list.isEmpty()){
+                var model = list.get(0);
+
+                String fxml = "prescription_patients_search.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+
+                FXMLLoader fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                PrescriptionSearchPatientsController pspc = fxmlLoader.getController();
+                patientsModel = pspc.getPatientsModel();
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+            }
+
+        }catch (IOException ioException){
+            System.out.println("modify_patients.fxml failed");
+        }
+    }
+    public void addDoctorButtonClicked(ActionEvent event) {
+    }
+    public void onTapNextVisit(MouseEvent mouseEvent) {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        populateViewModelData();
+        //addPatientsButtonClicked();
 
-        populateProblemsView();
-
-
-        selectedProblem.addListener((ListChangeListener<? super ProblemTableViewModel>) c -> {
-            populateProblemsView();
-        });
     }
 
-    private void populateProblemsView() {
-        List<Node> children = new ArrayList<>();
-        for (var model : selectedProblem) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("chip_single_item_view.fxml"));
-                Node node = fxmlLoader.load();
-                ChipSingleItemController controller = fxmlLoader.getController();
-                Runnable action = () -> selectedProblem.remove(model);
-                controller.init(model.getName(), action);
-                children.add(node);
-            } catch (IOException e) {
-            }
+    public void addNewMedicine(ActionEvent event) {
+        try {
+                String fxml = "prescription_problem.fxml";
+                URL fxmlURL = Main.class.getResource(fxml);
+                System.out.println("URL: " + fxmlURL);
+
+                FXMLLoader  fxmlLoader  = new FXMLLoader(fxmlURL);
+                Scene scene = new Scene(fxmlLoader.load());
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+
+        }catch(IOException ioException){
+            System.out.println("modify_patients.fxml failed");
         }
-        TextField textField = new TextField();
-        textField.autosize();
-        textField.setPrefWidth(220);
-        textField.setMaxWidth(220);
-
-
-        var autoCompletionBinding = TextFields.bindAutoCompletion(textField, suggestionRequest -> {
-            String enteredText = suggestionRequest.getUserText().toLowerCase();
-
-            if (enteredText.trim().isEmpty()) {
-                return problemList;
-            }
-
-            return problemList.stream().filter(item -> item.getName().toLowerCase().contains(enteredText)).collect(Collectors.toList());
-        });
-
-        autoCompletionBinding.setOnAutoCompleted(event -> {
-            var selectedModel = event.getCompletion();
-            if (selectedModel == null) {
-                return;
-            }
-            selectedProblem.add(selectedModel);
-
-            flowPanChiefComplaints.requestFocus();
-
-        });
-
-        textField.focusedProperty().addListener((observableValue, oldVal, newVal) -> {
-            if (newVal) {
-                autoCompletionBinding.setUserInput("");
-
-                Bounds bounds = textField.localToScreen(textField.getBoundsInLocal());
-                autoCompletionBinding.setPrefWidth(bounds.getWidth());
-            }
-        });
-        children.add(textField);
-
-        flowPanChiefComplaints.getChildren().clear();
-        flowPanChiefComplaints.getChildren().addAll(children);
-
-
-    }
-    private void populateViewModelData() {
-         problemList.clear();
-         problemList.addAll( ProblemDBTable.getAllProblemList());
-
-    }
-    @FXML
-    public void onTapDateOfBirth(MouseEvent mouseEvent) {
-    }
-    @FXML
-    public void onTapIssueDate(MouseEvent mouseEvent) {
-    }
-    public void onTapNextVisit(MouseEvent mouseEvent) {
     }
 }

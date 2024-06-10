@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane stylesheets="@style/stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.prescription.PrescriptionController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" styleClass="mainBorderPane" stylesheets="@style/prescription.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.prescription.PrescriptionController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -28,109 +28,78 @@
                         <VBox spacing="5.0">
                             <children>
                                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold;" text="PERSON INFORMATION" textAlignment="CENTER" />
-                                <HBox spacing="16.0" style="-fx-border-color: skyblue;">
-                                    <children>
-                                        <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Label style="-fx-font-weight: bold;" text="Patient Id" />
-                                                <TextField fx:id="tfPatientId" maxWidth="1.7976931348623157E308" styleClass="text-field-new-prescription">
-                                                    <effect>
-                                                        <InnerShadow blurType="TWO_PASS_BOX" height="40.0" radius="19.5" width="40.0">
-                                                            <color>
-                                                                <Color red="0.5568627715110779" green="0.8823529481887817" blue="0.5568627715110779" />
-                                                            </color>
-                                                        </InnerShadow>
-                                                    </effect>
-                                                </TextField>
-                                            </children>
-                                        </VBox>
-                                        <VBox layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Label style="-fx-font-weight: bold;" text="Patient Phone" />
-                                                <TextField fx:id="tfPatientPhone" maxWidth="1.7976931348623157E308" styleClass="text-field-new-prescription">
-                                                    <effect>
-                                                        <InnerShadow blurType="TWO_PASS_BOX" height="40.0" radius="19.5" width="40.0">
-                                                            <color>
-                                                                <Color red="0.5568627715110779" green="0.8823529481887817" blue="0.5568627715110779" />
-                                                            </color>
-                                                        </InnerShadow>
-                                                    </effect>
-                                                </TextField>
-                                            </children>
-                                        </VBox>
-                                        <VBox layoutX="185.0" layoutY="20.0" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Label style="-fx-font-weight: bold;" text="Patient Name" />
-                                                <TextField fx:id="tfPatientName" maxWidth="1.7976931348623157E308" styleClass="text-field-new-prescription">
-                                                    <effect>
-                                                        <InnerShadow blurType="TWO_PASS_BOX" height="40.0" radius="19.5" width="40.0">
-                                                            <color>
-                                                                <Color red="0.5568627715110779" green="0.8823529481887817" blue="0.5568627715110779" />
-                                                            </color>
-                                                        </InnerShadow>
-                                                    </effect>
-                                                </TextField>
-                                            </children>
-                                        </VBox>
-                                        <VBox layoutX="185.0" layoutY="20.0" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Label style="-fx-font-weight: bold;" text="Date Of Birth" />
-                                                <StackPane>
-                                                    <children>
-                                                        <DatePicker fx:id="dpDateOfBirth" maxWidth="1.7976931348623157E308" prefHeight="32.0" prefWidth="150.0" styleClass="date-picker-new-prescription">
-                                                            <effect>
-                                                                <InnerShadow blurType="TWO_PASS_BOX" height="40.0" radius="19.5" width="40.0">
-                                                                    <color>
-                                                                        <Color red="0.5568627715110779" green="0.8823529481887817" blue="0.5568627715110779" />
-                                                                    </color>
-                                                                </InnerShadow>
-                                                            </effect>
-                                                        </DatePicker>
-                                                        <Pane onMouseClicked="#onTapDateOfBirth" visible="false" />
-                                                    </children>
-                                                </StackPane>
-                                            </children>
-                                        </VBox>
-                                        <VBox layoutX="515.0" layoutY="20.0" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Label style="-fx-font-weight: bold;" text="Gender" />
-                                                <ComboBox fx:id="cmbGender" maxWidth="1.7976931348623157E308" pickOnBounds="false" prefWidth="100.0" promptText="Select One" scaleShape="false" styleClass="combo-box-new-prescription">
-
-                                                    <effect>
-                                                        <InnerShadow blurType="TWO_PASS_BOX" height="40.0" radius="19.5" width="40.0">
-                                                            <color>
-                                                                <Color red="0.5568627715110779" green="0.8823529481887817" blue="0.5568627715110779" />
-                                                            </color>
-                                                        </InnerShadow>
-                                                    </effect>
-                                                </ComboBox>
-                                                <TextField alignment="CENTER" cache="true" focusTraversable="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" visible="false" VBox.vgrow="ALWAYS" />
-                                            </children>
-                                        </VBox>
-                                        <VBox layoutX="680.0" layoutY="20.0" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Label style="-fx-font-weight: bold;" text="Issue Date" />
-                                                <StackPane>
-                                                    <children>
-                                                        <DatePicker fx:id="dpIssueDate" maxWidth="1.7976931348623157E308" prefHeight="32.0" prefWidth="150.0" styleClass="date-picker-new-prescription">
-                                                            <effect>
-                                                                <InnerShadow blurType="TWO_PASS_BOX" height="40.0" radius="19.5" width="40.0">
-                                                                    <color>
-                                                                        <Color red="0.5568627715110779" green="0.8823529481887817" blue="0.5568627715110779" />
-                                                                    </color>
-                                                                </InnerShadow>
-                                                            </effect>
-                                                        </DatePicker>
-                                                        <Pane maxWidth="1.7976931348623157E308" onMouseClicked="#onTapIssueDate" visible="false" />
-                                                    </children>
-                                                </StackPane>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                    <padding>
-                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                    </padding>
-                                </HBox>
+                        <HBox fx:id="PatientsInfo" prefHeight="50.0" prefWidth="738.0" spacing="50.0">
+                           <children>
+                              <JFXButton fx:id="addPatientsButtonID" onAction="#addPatientsButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+Add" textFill="WHITE" />
+                              <HBox spacing="50.0">
+                                 <children>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Patients ID" />
+                                          <TextField fx:id="patientsID" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Patients Name" />
+                                          <TextField fx:id="patientsName" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Patients Age" />
+                                          <TextField fx:id="patientsAge" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Patients Gender" />
+                                          <TextField fx:id="patientsGender" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="601.0" layoutY="10.0" prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Prescription Date" />
+                                          <DatePicker fx:id="addPrescriptionDate" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="Doctor_Info" layoutX="10.0" layoutY="32.0" prefHeight="50.0" prefWidth="738.0" spacing="50.0">
+                           <children>
+                              <JFXButton fx:id="addDoctorButtonID" onAction="#addDoctorButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+Add" textFill="WHITE" />
+                              <HBox spacing="50.0">
+                                 <children>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Doctor ID" />
+                                          <TextField fx:id="doctorID" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Doctor Name" />
+                                          <TextField fx:id="doctorName" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Department" />
+                                          <TextField fx:id="doctorDept" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Speciality" />
+                                          <TextField fx:id="doctorSpec" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
                             </children>
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -147,18 +116,43 @@
                     <content>
                         <VBox prefWidth="250.0" spacing="20.0">
                             <children>
-                                <VBox>
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="Chief Complaints (C/C)" />
-                                        <FlowPane fx:id="flowPanChiefComplaints" hgap="5.0" maxWidth="230.0" prefWrapLength="200.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
+                                <VBox spacing="10.0">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="229.0" text="Problem Field" />
+                              <VBox>
+                                 <children>
+                                    <Label text="Problem 1" />
+                                    <TextField fx:id="addProblem1TextField" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0">
+                                 <children>
+                                    <Label text="Problem 2" />
+                                    <TextField fx:id="addProblem2TextField" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="52.0">
+                                 <children>
+                                    <Label text="Problem 3" />
+                                    <TextField fx:id="addProblem3TextField" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="94.0">
+                                 <children>
+                                    <Label text="Problem 4" />
+                                    <TextField fx:id="addProblem4TextField" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="211.0">
+                                 <children>
+                                    <Label text="Problem 5" />
+                                    <TextField fx:id="addProblem5TextField" />
+                                 </children>
+                              </VBox>
+                           </children>
                                 </VBox>
                                 <VBox layoutX="20.0" layoutY="20.0">
                                     <VBox.margin>
@@ -166,9 +160,9 @@
                                     </VBox.margin>
                                     <Label style="-fx-font-weight: bold;" text="On Examination (O/E)" />
                                     <VBox fx:id="vbOnExam" alignment="TOP_CENTER" style="-fx-border-color: grey;">
-                                        <children>
-                                            <ListView fx:id="lvOnExamination" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;" />
-                                        </children>
+                              <children>
+                                 <JFXTextArea focusColor="#4eff00" unFocusColor="#ff00a1" />
+                              </children>
                                     </VBox>
                                 </VBox>
                             </children>
@@ -189,7 +183,23 @@
                             <content>
                                 <VBox fx:id="vb">
                                     <children>
-                                        <Label style="-fx-font-weight: bold;" text="Rx" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="BOTTOM_LEFT" spacing="10.0">
+                                 <children>
+                                              <Label prefHeight="45.0" prefWidth="45.0" style="-fx-font-weight: bold; -fx-background-radius: 20; -fx-background-color: red;" text="Rx" textFill="WHITE">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <JFXButton fx:id="addPatientsButtonID1" onAction="#addNewMedicine" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: green; -fx-background-radius: 50;" text="+Add" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
                                         <VBox fx:id="vbPrescribeMedicineList" spacing="20.0" />
                                     </children>
                                     <padding>
@@ -203,18 +213,10 @@
                                 <HBox maxWidth="1.7976931348623157E308" spacing="10.0">
                                     <children>
                                         <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0" HBox.hgrow="ALWAYS">
-                                            <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Advice" />
-                                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="180.0" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-focus-traversable: false; -fx-focus-color: transparent; -fx-focus-color: transparent; -fx-padding: 0px;" vbarPolicy="NEVER" HBox.hgrow="ALWAYS">
-                                                    <content>
-                                                        <FlowPane fx:id="flowPanePatientRules" hgap="5.0" maxWidth="1.7976931348623157E308" prefWrapLength="0.0" vgap="5.0">
-                                                            <padding>
-                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                            </padding>
-                                                        </FlowPane>
-                                                    </content>
-                                                </ScrollPane>
-                                            </children>
+                                 <children>
+                                    <Label text="Advice" />
+                                    <TextField fx:id="addAdviceTextField" prefHeight="41.0" prefWidth="288.0" promptText="patients id" />
+                                 </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="10.0" HBox.hgrow="ALWAYS">
                                             <children>
@@ -239,7 +241,10 @@
                                         </HBox>
                                     </children>
                                 </HBox>
-                                <Button fx:id="btnGeneratePrescription" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: -fx-color-primary; -fx-text-fill: white; -fx-padding: 6px 4px; -fx-font-size: 16px;" text="Generate Prescription" textAlignment="CENTER" />
+                                <Button fx:id="btnGeneratePrescription" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="131.0" styleClass="createButton" stylesheets="@style/prescription.css" text="Generate Prescription" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font></Button>
                             </children>
                             <VBox.margin>
                                 <Insets />
@@ -251,82 +256,6 @@
                     </children>
                 </VBox>
             </center>
-            <right>
-                <ScrollPane focusTraversable="false" hbarPolicy="NEVER" style="-fx-border-color: lightblue; -fx-faint-focus-color: transparent; -fx-focus-color: transparent;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
-                    <BorderPane.margin>
-                        <Insets bottom="10.0" right="10.0" />
-                    </BorderPane.margin>
-                    <content>
-                        <VBox prefWidth="250.0" spacing="10.0">
-                            <children>
-                                <VBox>
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="Comorbidities" />
-                                        <FlowPane fx:id="flowPanComorbidities" hgap="5.0" minHeight="30.0" prefWidth="180.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
-                                </VBox>
-                                <VBox layoutX="21.0" layoutY="21.0">
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="Family History" />
-                                        <FlowPane fx:id="flowPanFamilyHistory" hgap="5.0" minHeight="30.0" prefWidth="180.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
-                                </VBox>
-                                <VBox layoutX="21.0" layoutY="78.0">
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="History of Past Illness" />
-                                        <FlowPane fx:id="flowPanHistoryOfPastIllness" hgap="5.0" minHeight="30.0" prefWidth="180.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
-                                </VBox>
-                                <VBox layoutX="21.0" layoutY="135.0">
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="Personal History" />
-                                        <FlowPane fx:id="flowPanPersonalHistory" hgap="5.0" minHeight="30.0" prefWidth="180.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
-                                </VBox>
-                                <VBox layoutX="21.0" layoutY="192.0">
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="Drug Allergy" />
-                                        <FlowPane fx:id="flowPanDrugAllergy" hgap="5.0" minHeight="30.0" prefWidth="180.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
-                                </VBox>
-                                <VBox layoutX="21.0" layoutY="249.0">
-                                    <children>
-                                        <Label style="-fx-font-weight: bold;" text="Advice/Test" />
-                                        <FlowPane fx:id="flowPanAdviceTest" hgap="5.0" minHeight="30.0" prefWidth="180.0" style="-fx-border-color: grey;" vgap="5.0">
-                                            <padding>
-                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
-                                </VBox>
-                            </children>
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </padding>
-                        </VBox>
-                    </content>
-                </ScrollPane>
-            </right>
             <bottom>
                 <HBox BorderPane.alignment="CENTER" />
             </bottom>

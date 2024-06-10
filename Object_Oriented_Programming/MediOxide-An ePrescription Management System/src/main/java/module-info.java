@@ -5,6 +5,9 @@ module medioxide {
     requires javafx.fxml;
     requires org.controlsfx.controls;
     requires javafx.base;
+    requires io;
+    requires kernel;
+    requires layout;
 
 
     opens medioxide.controller to javafx.fxml;

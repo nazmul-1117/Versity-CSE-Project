@@ -4,3 +4,9 @@
     -fx-background-color: white;
     -fx-background-radius: 10px;
 }
+
+.createButton{
+    -fx-background-color: #00ff8c;
+    -fx-text-fill: #070015;
+    -fx-background-radius: 7px;
+}

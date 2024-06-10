@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="405.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.prescription.PrescriptionSearchPatientsController">
+    <children>
+        <Pane layoutY="-14.0" prefHeight="586.0" prefWidth="435.0" styleClass="addPatientsLeftPane" stylesheets="@style/patients.css">
+            <children>
+                <Pane layoutX="19.9931640625" layoutY="30.0">
+                    <children>
+                        <VBox prefHeight="483.0" prefWidth="415.0" spacing="20.0">
+                            <children>
+                                <HBox prefHeight="32.0" prefWidth="414.0">
+                                    <children>
+                                        <JFXButton onAction="#cancelButton" prefHeight="10.0" prefWidth="25.0" style="-fx-background-color: red; -fx-background-radius: 100;" styleClass="modifyCloseButton" stylesheets="@style/patients.css" />
+                                    </children>
+                                </HBox>
+                                <VBox spacing="25.0">
+                                    <children>
+                              <VBox spacing="20.0">
+                                 <children>
+                                              <Line endX="313.5" startX="-100.0" stroke="#9c4d00" />
+                                              <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="76.0" prefWidth="389.0" text="Search Patients Data" textFill="#03a110">
+                                                  <font>
+                                                      <Font name="Arial Bold" size="24.0" />
+                                                  </font>
+                                              </Label>
+                                              <Line endX="313.5" startX="-100.0" stroke="#9c4d00" />
+                                 </children>
+                              </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="-10.0" />
+                                    </VBox.margin>
+                                </VBox>
+                                <HBox>
+                                    <children>
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Search by ID" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="searchPatientsTextField" prefHeight="30.0" prefWidth="250.0" promptText="Enter Patients ID" styleClass="textField" stylesheets="@style/patients.css" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="TOP_RIGHT" prefHeight="148.0" prefWidth="415.0">
+                                    <children>
+                                        <JFXButton onAction="#searchPatientsButton" stylesheets="@style/patients.css" text="Search" textFill="#fdff00">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="topAddPane" />
+                                                <String fx:value="topMenuBarHBoxHover" />
+                                            </styleClass>
+                                            <HBox.margin>
+                                                <Insets right="10.0" />
+                                            </HBox.margin>
+                                        </JFXButton>
+                                    </children>
+                                    <padding>
+                                        <Insets right="10.0" />
+                                    </padding>
+                                </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="111.0" text="Name" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="nameTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                                <HBox>
+                                    <children>
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Age" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="ageTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></TextField>
+                                    </children>
+                                </HBox>
+                                <HBox>
+                                    <children>
+                                        <Label prefHeight="20.0" prefWidth="120.0" text="Gender" textFill="WHITE">
+                                            <font>
+                                                <Font name="Arial Bold" size="14.0" />
+                                            </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="genderTextField" prefHeight="30.0" prefWidth="250.0" styleClass="textField" stylesheets="@style/patients.css">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></TextField>
+                                    </children>
+                                </HBox>
+                        <HBox layoutX="10.0" layoutY="193.0" prefHeight="41.0" prefWidth="415.0">
+                           <children>
+                              <JFXButton onAction="#okayButton" stylesheets="@style/patients.css" text="OK" textFill="#fdff00">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="topAddPane" />
+                                    <String fx:value="topMenuBarHBoxHover" />
+                                 </styleClass>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="modifyPatientsPane" />
+                                    <String fx:value="topMenuBarHBoxHover" />
+                                 </styleClass>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

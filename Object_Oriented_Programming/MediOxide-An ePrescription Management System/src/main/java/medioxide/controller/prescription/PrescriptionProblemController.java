@@ -1,0 +1,85 @@
+package medioxide.controller.prescription;
+
+import com.jfoenix.controls.JFXRadioButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+public class PrescriptionProblemController implements Initializable {
+
+
+    public ComboBox medicineTypeComboBox;
+    public TextField medicineName;
+    public TextField medicinePower;
+    public TextField medicineMorningTime;
+    public TextField medicineNoonTime;
+    public TextField medicineNightTime;
+    public JFXRadioButton medicineBeforeEatRB;
+    public JFXRadioButton medicineAfterEatRB;
+    public TextField beforeAfterEatTime;
+
+    private final ToggleGroup beforeAfterEat = new ToggleGroup();
+
+
+
+    private void initGenderToggle() {
+        medicineBeforeEatRB.setToggleGroup(beforeAfterEat);
+        medicineAfterEatRB.setToggleGroup(beforeAfterEat);
+    }
+
+    private void initComboBox(){
+        ObservableList<String> list = FXCollections.observableList(new ArrayList<>()) ;
+        list.add("Tablet");
+        list.add("Syrup");
+        list.add("Capsule");
+
+        //comboBox.setItems(list);
+        medicineTypeComboBox.setItems(list);
+    }
+
+    private void dataCollect(){
+        String type = medicineTypeComboBox.getSelectionModel().getSelectedItem().toString();;
+        String name = medicineName.getText();
+        String power = medicinePower.getText();
+
+        String morningDose = medicineMorningTime.getText();
+        String noonDose = medicineNoonTime.getText();
+        String nightDose = medicineNightTime.getText();
+
+        String beforeAfterEat = ((JFXRadioButton)this.beforeAfterEat.getSelectedToggle()).getText();
+
+        String beforeAfterTime = beforeAfterEatTime.getText();
+    }
+
+    private void consoleShowAllData(){
+        System.out.println("Name: ");
+    }
+
+    public void saveButton(ActionEvent event) {
+        dataCollect();
+        consoleShowAllData();
+    }
+
+    public void cancelButton(ActionEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initGenderToggle();
+        initComboBox();
+    }
+}
