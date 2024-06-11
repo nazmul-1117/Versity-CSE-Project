@@ -86,6 +86,8 @@ public class DoctorModifyController implements Initializable {
         consoleShowAllData();
         DoctorDBTable.updateDoctorData(model);
         System.out.println("Saved Changed");
+
+        cancelButton(event);
     }
     public void cancelButton(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

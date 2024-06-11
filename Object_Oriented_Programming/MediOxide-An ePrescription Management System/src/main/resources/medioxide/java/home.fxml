@@ -5,17 +5,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0"
-            styleClass="mainFXMLLoaderBorderPane"
-            stylesheets="@style.css" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="medioxide.controller.home.HomeController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" styleClass="mainFXMLLoaderBorderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.home.HomeController">
    <children>
-      <Pane fx:id="homeContentPane01" layoutX="11.0" layoutY="10.0" prefHeight="330.0" prefWidth="205.0"
-            styleClass="boxOne" stylesheets="@style/dashboard.css">
+      <Pane fx:id="homeContentPane01" layoutX="11.0" layoutY="10.0" prefHeight="330.0" prefWidth="205.0" styleClass="boxOne" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="5.0" layoutY="120.0" prefHeight="73.0" prefWidth="161.0" text="Total Prescription Generated" textFill="WHITE" />
-            <Label fx:id="prescriptionTotalNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="0+" textFill="WHITE">
+            <Label fx:id="prescriptionTotalNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="6+" textFill="WHITE">
                <font>
                   <Font size="96.0" />
                </font>
@@ -33,7 +28,7 @@
       <Pane fx:id="homeContentPane10" layoutX="876.0" layoutY="355.0" prefHeight="340.0" prefWidth="215.0" styleClass="universalBox" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="5.0" layoutY="120.0" prefHeight="73.0" prefWidth="161.0" text="Total Revenue" textFill="WHITE" />
-            <Label fx:id="doctorTotalNumber11" layoutX="5.0" layoutY="10.0" prefHeight="89.0" prefWidth="137.0" styleClass="un" stylesheets="@style/dashboard.css" text="0+" textFill="WHITE">
+            <Label fx:id="doctorTotalNumber11" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="205.0" styleClass="un" stylesheets="@style/dashboard.css" text="30" textFill="WHITE">
                <font>
                   <Font size="96.0" />
                </font>
@@ -60,7 +55,7 @@
       <Pane fx:id="homeContentPane089" layoutX="460.0" layoutY="355.0" prefHeight="340.0" prefWidth="405.0" styleClass="universalBox" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="10.0" layoutY="120.0" prefHeight="73.0" prefWidth="161.0" text="Doctor-Patients Statistics" textFill="WHITE" />
-            <Label fx:id="totalRevenueNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="0+" textFill="WHITE">
+            <Label fx:id="totalRevenueNumber" layoutX="5.0" layoutY="10.0" prefHeight="141.0" prefWidth="137.0" text="1:2" textFill="WHITE">
                <font>
                   <Font size="96.0" />
                </font>
@@ -69,7 +64,7 @@
       <Pane fx:id="homeContentPane06" layoutX="10.0" layoutY="350.0" prefHeight="105.0" prefWidth="430.0" styleClass="universalBox" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="10.0" layoutY="-15.0" prefHeight="73.0" prefWidth="161.0" text="Total Admin" textFill="WHITE" />
-            <Label fx:id="doctorTotalNumber1" layoutX="10.0" layoutY="20.0" prefHeight="89.0" prefWidth="137.0" text="0+" textFill="WHITE">
+            <Label fx:id="doctorTotalNumber1" layoutX="10.0" layoutY="20.0" prefHeight="89.0" prefWidth="137.0" text="3+" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>
@@ -78,7 +73,7 @@
       <Pane fx:id="homeContentPane07" layoutX="10.0" layoutY="470.0" prefHeight="105.0" prefWidth="430.0" styleClass="universalBox" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="10.0" layoutY="-15.0" prefHeight="73.0" prefWidth="161.0" text="Total Nurse" textFill="WHITE" />
-            <Label fx:id="adminTotalNumber" layoutX="10.0" layoutY="20.0" prefHeight="89.0" prefWidth="137.0" text="0+" textFill="WHITE">
+            <Label fx:id="adminTotalNumber" layoutX="10.0" layoutY="20.0" prefHeight="89.0" prefWidth="137.0" text="7+" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>
@@ -87,7 +82,7 @@
       <Pane fx:id="homeContentPane071" layoutX="10.0" layoutY="585.0" prefHeight="105.0" prefWidth="430.0" styleClass="universalBox" stylesheets="@style/dashboard.css">
          <children>
             <Label layoutX="10.0" layoutY="-15.0" prefHeight="73.0" prefWidth="161.0" text="Total Internee" textFill="WHITE" />
-            <Label fx:id="nurseTotalNumber" layoutX="10.0" layoutY="20.0" prefHeight="89.0" prefWidth="137.0" text="0+" textFill="WHITE">
+            <Label fx:id="nurseTotalNumber" layoutX="10.0" layoutY="20.0" prefHeight="89.0" prefWidth="137.0" text="2+" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>

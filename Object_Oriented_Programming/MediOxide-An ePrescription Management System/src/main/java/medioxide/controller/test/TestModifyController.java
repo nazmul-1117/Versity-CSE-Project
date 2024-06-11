@@ -27,7 +27,6 @@ public class TestModifyController implements Initializable {
 
 
     public TestModifyController() {}
-
     public void setTestModifyModel(TestModifyModel model) {
         this.model = model;
         setData();
@@ -77,6 +76,7 @@ public class TestModifyController implements Initializable {
     public void saveChangeButton(ActionEvent event) {
         collectData();
         TestDBTable.updateTestIntoDatabase(model);
+        cancelButton(event);
     }
 
 

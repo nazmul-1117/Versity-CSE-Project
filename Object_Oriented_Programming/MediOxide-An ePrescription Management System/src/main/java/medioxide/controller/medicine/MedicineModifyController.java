@@ -62,6 +62,8 @@ public class MedicineModifyController implements Initializable {
         consoleShowAllData();
         MedicineDBTable.updateMedicineData(model);
 
+        cancelButton(event);
+
     }
 
     public void cancelButton(ActionEvent event) {

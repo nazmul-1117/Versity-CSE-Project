@@ -86,6 +86,7 @@ public class ProblemModifyController implements Initializable {
     public void saveChangeButton(ActionEvent event) {
         dataCollect();
         ProblemDBTable.updateProblemData(model);
+        cancelButton(event);
     }
 
 

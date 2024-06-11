@@ -142,25 +142,25 @@
                         </HBox>
                         <HBox>
                            <children>
-                              <JFXButton onAction="#saveChangeButton" stylesheets="@style/patients.css" text="Save Changes" textFill="#fdff00">
+                              <JFXButton onAction="#saveChangeButton" stylesheets="@style/prescription.css" text="Save" textFill="#fdff00">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
-                                 <styleClass>
-                                    <String fx:value="topAddPane" />
-                                    <String fx:value="topMenuBarHBoxHover" />
-                                 </styleClass>
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="createButton" />
+                                    <String fx:value="prescriptionButton" />
+                                 </styleClass>
                               </JFXButton>
-                              <JFXButton onAction="#cancelButton" stylesheets="@style/patients.css" text="Cancel" textFill="#fdff00">
+                              <JFXButton onAction="#cancelButton" stylesheets="@style/prescription.css" text="Cancel" textFill="#fdff00">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
                                  <styleClass>
-                                    <String fx:value="modifyPatientsPane" />
-                                    <String fx:value="topMenuBarHBoxHover" />
+                                    <String fx:value="cancelButton" />
+                                    <String fx:value="prescriptionButton" />
                                  </styleClass>
                               </JFXButton>
                            </children>

@@ -10,6 +10,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -31,11 +33,14 @@
                                 <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-weight: bold;" text="PERSON INFORMATION" textAlignment="CENTER" />
                         <HBox fx:id="PatientsInfo" prefHeight="50.0" prefWidth="738.0" spacing="50.0">
                            <children>
-                              <JFXButton fx:id="addPatientsButtonID" onAction="#addPatientsButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-radius: 50;" stylesheets="@style/prescription.css" text="+Add" textFill="WHITE">
-                                 <styleClass>
-                                    <String fx:value="okayButton" />
-                                    <String fx:value="prescriptionCircleButton" />
-                                 </styleClass></JFXButton>
+                              <JFXButton fx:id="addPatientsButtonID" onAction="#addPatientsButtonClicked" prefHeight="50.0" prefWidth="55.0" style="-fx-background-radius: 50;" styleClass="prescriptionCircleButton" stylesheets="@style/prescription.css" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="48.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/addPatients.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></JFXButton>
                               <HBox spacing="50.0">
                                  <children>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
@@ -74,11 +79,14 @@
                         </HBox>
                         <HBox fx:id="Doctor_Info" layoutX="10.0" layoutY="32.0" prefHeight="50.0" prefWidth="738.0" spacing="50.0">
                            <children>
-                              <JFXButton fx:id="addDoctorButtonID" onAction="#addDoctorButtonClicked" prefHeight="51.0" prefWidth="52.0" style="-fx-background-radius: 50;" stylesheets="@style/prescription.css" text="+Add" textFill="WHITE">
-                                 <styleClass>
-                                    <String fx:value="okayButton" />
-                                    <String fx:value="prescriptionCircleButton" />
-                                 </styleClass></JFXButton>
+                              <JFXButton fx:id="addDoctorButtonID" onAction="#addDoctorButtonClicked" prefHeight="49.0" prefWidth="58.0" style="-fx-background-radius: 50;" styleClass="prescriptionCircleButton" stylesheets="@style/prescription.css" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/addDoctor.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></JFXButton>
                               <HBox spacing="50.0">
                                  <children>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
@@ -198,20 +206,39 @@
                             <content>
                                 <VBox fx:id="vb" spacing="10.0">
                                     <children>
-                                        <Label prefHeight="45.0" prefWidth="45.0" style="-fx-font-weight: bold; -fx-background-radius: 20; -fx-background-color: red;" text="Rx" textFill="WHITE">
+                                        <Label prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50;" textFill="WHITE">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fitHeight="74.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/Rx.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets left="-10.0" />
+                                 </VBox.margin>
                                  <padding>
-                                    <Insets left="10.0" />
+                                    <Insets left="-10.0" />
                                  </padding>
                               </Label>
                                         <VBox fx:id="vbPrescribeMedicineList" spacing="20.0" />
-                              <JFXButton fx:id="addPatientsButtonID1" onAction="#addNewMedicine" prefHeight="48.0" prefWidth="50.0" style="-fx-background-radius: 50;" stylesheets="@style/prescription.css" text="+Add" textFill="WHITE">
-                                 <styleClass>
-                                    <String fx:value="createButton" />
-                                    <String fx:value="prescriptionCircleButton" />
-                                 </styleClass>
+                              <JFXButton fx:id="addPatientsButtonID1" alignment="CENTER" contentDisplay="CENTER" onAction="#addNewMedicine" prefHeight="55.0" prefWidth="51.0" style="-fx-background-radius: 50;" styleClass="prescriptionCircleButton" stylesheets="@style/prescription.css" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="47.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/addMedicine.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="-7.0" />
+                                 </VBox.margin>
                               </JFXButton>
                                     </children>
                                     <padding>

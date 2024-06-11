@@ -60,3 +60,23 @@
     -fx-border-color: #00ff00 transparent #f8ec06 transparent;
     -fx-cursor:hand;
 }
+
+.prescriptionMedicineBorder1{
+    -fx-text-fill: #001562;
+    -fx-font-weight: bold;
+    -fx-background-color: #e8eeff;
+
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #60004d;
+}
+
+.prescriptionMedicineBorder2{
+    -fx-text-fill: #ff0202;
+    -fx-font-weight: bold;
+    -fx-background-color: #eaffdd;
+
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #63ff00;
+}

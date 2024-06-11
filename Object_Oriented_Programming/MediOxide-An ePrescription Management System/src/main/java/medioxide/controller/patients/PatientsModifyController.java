@@ -83,6 +83,8 @@ public class PatientsModifyController implements Initializable {
     public void saveChangeButton(ActionEvent event) {
         collectData();
         PatientsDBTable.updatePatientsIntoDatabase(patientsModel.getId(), age, name, surname, gender, phone, email, address);
+
+        cancelButton(event);
     }
 
 
