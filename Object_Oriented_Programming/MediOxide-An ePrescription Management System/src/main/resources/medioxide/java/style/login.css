@@ -1,0 +1,41 @@
+
+
+.loginBackground{
+    -fx-background-color: #004b2b;
+    -fx-background-radius: 10px;
+}
+
+.textField{
+    -fx-text-fill: #ffffdf;
+    -fx-background-color: black;
+
+    -fx-background-radius: 10px;
+/*    bor-radius: 10px;*/
+
+}
+
+.createButton{
+    -fx-background-color: #00ad5e;
+    -fx-text-fill: #070015;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7px;
+}
+
+.cancelButton{
+    -fx-background-color: #480026;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-radius: 7px;
+}
+
+.loginButtonhover:hover{
+    -fx-background-color: #006013;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+
+    -fx-border-radius: 7px;
+    -fx-border-width: 2px;
+    -fx-border-color: #ffed00 transparent blue transparent;
+    -fx-cursor:hand;
+}

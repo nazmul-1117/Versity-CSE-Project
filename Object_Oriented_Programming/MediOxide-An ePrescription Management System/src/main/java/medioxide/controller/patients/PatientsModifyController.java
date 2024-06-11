@@ -2,13 +2,18 @@ package medioxide.controller.patients;
 
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medioxide.database.PatientsDBTable;
 import medioxide.helper.HelperFunctions;
+import medioxide.java.Main;
 import medioxide.model.patients.PatientsModifyModel;
 
 import java.net.URL;
@@ -76,6 +81,7 @@ public class PatientsModifyController implements Initializable {
         email = modifyEmailTextField.getText();
         address = modifyAddressTextField.getText();
     }
+
     public void cancelButton(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();

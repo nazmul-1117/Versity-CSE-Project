@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" styleClass="backgroundImage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medioxide.controller.mainController.MainController">
     <children>
         <BorderPane fx:id="topMenuBarBoderPane" prefHeight="67.0" prefWidth="1366.0">
@@ -44,7 +52,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton style="-fx-background-radius: 50; -fx-background-color: #ffe000;" styleClass="leftMenuBarButtonHover" text="Logout">
+                        <JFXButton onAction="#logOutButton" style="-fx-background-radius: 50; -fx-background-color: #ffe000;" styleClass="leftMenuBarButtonHover" text="Logout">
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -288,11 +296,16 @@
             <center>
                 <AnchorPane prefWidth="1024.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label text="Home Window" textFill="#00d6ff" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label layoutX="272.0" layoutY="238.0" prefHeight="88.0" prefWidth="606.0" text="Welcome to MediOxide" textFill="#00d6ff" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="222.0" AnchorPane.topAnchor="238.0">
                             <font>
                                 <Font name="Arial Bold" size="48.0" />
                             </font>
                         </Label>
+                  <Label layoutX="148.0" layoutY="355.0" text="An ePrescription Management System" textFill="#00ff57">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
                     </children>
                     <BorderPane.margin>
                         <Insets />

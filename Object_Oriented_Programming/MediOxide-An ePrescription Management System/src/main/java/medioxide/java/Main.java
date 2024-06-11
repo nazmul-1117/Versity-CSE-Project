@@ -14,15 +14,16 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Image icon = new Image("file:src/main/picture/icon.png");
 
-        String fxmlUrl = "dashboard.fxml";
+//        String fxmlUrl = "dashboard.fxml";
+        String fxmlUrl = "login.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlUrl));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load());
 
         stage.getIcons().add(icon);
         stage.setTitle("MediOxide!");
 
         stage.setScene(scene);
-        stage.setMaximized(true);
+//        stage.setMaximized(true);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(true);
         stage.show();

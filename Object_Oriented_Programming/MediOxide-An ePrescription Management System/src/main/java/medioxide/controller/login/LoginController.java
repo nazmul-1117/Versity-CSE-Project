@@ -10,10 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import medioxide.java.Main;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,14 +38,46 @@ public class LoginController implements Initializable {
     private String userName, password;
     @FXML
     protected void cancelButton(ActionEvent event){
+
         System.out.println("Cancelled");
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
+    private void setScene(ActionEvent event){
+        try {
+                Image icon = new Image("file:src/main/picture/icon.png");
+                String fxmlName = "dashboard.fxml";
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.close();
+                stage = new Stage();
+
+                URL fxmlURL = Main.class.getResource(fxmlName);
+
+                fxmlLoader = new FXMLLoader(fxmlURL);
+                scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+
+                stage.getIcons().add(icon);
+                stage.setTitle("MediOxide!");
+
+                stage.setMaximized(true);
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setResizable(true);
+                stage.show();
+
+                System.out.println("scene changes");
+        }catch (Exception e){
+            System.out.println("Scene Load Failed");
+        }
+    }
     @FXML
-    protected void submitButton(ActionEvent event) throws IOException {
+    protected void submitButton(ActionEvent event) {
 
         userName = userNameField.getText();
         password = passwordField.getText();
+
+
 
         if (userNameField.getText().isEmpty() || passwordField.getText().isEmpty()){
             loginMessage.setText("Enter Valid Username or Password");
@@ -53,20 +88,13 @@ public class LoginController implements Initializable {
         }
         passwordField.clear(); userNameField.clear();
 
-        if(userName.equals(password)){
-            String fxmlName = "dashboard.fxml";
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        if (userName.equals(password)) {
+            setScene(event);
 
-            fxmlLoader = new FXMLLoader(getClass().getResource(fxmlName));
-            scene = new Scene(fxmlLoader.load());
-            stage.setScene(scene);
-
-            System.out.println("scene changes");
-        }else{
-            System.out.println("wrong password");
+        }else {
+            loginMessage.setText("Enter Valid Username or Password");
+            loginMessage.setStyle("-fx-text-fill: red");
         }
-
-        System.out.println(fxmlLoader.toString());
     }
 
     @Override
@@ -74,16 +102,7 @@ public class LoginController implements Initializable {
         loginVBox.setFocusTraversable(true);
     }
     public void createNewAccount(ActionEvent event) throws IOException {
-        String fxmlName = "create-Account.fxml";
-
-        fxmlLoader = new FXMLLoader(getClass().getResource(fxmlName));
-        Parent root = fxmlLoader.load();
-        scene = new Scene(root);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        System.out.println("Scene Created");
+        System.out.println("This window is empty");
 
     }
 }
