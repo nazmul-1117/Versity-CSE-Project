@@ -1,7 +1,9 @@
 package medioxide.database.home;
 
 import medioxide.database.DatabaseConnector;
-import medioxide.model.home.HomeModel;
+import medioxide.model.home.HomeDoctorModel;
+import medioxide.model.home.HomePatientsModel;
+import medioxide.model.home.HomeTestModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,8 +11,8 @@ import java.util.List;
 
 public class HomeDBTable {
 
-    public static List<HomeModel> getPatientsNumber(){
-        var testList = new ArrayList<HomeModel>();
+    public static List<HomePatientsModel> getPatientsNumber(){
+        var testList = new ArrayList<HomePatientsModel>();
         var conn = DatabaseConnector.getConnection();
 
         try {
@@ -33,7 +35,7 @@ public class HomeDBTable {
             var resultSet3 = ps3.executeQuery();
 
             while (resultSet1.next()) {
-                testList.add(new HomeModel(
+                testList.add(new HomePatientsModel(
                         resultSet1.getInt("total_patients")
                 ));
             }
@@ -44,24 +46,47 @@ public class HomeDBTable {
         return testList;
     }
 
-    public static List<HomeModel> getDoctorNumber(){
-        var testList = new ArrayList<HomeModel>();
+    public static List<HomeDoctorModel> getDoctorNumber(){
+        var testList = new ArrayList<HomeDoctorModel>();
         var conn = DatabaseConnector.getConnection();
 
         try {
             String query = "SELECT COUNT(doctor_id) AS total_doctors\n" +
                     "FROM doctor_personal_info;";
 
-
             var ps = conn.prepareStatement(query);
-
 
             var resultSet = ps.executeQuery();
 
 
             while (resultSet.next()) {
-                testList.add(new HomeModel(
-                        resultSet.getInt("total_patients")
+                testList.add(new HomeDoctorModel(
+                        resultSet.getInt("total_doctors")
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Query Execution Failed");
+        }
+
+        return testList;
+    }
+
+    public static List<HomeTestModel> getTestNumber(){
+        var testList = new ArrayList<HomeTestModel>();
+        var conn = DatabaseConnector.getConnection();
+
+        try {
+            String query = "SELECT COUNT(medical_test_id) AS total_tests\n" +
+                    "FROM medical_tests;";
+
+            var ps = conn.prepareStatement(query);
+
+            var resultSet = ps.executeQuery();
+
+
+            while (resultSet.next()) {
+                testList.add(new HomeTestModel(
+                        resultSet.getInt("total_tests")
                 ));
             }
         } catch (SQLException e) {

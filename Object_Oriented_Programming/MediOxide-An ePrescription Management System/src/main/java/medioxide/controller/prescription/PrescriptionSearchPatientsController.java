@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.EventObject;
 import java.util.ResourceBundle;
+import java.util.function.Function;
 
 public class PrescriptionSearchPatientsController implements Initializable {
 
@@ -30,6 +31,8 @@ public class PrescriptionSearchPatientsController implements Initializable {
 
     private PrescriptionPatientsModel patientsModel;
 
+    private Function<PrescriptionPatientsModel, Void> onSaved;
+
     public void setPatientsModel(PrescriptionPatientsModel patientsModel) {
         this.patientsModel = patientsModel;
     }
@@ -38,37 +41,36 @@ public class PrescriptionSearchPatientsController implements Initializable {
         return patientsModel;
     }
 
+    public void init(Function<PrescriptionPatientsModel, Void> onSaved) {
+        this.onSaved = onSaved;
+    }
 
-    private void setData(){
+
+    private void setData() {
         nameTextField.setText(patientsModel.getName());
         ageTextField.setText(Integer.toString(patientsModel.getAge()));
         genderTextField.setText(patientsModel.getGender());
     }
 
     public void cancelButton(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
     public void searchPatientsButton(ActionEvent event) {
         int id = HelperFunctions.stringToInt(searchPatientsTextField.getText());
         var getPatients = PrescriptionDBTable.getPatientListById(id);
-
-        patientsModel = getPatients.get(0);
-        setData();
-
+        if (getPatients.size() > 0) {
+            patientsModel = getPatients.get(0);
+            setData();
+        }
     }
 
-    public PrescriptionPatientsModel okayButton(ActionEvent event) {
-        PrescriptionController ps = new PrescriptionController();
-        
-
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhh");
-
+    public void okayButton(ActionEvent event) {
+        event.consume();
+        onSaved.apply(patientsModel);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-
-        return patientsModel;
     }
 
 

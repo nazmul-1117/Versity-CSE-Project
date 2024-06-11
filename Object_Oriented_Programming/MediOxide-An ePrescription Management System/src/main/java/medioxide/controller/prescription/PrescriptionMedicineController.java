@@ -15,6 +15,7 @@ import medioxide.model.prescription.PrescriptionMedicineModel;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Function;
 
 public class PrescriptionMedicineController implements Initializable {
 
@@ -33,15 +34,21 @@ public class PrescriptionMedicineController implements Initializable {
 
     private PrescriptionMedicineModel model;
 
+    private Function<PrescriptionMedicineModel, Void> onSaved;
 
+
+    public void init(Function<PrescriptionMedicineModel, Void> onSaved) {
+        this.onSaved = onSaved;
+
+    }
 
     private void initGenderToggle() {
         medicineBeforeEatRB.setToggleGroup(beforeAfterEat);
         medicineAfterEatRB.setToggleGroup(beforeAfterEat);
     }
 
-    private void initComboBox(){
-        ObservableList<String> list = FXCollections.observableList(new ArrayList<>()) ;
+    private void initComboBox() {
+        ObservableList<String> list = FXCollections.observableList(new ArrayList<>());
         list.add("Tablet");
         list.add("Syrup");
         list.add("Capsule");
@@ -50,8 +57,8 @@ public class PrescriptionMedicineController implements Initializable {
         medicineTypeComboBox.setItems(list);
     }
 
-    private void dataCollect(){
-        String type = medicineTypeComboBox.getSelectionModel().getSelectedItem().toString();;
+    private void dataCollect() {
+        String type = medicineTypeComboBox.getSelectionModel().getSelectedItem().toString();
         String name = medicineName.getText();
         String power = medicinePower.getText();
 
@@ -59,29 +66,28 @@ public class PrescriptionMedicineController implements Initializable {
                 medicineNightTime.getText();
 
 
-        String beforeAfterEat = ((JFXRadioButton)this.beforeAfterEat.getSelectedToggle()).getText();
+        String beforeAfterEat = ((JFXRadioButton) this.beforeAfterEat.getSelectedToggle()).getText();
 
         String beforeAfterTime = beforeAfterEatTime.getText();
 
         model = new PrescriptionMedicineModel(type, name, power, dose, beforeAfterEat, beforeAfterTime);
     }
 
-    private void consoleShowAllData(){
-        System.out.println("Name: ");
-    }
 
     public void saveButton(ActionEvent event) {
         dataCollect();
-        consoleShowAllData();
-    }
 
-    public void cancelButton(ActionEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        onSaved.apply(model);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
-    
-    
+    public void cancelButton(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initGenderToggle();

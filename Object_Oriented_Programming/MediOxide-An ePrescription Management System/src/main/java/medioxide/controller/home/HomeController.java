@@ -3,7 +3,9 @@ package medioxide.controller.home;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import medioxide.database.home.HomeDBTable;
-import medioxide.model.home.HomeModel;
+import medioxide.model.home.HomeDoctorModel;
+import medioxide.model.home.HomePatientsModel;
+import medioxide.model.home.HomeTestModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,17 +22,28 @@ public class HomeController implements Initializable {
     public Label nurseTotalNumber;
 
 
-    HomeModel model;
+    HomePatientsModel patientsModel;
+    HomeDoctorModel doctorModel;
+    HomeTestModel testModel;
+
 
     private void setData(){
-        patientsTotalNumber.setText(Integer.toString(model.getTotalPatients())+"+");
+
+        patientsTotalNumber.setText(Integer.toString(patientsModel.getTotalPatients())+"+");
+        doctorTotalNumber.setText(Integer.toString(doctorModel.getTotalDoctor())+"+");
+        totalDiagnosticNumber.setText(Integer.toString(testModel.getTotalTest() )+"+");
     }
 
     private void getFromDatabase(){
         var patientsNumber = HomeDBTable.getPatientsNumber();
+        var doctorsNumber = HomeDBTable.getDoctorNumber();
+        var testsNumber = HomeDBTable.getTestNumber();
 
-        if (patientsNumber != null){
-            model= patientsNumber.get(0);
+        if (patientsNumber != null && doctorsNumber != null && testsNumber != null){
+            patientsModel = patientsNumber.get(0);
+            doctorModel = doctorsNumber.get(0);
+            testModel = testsNumber.get(0);
+
             setData();
         }
     }
