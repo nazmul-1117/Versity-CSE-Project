@@ -33,7 +33,6 @@ public class PrescriptionMedicineController implements Initializable {
     private final ToggleGroup beforeAfterEat = new ToggleGroup();
 
     private PrescriptionMedicineModel model;
-
     private Function<PrescriptionMedicineModel, Void> onSaved;
 
 
@@ -46,7 +45,6 @@ public class PrescriptionMedicineController implements Initializable {
         medicineBeforeEatRB.setToggleGroup(beforeAfterEat);
         medicineAfterEatRB.setToggleGroup(beforeAfterEat);
     }
-
     private void initComboBox() {
         ObservableList<String> list = FXCollections.observableList(new ArrayList<>());
         list.add("Tablet");
@@ -56,7 +54,6 @@ public class PrescriptionMedicineController implements Initializable {
         //comboBox.setItems(list);
         medicineTypeComboBox.setItems(list);
     }
-
     private void dataCollect() {
         String type = medicineTypeComboBox.getSelectionModel().getSelectedItem().toString();
         String name = medicineName.getText();
@@ -76,12 +73,10 @@ public class PrescriptionMedicineController implements Initializable {
 
     public void saveButton(ActionEvent event) {
         dataCollect();
-
         onSaved.apply(model);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
 
+        cancelButton(event);
+    }
     public void cancelButton(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

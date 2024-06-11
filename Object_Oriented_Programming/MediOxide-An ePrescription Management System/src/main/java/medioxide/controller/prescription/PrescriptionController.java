@@ -1,6 +1,5 @@
 package medioxide.controller.prescription;
 
-import com.itextpdf.kernel.colors.Lab;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -20,18 +19,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import medioxide.controller.patients.PatientsModifyController;
-import medioxide.controller.problem.ProblemModifyController;
-import medioxide.database.PatientsDBTable;
-import medioxide.database.PrescriptionDBTable;
-import medioxide.database.ProblemDBTable;
 import medioxide.java.Main;
+import medioxide.model.prescription.PrescriptionDoctorModel;
 import medioxide.model.prescription.PrescriptionMedicineModel;
 import medioxide.model.prescription.PrescriptionPatientsModel;
 
@@ -46,15 +40,17 @@ public class PrescriptionController implements Initializable {
     public TextField patientsAge;
     public TextField patientsGender;
 
-    public TextField doctorID;
-    public TextField doctorName;
-    public TextField doctorDept;
-    public TextField doctorSpec;
+    public TextField doctorIDTextField;
+    public TextField doctorNameTextField;
+    public TextField doctorDeptTextField;
+    public TextField doctorSpecTextField;
+    public TextField doctorEmailTextField;
 
     public JFXButton addPatientsButtonID;
     public JFXButton addDoctorButtonID;
 
     private PrescriptionPatientsModel patientsModel;
+    private PrescriptionDoctorModel doctorModel;
 
     @FXML
     private VBox vbPrescribeMedicineList;
@@ -64,7 +60,6 @@ public class PrescriptionController implements Initializable {
     private ScrollPane scrollPane;
     @FXML
     private BorderPane borderPaneScene;
-
 
     private ObservableList<PrescriptionMedicineModel> medicineList = FXCollections.observableArrayList();
 
@@ -86,7 +81,7 @@ public class PrescriptionController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
             Scene scene = new Scene(fxmlLoader.load());
 
-            PrescriptionSearchPatientsController pspc = fxmlLoader.getController();
+            PrescriptionPatientsController pspc = fxmlLoader.getController();
             pspc.init(patientsModel -> {
                 setPatientsInfo(patientsModel);
                 return null;
@@ -104,12 +99,47 @@ public class PrescriptionController implements Initializable {
         }
     }
 
-    private void setPatientsInfo(PrescriptionPatientsModel prescriptionPatientsModel) {
-        patientsID.setText(String.valueOf(prescriptionPatientsModel.getId()));
-        patientsName.setText(prescriptionPatientsModel.getName());
+    public void addDoctorButtonClicked(ActionEvent event) {
+        try {
+            String fxml = "prescription_doctor.fxml";
+            URL fxmlURL = Main.class.getResource(fxml);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
+            Scene scene = new Scene(fxmlLoader.load());
+
+            PrescriptionDoctorController pdc = fxmlLoader.getController();
+            pdc.init(doctorModel -> {
+                setDoctorInfo(doctorModel);
+                return null;
+            });
+            doctorModel = pdc.getDoctorModel();
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+        } catch (IOException ioException) {
+            System.out.println("modify_patients.fxml failed");
+        }
     }
 
-    public void addDoctorButtonClicked(ActionEvent event) {
+    private void setPatientsInfo(PrescriptionPatientsModel model) {
+        patientsID.setText(String.valueOf(model.getId()));
+        patientsName.setText(model.getName());
+        patientsAge.setText(String.valueOf(model.getAge()));
+        patientsGender.setText(model.getGender());
+    }
+
+    private void setDoctorInfo(PrescriptionDoctorModel model) {
+        doctorIDTextField.setText(String.valueOf(model.getdId()));
+
+        doctorNameTextField.setText(model.getdName());
+        doctorEmailTextField.setText(model.getdEmail());
+        doctorDeptTextField.setText(model.getdDept());
+
+        doctorSpecTextField.setText(model.getdSpec());
     }
 
     public void onTapNextVisit(MouseEvent mouseEvent) {

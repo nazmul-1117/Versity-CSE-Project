@@ -84,25 +84,31 @@
                                     <VBox prefHeight="50.0" prefWidth="147.0">
                                        <children>
                                           <Label text="Doctor ID" />
-                                          <TextField fx:id="doctorID" />
+                                          <TextField fx:id="doctorIDTextField" />
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
                                        <children>
                                           <Label text="Doctor Name" />
-                                          <TextField fx:id="doctorName" />
+                                          <TextField fx:id="doctorNameTextField" />
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
                                        <children>
                                           <Label text="Department" />
-                                          <TextField fx:id="doctorDept" />
+                                          <TextField fx:id="doctorDeptTextField" />
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="50.0" prefWidth="147.0">
                                        <children>
                                           <Label text="Speciality" />
-                                          <TextField fx:id="doctorSpec" />
+                                          <TextField fx:id="doctorSpecTextField" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="601.0" layoutY="10.0" prefHeight="50.0" prefWidth="147.0">
+                                       <children>
+                                          <Label text="Email" />
+                                          <TextField fx:id="doctorEmailTextField" />
                                        </children>
                                     </VBox>
                                  </children>
