@@ -128,7 +128,6 @@ public class PatientsController implements Initializable, OnClickListener {
     public void searchButton(ActionEvent event) {
 
         List list;
-
         String searchID = searchPatientsTextField.getText().trim();
 
         try {
@@ -139,14 +138,10 @@ public class PatientsController implements Initializable, OnClickListener {
             list = PatientsDBTable.getPatientListByName(searchID);
             System.out.println("search by Name");
         } finally {
-
+            searchPatientsTextField.clear();
         }
 
-        searchPatientsTextField.clear();
-
         var patientsList = FXCollections.observableList(list);
-
-
         var table = new PatientsDataTableListView<PatientsModel>(patientsList, this);
 
         table.setLayoutX(0);

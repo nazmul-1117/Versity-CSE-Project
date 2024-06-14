@@ -10,19 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import medioxide.components.MedicineDataTableView;
-import medioxide.components.PatientsDataTableListView;
-import medioxide.components.TestDataTableView;
-import medioxide.controller.patients.PatientsModifyController;
 import medioxide.database.MedicineDBTable;
-import medioxide.database.PatientsDBTable;
-import medioxide.database.TestDBTable;
 import medioxide.helper.OnClickListener;
 import medioxide.java.Main;
 import medioxide.model.medicine.MedicineMainModel;
 import medioxide.model.medicine.MedicineTableViewModel;
-import medioxide.model.patients.PatientsModel;
-import medioxide.model.test.TestTableViewModel;
 
 import java.io.IOException;
 import java.net.URL;

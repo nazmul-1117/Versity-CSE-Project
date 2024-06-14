@@ -8,6 +8,9 @@ public class ProblemMainModel {
     private String symptoms;
     private String treatment;
 
+    public ProblemMainModel() {
+    }
+
     public ProblemMainModel(int id, String name, String department, String description, String symptoms, String treatment) {
         this.id = id;
         this.name = name;
